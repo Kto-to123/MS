@@ -4,6 +4,14 @@ using UnityEngine;
 
 public class TimeManager : MonoBehaviour
 {
+
+    public GameObject Player;
+
+    private void Start()
+    {
+        //Player.
+    }
+
     private void Update()
     {
 

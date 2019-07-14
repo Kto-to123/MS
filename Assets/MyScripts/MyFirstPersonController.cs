@@ -42,9 +42,20 @@ namespace UnityStandardAssets.Characters.FirstPerson
         private bool m_Jumping;
         private AudioSource m_AudioSource;
 
+        ////////////////
+
+        private float r_WalkstepLenghten;
+        public bool stopTime;
+
+        ///////////////
+
+
         // Use this for initialization
         private void Start()
         {
+            stopTime = false;
+
+            r_WalkstepLenghten = 0f;
             m_CharacterController = GetComponent<CharacterController>();
             m_Camera = Camera.main;
             m_OriginalCameraPosition = m_Camera.transform.localPosition;
@@ -96,6 +107,23 @@ namespace UnityStandardAssets.Characters.FirstPerson
         {
             float speed;
             GetInput(out speed);
+
+            /////////////////////////////////////////////////////////
+            if (Input.anyKey)
+            {
+                Time.timeScale = 1f;
+            }
+            else
+            {
+                Time.timeScale = 0.01f;
+                speed = 0f;
+                //transform.forward = new Vector3 (0f, 0f, 0f);
+                //transform.right = new Vector3(0f, 0f, 0f);
+                m_Input = new Vector2(0f, 0f);
+            }
+            /////////////////////////////////////////////////////////
+
+
             // always move along the camera forward as it is the direction that it being aimed at
             Vector3 desiredMove = transform.forward*m_Input.y + transform.right*m_Input.x;
 
@@ -145,7 +173,7 @@ namespace UnityStandardAssets.Characters.FirstPerson
         {
             if (m_CharacterController.velocity.sqrMagnitude > 0 && (m_Input.x != 0 || m_Input.y != 0))
             {
-                m_StepCycle += (m_CharacterController.velocity.magnitude + (speed*(m_IsWalking ? 1f : m_RunstepLenghten)))*
+                m_StepCycle += (m_CharacterController.velocity.magnitude + (speed*(m_IsWalking ? r_WalkstepLenghten : m_RunstepLenghten)))*
                              Time.fixedDeltaTime;
             }
 
@@ -156,25 +184,25 @@ namespace UnityStandardAssets.Characters.FirstPerson
 
             m_NextStep = m_StepCycle + m_StepInterval;
 
-            PlayFootStepAudio();
+            //PlayFootStepAudio();
         }
 
 
-        private void PlayFootStepAudio()
-        {
-            if (!m_CharacterController.isGrounded)
-            {
-                return;
-            }
-            // pick & play a random footstep sound from the array,
-            // excluding sound at index 0
-            int n = Random.Range(1, m_FootstepSounds.Length);
-            m_AudioSource.clip = m_FootstepSounds[n];
-            m_AudioSource.PlayOneShot(m_AudioSource.clip);
-            // move picked sound to index 0 so it's not picked next time
-            m_FootstepSounds[n] = m_FootstepSounds[0];
-            m_FootstepSounds[0] = m_AudioSource.clip;
-        }
+        //private void PlayFootStepAudio()
+        //{
+        //    if (!m_CharacterController.isGrounded)
+        //    {
+        //        return;
+        //    }
+        //    // pick & play a random footstep sound from the array,
+        //    // excluding sound at index 0
+        //    int n = Random.Range(1, m_FootstepSounds.Length);
+        //    m_AudioSource.clip = m_FootstepSounds[n];
+        //    m_AudioSource.PlayOneShot(m_AudioSource.clip);
+        //    // move picked sound to index 0 so it's not picked next time
+        //    m_FootstepSounds[n] = m_FootstepSounds[0];
+        //    m_FootstepSounds[0] = m_AudioSource.clip;
+        //}
 
 
         private void UpdateCameraPosition(float speed)
@@ -188,7 +216,7 @@ namespace UnityStandardAssets.Characters.FirstPerson
             {
                 m_Camera.transform.localPosition =
                     m_HeadBob.DoHeadBob(m_CharacterController.velocity.magnitude +
-                                      (speed*(m_IsWalking ? 1f : m_RunstepLenghten)));
+                                      (speed*(m_IsWalking ? r_WalkstepLenghten : m_RunstepLenghten)));
                 newCameraPosition = m_Camera.transform.localPosition;
                 newCameraPosition.y = m_Camera.transform.localPosition.y - m_JumpBob.Offset();
             }
@@ -224,13 +252,15 @@ namespace UnityStandardAssets.Characters.FirstPerson
                 m_Input.Normalize();
             }
 
+            
+
             // handle speed change to give an fov kick
             // only if the player is going to a run, is running and the fovkick is to be used
-            if (m_IsWalking != waswalking && m_UseFovKick && m_CharacterController.velocity.sqrMagnitude > 0)
-            {
-                StopAllCoroutines();
-                StartCoroutine(!m_IsWalking ? m_FovKick.FOVKickUp() : m_FovKick.FOVKickDown());
-            }
+            //if (m_IsWalking != waswalking && m_UseFovKick && m_CharacterController.velocity.sqrMagnitude > 0)
+            //{
+            //    StopAllCoroutines();
+            //    StartCoroutine(!m_IsWalking ? m_FovKick.FOVKickUp() : m_FovKick.FOVKickDown());
+            //}
         }
 
 
@@ -254,6 +284,11 @@ namespace UnityStandardAssets.Characters.FirstPerson
                 return;
             }
             body.AddForceAtPosition(m_CharacterController.velocity*0.1f, hit.point, ForceMode.Impulse);
+        }
+
+        public void Stop()
+        {
+            
         }
     }
 }
