@@ -819,6 +819,7 @@ MonoBehaviour:
     count: 0
   movingObject: {fileID: 1617720799}
   offset: {x: 1, y: -1, z: 0}
+  backGround: {fileID: 377463505}
 --- !u!1 &1055772298
 GameObject:
   m_ObjectHideFlags: 0

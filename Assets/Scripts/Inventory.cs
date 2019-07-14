@@ -24,6 +24,8 @@ public class Inventory : MonoBehaviour
     public RectTransform movingObject;
     public Vector3 offset;
 
+    public GameObject backGround;
+
     public void Start()
     {
         if (items.Count == 0)
@@ -44,6 +46,52 @@ public class Inventory : MonoBehaviour
         if (currentID != -1)
         {
             MoveObject();
+        }
+
+        if (Input.GetKeyDown(KeyCode.Tab))
+        {
+            backGround.SetActive(!backGround.activeSelf);
+            if (backGround.activeSelf)
+            {
+                UpdateInventory();
+            }
+        }
+    }
+
+    public void SearchForSameItem(Item item, int count)
+    {
+        for (int i = 0; i < maxCount; i++)
+        {
+            if (items[i].id == item.id)
+            {
+                if (items[i].count < 128)
+                {
+                    items[i].count += count;
+
+                    if (items[i].count > 128)
+                    {
+                        count = items[i].count - 128;
+                        items[i].count = 64;
+                    }
+                    else
+                    {
+                        count = 0;
+                        i = maxCount;
+                    }
+                }
+            }
+        }
+
+        if (count > 0)
+        {
+            for (int i = 0; i < maxCount; i++)
+            {
+                if (items[i].id == 0)
+                {
+                    AddItem(i, item, count);
+                    i = maxCount;
+                }
+            }
         }
     }
 
@@ -133,9 +181,29 @@ public class Inventory : MonoBehaviour
         }
         else
         {
-            AddInventoryItem(currentID, items[int.Parse(es.currentSelectedGameObject.name)]);
+            ItemInventory II = items[int.Parse(es.currentSelectedGameObject.name)];
 
-            AddInventoryItem(int.Parse(es.currentSelectedGameObject.name), currentItem);
+            if (currentItem.id != II.id)
+            {
+                AddInventoryItem(currentID, II);
+                AddInventoryItem(int.Parse(es.currentSelectedGameObject.name), currentItem);
+            }
+            else
+            {
+                if (II.count + currentItem.count <= 128)
+                {
+                    II.count += currentItem.count;
+                }
+                else
+                {
+                    AddItem(currentID, data.items[II.id], II.count + currentItem.count - 128);
+
+                    II.count = 128;
+                }
+
+                II.itemGameObj.GetComponentInChildren<Text>().text = II.count.ToString();
+            }
+
             currentID = -1;
 
             movingObject.gameObject.SetActive(false);
