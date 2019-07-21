@@ -9,7 +9,7 @@ public class TimeManager : MonoBehaviour
 
     private void Start()
     {
-        //Player.
+        
     }
 
     private void Update()
