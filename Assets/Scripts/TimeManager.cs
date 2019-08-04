@@ -6,16 +6,16 @@ public class TimeManager : MonoBehaviour
 {
 
     public GameObject Player;
-
-    private void Start()
-    {
-        
-    }
+    public bool NormalTime = true;
 
     private void Update()
     {
+        if (Input.GetKeyDown(KeyCode.CapsLock))
+        {
+            NormalTime = !NormalTime;
+        }
 
-        if (Input.anyKey)
+        if (NormalTime)
         {
             Time.timeScale = 1f;
         }
