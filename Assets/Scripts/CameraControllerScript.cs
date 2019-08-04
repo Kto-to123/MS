@@ -31,6 +31,14 @@ public class CameraControllerScript : MonoBehaviour
     {
         rotationX += /*head.localEulerAngles.y +*/ Input.GetAxis("Mouse X") * sensitivity;
         rotationY += Input.GetAxis("Mouse Y") * sensitivity;
+        if (rotationY > headMaxY)
+        {
+            rotationY = headMaxY;
+        }
+        if (rotationY < headMinY)
+        {
+            rotationY = headMinY;
+        }
         //rotationY = Mathf.Clamp(rotationY, headMinY, headMaxY);
         head.localEulerAngles = new Vector3(-rotationY, 0, 0);
 

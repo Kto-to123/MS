@@ -58,6 +58,12 @@ public class Inventory : MonoBehaviour
         }
     }
 
+    public void TakeItem(int id, int count)
+    {
+        Item qitem = data.items[id];
+        SearchForSameItem(qitem, count);
+    }
+
     public void SearchForSameItem(Item item, int count)
     {
         for (int i = 0; i < maxCount; i++)

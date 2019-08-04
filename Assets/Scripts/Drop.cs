@@ -4,15 +4,16 @@ using UnityEngine;
 
 public class Drop : MonoBehaviour
 {
-    public DataBase data;
+    //public DataBase data;
 
     public Inventory inventory;
 
-    public Item item;
+    //public Item item;
+    public int id;
     
     public void Take()
     {
-        inventory.SearchForSameItem(item, 1);
+        inventory.TakeItem(id, 1);
 
         Destroy(gameObject);
     }
