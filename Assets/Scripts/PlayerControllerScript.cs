@@ -15,6 +15,7 @@ public class PlayerControllerScript : MonoBehaviour
     // 
     public bool myControl = true;
     //
+    private Vector3 direction;
 
     void Start()
     {
@@ -64,11 +65,16 @@ public class PlayerControllerScript : MonoBehaviour
         {
             dirX = Input.GetAxis("Horizontal") * moveSpeed;
             dirZ = Input.GetAxis("Vertical") * moveSpeed;
-        }        
+        }
+
+        // вектор направления движения
+        direction = new Vector3(dirX, 0, dirZ);
+        direction = transform.TransformDirection(direction);
+        direction = new Vector3(direction.x, 0, direction.z);
     }
 
     void FixedUpdate()
     {
-        rb.velocity = new Vector3(dirX, dirY, dirZ);
+        rb.velocity = direction;
     }
 }
