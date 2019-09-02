@@ -8,23 +8,24 @@ public class Inventory : MonoBehaviour
 {
     public DataBase data;
 
-    public List<ItemInventory> items = new List<ItemInventory>();
+    public List<ItemInventory> items = new List<ItemInventory>(); //Список элементов инвентаря
 
-    public GameObject gameObjShow;
+    public GameObject gameObjShow; //Видемый объект?
 
-    public GameObject InventoryMainObject;
-    public int maxCount;
+    public GameObject InventoryMainObject; //Основной объект инвентаря
+    public int maxCount; //Количество ячеек инвентаря
 
-    public Camera cam;
-    public EventSystem es;
+    public Camera cam; //Камера
+    public EventSystem es; //Управление графическим интерфейсом
 
-    public int currentID;
-    public ItemInventory currentItem;
+    public int currentID; // id перемещаемого предмета
+    public ItemInventory currentItem; // перемещаемый предмет
 
-    public RectTransform movingObject;
-    public Vector3 offset;
+    public RectTransform movingObject; // Переменная для перемещения объекта
+    public Vector3 offset; // Смещение от курсора
 
-    public GameObject backGround;
+    public GameObject backGround; 
+    public Weapon myWeapon;
 
     public void Start()
     {
@@ -39,13 +40,17 @@ public class Inventory : MonoBehaviour
             AddItem(i, data.items[Random.Range(0, data.items.Count)], Random.Range(1, 99));
         }
         UpdateInventory();
+
+        //myWeapon = GetComponent<Weapon>();
+
+        InstantWeapon(1, 51);
     }
 
     public void Update()
     {
-        if (currentID != -1)
+        if (currentID != -1) // Если мы удерживаем объект
         {
-            MoveObject();
+            MoveObject(); // Отрисовываем его
         }
 
         if (Input.GetKeyDown(KeyCode.Tab))
@@ -58,10 +63,14 @@ public class Inventory : MonoBehaviour
         }
     }
 
-    public void TakeItem(int id, int count)
+    public void TakeItem(int id, int count) // Поднять объект
     {
         Item qitem = data.items[id];
         SearchForSameItem(qitem, count);
+        if (backGround.activeSelf)
+        {
+            UpdateInventory();
+        }
     }
 
     public void SearchForSameItem(Item item, int count)
@@ -101,15 +110,15 @@ public class Inventory : MonoBehaviour
         }
     }
 
-    public void AddItem(int id, Item item, int count)
+    public void AddItem(int id, Item item, int count) //Добавление объекта в инвентарь
     {
-        items[id].id = item.id;
-        items[id].count = count;
-        items[id].itemGameObj.GetComponent<Image>().sprite = item.img;
+        items[id].id = item.id; //Задаем номер
+        items[id].count = count; //Задаем количество
+        items[id].itemGameObj.GetComponent<Image>().sprite = item.img; //Задаем изображение
 
-        if (count > 1 && item.id != 0)
+        if (count > 1 && item.id != 0) //Если Объект в ячейке не 1 и ячейка не пустая
         {
-            items[id].itemGameObj.GetComponentInChildren<Text>().text = count.ToString();
+            items[id].itemGameObj.GetComponentInChildren<Text>().text = count.ToString(); //Показать количество объектов
         }
         else
         {
@@ -117,7 +126,7 @@ public class Inventory : MonoBehaviour
         }
     }
 
-    public void AddInventoryItem(int id, ItemInventory invItem)
+    public void AddInventoryItem(int id, ItemInventory invItem) //Добавление ячеек инвентаря
     {
         items[id].id = invItem.id;
         items[id].count = invItem.count;
@@ -133,59 +142,59 @@ public class Inventory : MonoBehaviour
         }
     }
 
-    public void AddGraphics()
+    public void AddGraphics() //Отрисовка инвентаря
     {
         for (int i = 0; i < maxCount; i++)
         {
-            GameObject newItem = Instantiate(gameObjShow, InventoryMainObject.transform) as GameObject;
+            GameObject newItem = Instantiate(gameObjShow, InventoryMainObject.transform) as GameObject; //Создание видимого объекта
 
-            newItem.name = i.ToString();
+            newItem.name = i.ToString(); //Объект получает имя равное его порядковому номеру
 
-            ItemInventory ii = new ItemInventory();
-            ii.itemGameObj = newItem;
+            ItemInventory ii = new ItemInventory(); //Реализуем ячейку инвентаря
+            ii.itemGameObj = newItem; //Записываем ссылку на объект
 
-            RectTransform rt = newItem.GetComponent<RectTransform>();
-            rt.localPosition = new Vector3(0, 0, 0);
-            rt.localScale = new Vector3(1, 1, 1);
-            newItem.GetComponentInChildren<RectTransform>().localScale = new Vector3(1, 1, 1);
+            RectTransform rt = newItem.GetComponent<RectTransform>(); //Информация о положении, размере, привязке и опоре для прямоугольника
+            rt.localPosition = new Vector3(0, 0, 0); //Текущее положение
+            rt.localScale = new Vector3(1, 1, 1); //Текущий размер
+            newItem.GetComponentInChildren<RectTransform>().localScale = new Vector3(1, 1, 1); //Масштаб при использовании
 
-            Button tempbutton = newItem.GetComponent<Button>();
+            Button tempbutton = newItem.GetComponent<Button>(); //Придание свойств кнопки объекту
 
-            tempbutton.onClick.AddListener(delegate { SelectObject(); });
+            tempbutton.onClick.AddListener(delegate { SelectObject(); }); // Создание слушателя нажатия кнопки?
 
-            items.Add(ii);
+            items.Add(ii); //Добавление объекта в список элементов инвентаря
         }
     }
 
-    public void UpdateInventory()
+    public void UpdateInventory() // Обновление графики инвентаря
     {
-        for (int i = 0; i < maxCount; i++)
+        for (int i = 0; i < maxCount; i++) // Пройтись по каждой клетке
         {
-            if (items[i].id != 0 && items[i].count > 1)
+            if (items[i].id != 0 && items[i].count > 1) // Если в ней есть объект и его количество больше 0
             {
-                items[i].itemGameObj.GetComponentInChildren<Text>().text = items[i].count.ToString();
+                items[i].itemGameObj.GetComponentInChildren<Text>().text = items[i].count.ToString(); // Отрисовываем количество
             }
             else
             {
-                items[i].itemGameObj.GetComponentInChildren<Text>().text = "";
+                items[i].itemGameObj.GetComponentInChildren<Text>().text = ""; // Отрисовываем пустую строку
             }
 
-            items[i].itemGameObj.GetComponent<Image>().sprite = data.items[items[i].id].img;
+            items[i].itemGameObj.GetComponent<Image>().sprite = data.items[items[i].id].img; // Отрисовываем изображение соответствующее ID
         }
     }
 
-    public void SelectObject()
+    public void SelectObject() //Перемещение объекта
     {
-        if (currentID == -1)
+        if (currentID == -1) // Если объект еще не взят, берем
         {
             currentID = int.Parse(es.currentSelectedGameObject.name);
             currentItem = CopyInventoryItem(items[currentID]);
-            movingObject.gameObject.SetActive(true);
-            movingObject.GetComponent<Image>().sprite = data.items[currentItem.id].img;
+            movingObject.gameObject.SetActive(true); //Видимость перемещаемого объекта
+            movingObject.GetComponent<Image>().sprite = data.items[currentItem.id].img; //Присвоение перемещаемому объекту изображения
 
-            AddItem(currentID, data.items[0], 0);
+            AddItem(currentID, data.items[0], 0); //Записываем в ячейку пустой элемент
         }
-        else
+        else // если уже взят опускаем
         {
             ItemInventory II = items[int.Parse(es.currentSelectedGameObject.name)];
 
@@ -210,37 +219,44 @@ public class Inventory : MonoBehaviour
                 II.itemGameObj.GetComponentInChildren<Text>().text = II.count.ToString();
             }
 
-            currentID = -1;
+            currentID = -1; // Делаем счетчик пустым
 
-            movingObject.gameObject.SetActive(false);
+            movingObject.gameObject.SetActive(false); // Скрываем переносимый объект
         }
     }
 
-    public void MoveObject()
+    public void MoveObject() // Перемещение объекта курсором
     {
-        Vector3 pos = Input.mousePosition + offset;
-        pos.z = InventoryMainObject.GetComponent<RectTransform>().position.z;
+        Vector3 pos = Input.mousePosition + offset; // Получаем позицию курсора + смещение
+        pos.z = InventoryMainObject.GetComponent<RectTransform>().position.z; 
         movingObject.position = cam.ScreenToWorldPoint(pos);
     }
 
-    public ItemInventory CopyInventoryItem(ItemInventory old)
+    public ItemInventory CopyInventoryItem(ItemInventory old) //Копирование содержимоко ячейки в буферную переменную
     {
         ItemInventory New = new ItemInventory();
 
         New.id = old.id;
-        New.itemGameObj = old.itemGameObj;
+        New.itemGameObj = old.itemGameObj; 
         New.count = old.count;
 
         return New;
     }
+
+    // Взаимодействие с оружием
+    public void InstantWeapon(int WId, int WCount)
+    {
+        myWeapon.InstantWeapon(WId, WCount);
+    }
 }
 
-[System.Serializable]
+[System.Serializable] //Позволяет получить доступ к скрипту из всего юнити
 
+// Ячейка инвентаря
 public class ItemInventory
 {
-    public int id;
-    public GameObject itemGameObj;
+    public int id; //Номер ячейки
+    public GameObject itemGameObj; //Ссылка на содержимое
 
-    public int count;
+    public int count; //Количество предметов в ячейке
 }

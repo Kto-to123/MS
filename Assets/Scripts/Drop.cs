@@ -4,8 +4,6 @@ using UnityEngine;
 
 public class Drop : MonoBehaviour
 {
-    //public DataBase data;
-
     public Inventory inventory;
 
     //public Item item;
@@ -17,16 +15,4 @@ public class Drop : MonoBehaviour
 
         Destroy(gameObject);
     }
-
-    //// Start is called before the first frame update
-    //void Start()
-    //{
-        
-    //}
-
-    //// Update is called once per frame
-    //void Update()
-    //{
-        
-    //}
 }

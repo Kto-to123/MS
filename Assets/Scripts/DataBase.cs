@@ -3,16 +3,18 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
 
+//База данных м элиментами, заполняемая в ручную
 public class DataBase : MonoBehaviour
 {
     public List<Item> items = new List<Item>();
 }
 
-[System.Serializable]
+[System.Serializable] //Позволяет получить доступ к скрипту из всего юнити
 
+//Клас с информацией об объекте
 public class Item
 {
-    public int id;
-    public string name;
-    public Sprite img; 
+    public int id; // Номер объекта
+    public string name; // Имя объекта
+    public Sprite img; // Изображение объекта
 }
