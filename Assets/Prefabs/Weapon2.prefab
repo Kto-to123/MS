@@ -12,7 +12,7 @@ GameObject:
   - component: {fileID: 1917816414000253689}
   - component: {fileID: 1917816414000253694}
   - component: {fileID: 1917816414000253695}
-  m_Layer: 10
+  m_Layer: 0
   m_Name: Weapon2
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -102,7 +102,8 @@ GameObject:
   - component: {fileID: 1917816415296335441}
   - component: {fileID: 1917816415296335446}
   - component: {fileID: 72593141}
-  m_Layer: 10
+  - component: {fileID: 1964975219}
+  m_Layer: 11
   m_Name: Weapon2
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -155,3 +156,16 @@ MonoBehaviour:
   weapon: {fileID: 0}
   id: 2
   count: 50
+--- !u!65 &1964975219
+BoxCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1917816415296335447}
+  m_Material: {fileID: 0}
+  m_IsTrigger: 0
+  m_Enabled: 1
+  serializedVersion: 2
+  m_Size: {x: 1, y: 1, z: 1}
+  m_Center: {x: 0, y: 0, z: 0}

@@ -43,8 +43,31 @@ public class Weapon : MonoBehaviour
         }
     }
 
+    public void DropWeapon()
+    {
+        switch (myWeaponID)
+        {
+            //case 0:
+                
+            //    break;
+            case 1:
+                Instantiate(WeaponModel1, fierPoint.position, fierPoint.rotation);
+                break;
+            case 2:
+                Instantiate(WeaponModel2, fierPoint.position, fierPoint.rotation);
+                break;
+            case 3:
+                Instantiate(WeaponModel3, fierPoint.position, fierPoint.rotation);
+                break;
+            //default:
+                
+            //    break;
+        }
+    }
+
     public void InstantWeapon(int WeaponID, int ammunition)//Выбор оружия
     {
+        DropWeapon();
         switch (WeaponID)
         {
             case 0:

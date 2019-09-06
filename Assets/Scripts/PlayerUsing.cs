@@ -17,7 +17,7 @@ public class PlayerUsing : MonoBehaviour
     {
         //if (timeBtwAttack <= 0)
         //{
-        if (Input.GetKey(KeyCode.E))
+        if (Input.GetKeyDown(KeyCode.E))
         {
             Collider[] dropsToTake = Physics.OverlapSphere(UsePose.position, UseRange, whatIsDrop);
             for (int i = 0; i < dropsToTake.Length; i++)

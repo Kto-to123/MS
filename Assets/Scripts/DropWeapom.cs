@@ -10,6 +10,11 @@ public class DropWeapom : MonoBehaviour
     public int id;
     public int count = 50;
 
+    private void Start()
+    {
+        weapon = FindObjectOfType<Weapon>();
+    }
+
     public void Take()
     {
         weapon.InstantWeapon(id, count);
