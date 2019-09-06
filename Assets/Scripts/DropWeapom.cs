@@ -13,6 +13,7 @@ public class DropWeapom : MonoBehaviour
     public void Take()
     {
         weapon.InstantWeapon(id, count);
+        //Debug.Log("OK");
         Destroy(gameObject);
     }
 }

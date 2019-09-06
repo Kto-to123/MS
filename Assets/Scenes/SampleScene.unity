@@ -1679,6 +1679,25 @@ Transform:
   m_Father: {fileID: 0}
   m_RootOrder: 10
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!1 &1770607076 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 8891199858558129092, guid: 01afabc38ae2f314a82dca58e82d7c59,
+    type: 3}
+  m_PrefabInstance: {fileID: 8891199858274961394}
+  m_PrefabAsset: {fileID: 0}
+--- !u!65 &1770607080
+BoxCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1770607076}
+  m_Material: {fileID: 0}
+  m_IsTrigger: 0
+  m_Enabled: 1
+  serializedVersion: 2
+  m_Size: {x: 1, y: 1, z: 1}
+  m_Center: {x: 0, y: 0, z: 0}
 --- !u!1001 &1794945244
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -1976,6 +1995,25 @@ Transform:
   m_Father: {fileID: 0}
   m_RootOrder: 11
   m_LocalEulerAnglesHint: {x: 36.967003, y: 0, z: 0}
+--- !u!1 &1964975215 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 1917816415296335447, guid: 00b0cf3e9caf6c840acb447264dcb2a3,
+    type: 3}
+  m_PrefabInstance: {fileID: 1917816415368577189}
+  m_PrefabAsset: {fileID: 0}
+--- !u!65 &1964975219
+BoxCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1964975215}
+  m_Material: {fileID: 0}
+  m_IsTrigger: 0
+  m_Enabled: 1
+  serializedVersion: 2
+  m_Size: {x: 1, y: 1, z: 1}
+  m_Center: {x: 0, y: 0, z: 0}
 --- !u!1 &839323537029161378 stripped
 GameObject:
   m_CorrespondingSourceObject: {fileID: 839323537029161378, guid: 7cff39f023aaef64ea0a8a6691281c23,
@@ -2057,7 +2095,7 @@ PrefabInstance:
     - target: {fileID: 1917816414000253693, guid: 00b0cf3e9caf6c840acb447264dcb2a3,
         type: 3}
       propertyPath: m_Layer
-      value: 11
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 72593141, guid: 00b0cf3e9caf6c840acb447264dcb2a3, type: 3}
       propertyPath: weapon
@@ -2532,12 +2570,12 @@ PrefabInstance:
     - target: {fileID: 8891199858778835699, guid: 01afabc38ae2f314a82dca58e82d7c59,
         type: 3}
       propertyPath: m_Layer
-      value: 11
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 8891199857912448133, guid: 01afabc38ae2f314a82dca58e82d7c59,
         type: 3}
       propertyPath: m_Layer
-      value: 11
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 925357113, guid: 01afabc38ae2f314a82dca58e82d7c59, type: 3}
       propertyPath: weapon

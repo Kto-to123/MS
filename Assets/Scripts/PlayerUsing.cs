@@ -26,9 +26,9 @@ public class PlayerUsing : MonoBehaviour
             }
 
             Collider[] dropsToTakeWeapon = Physics.OverlapSphere(UsePose.position, UseRange, whatIsDropWeapon);
-            for (int i = 0; i < dropsToTake.Length; i++)
+            for (int i = 0; i < dropsToTakeWeapon.Length; i++)
             {
-                dropsToTake[i].GetComponent<DropWeapom>().Take();
+                dropsToTakeWeapon[i].GetComponent<DropWeapom>().Take();
             }
         }
 
