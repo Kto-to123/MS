@@ -41,6 +41,7 @@ public class Weapon : MonoBehaviour
         {
             Instantiate(bullet, fierPoint.position, fierPoint.rotation);
             myAmmunition--;
+            UIManager.instance.SetAmmo(myAmmunition);
         }
     }
 
@@ -107,6 +108,6 @@ public class Weapon : MonoBehaviour
                 myWeaponID = 0;
                 break;
         }
-        UIManager.instance.SetWeapon(myWeaponID);
+        UIManager.instance.SetWeapon(myWeaponID, myAmmunition);
     }
 }
