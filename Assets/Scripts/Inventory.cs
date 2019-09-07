@@ -24,7 +24,6 @@ public class Inventory : MonoBehaviour
     public RectTransform movingObject; // Переменная для перемещения объекта
     public Vector3 offset; // Смещение от курсора
 
-    public GameObject backGround; 
     public Weapon myWeapon;
 
     public void Start()
@@ -57,22 +56,14 @@ public class Inventory : MonoBehaviour
         {
             MoveObject(); // Отрисовываем его
         }
-
-        if (Input.GetKeyDown(KeyCode.Tab))
-        {
-            backGround.SetActive(!backGround.activeSelf);
-            if (backGround.activeSelf)
-            {
-                UpdateInventory();
-            }
-        }
     }
 
     public void TakeItem(int id, int count) // Поднять объект
     {
         Item qitem = data.items[id];
         SearchForSameItem(qitem, count);
-        if (backGround.activeSelf)
+        
+        if (UIManager.instance.backGroundActive)
         {
             UpdateInventory();
         }

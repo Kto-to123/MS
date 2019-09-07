@@ -4,7 +4,7 @@ using UnityEngine;
 
 public class Weapon : MonoBehaviour
 {
-    // Ячейки для оружия
+    // Ячейки для метатильного оружия
     public GameObject bullet1;
     public Transform fierPoint1;
     public GameObject WeaponModel1;
@@ -14,6 +14,7 @@ public class Weapon : MonoBehaviour
     public GameObject bullet3;
     public Transform fierPoint3;
     public GameObject WeaponModel3;
+
 
     public Transform fierPoint;
     public GameObject bullet;
@@ -106,5 +107,6 @@ public class Weapon : MonoBehaviour
                 myWeaponID = 0;
                 break;
         }
+        UIManager.instance.SetWeapon(myWeaponID);
     }
 }

@@ -11,12 +11,10 @@ public class PlayerUsing : MonoBehaviour
     public float UseRange;
     public LayerMask whatIsDrop;
     public LayerMask whatIsDropWeapon;
-    //public int damage;
+
 
     void Update()
     {
-        //if (timeBtwAttack <= 0)
-        //{
         if (Input.GetKeyDown(KeyCode.E))
         {
             Collider[] dropsToTake = Physics.OverlapSphere(UsePose.position, UseRange, whatIsDrop);
@@ -31,12 +29,5 @@ public class PlayerUsing : MonoBehaviour
                 dropsToTakeWeapon[i].GetComponent<DropWeapom>().Take();
             }
         }
-
-        //    timeBtwAttack = startTimeBtwAttack;
-        //}
-        //else
-        //{
-        //    timeBtwAttack -= Time.deltaTime;
-        //}
     }
 }
