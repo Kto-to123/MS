@@ -4,6 +4,8 @@ using UnityEngine;
 
 public class Weapon : MonoBehaviour
 {
+    public static Weapon instance;
+
     // Ячейки для метатильного оружия
     public GameObject bullet1;
     public Transform fierPoint1;
@@ -21,6 +23,19 @@ public class Weapon : MonoBehaviour
     public bool weaponActive = true;
     public int myAmmunition = 0;
     public int myWeaponID = 0;
+
+    private void Awake()
+    {
+        if (instance == null)
+        {
+            instance = this;
+        }
+        else
+        {
+            Destroy(gameObject);
+            return;
+        }
+    }
 
     void Update()
     {

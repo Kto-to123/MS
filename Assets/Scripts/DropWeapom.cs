@@ -5,22 +5,22 @@ using UnityEngine;
 public class DropWeapom : MonoBehaviour
 {
     //public Inventory inventory;
-    public Weapon weapon;
+    //public Weapon weapon;
 
     public int id;
     public int count = 50;
 
-    private void Start()
-    {
-        if (weapon == null)
-        {
-            weapon = FindObjectOfType<Weapon>();
-        }
-    }
+    //private void Start()
+    //{
+    //    if (weapon == null)
+    //    {
+    //        weapon = FindObjectOfType<Weapon>();
+    //    }
+    //}
 
     public void Take()
     {
-        weapon.InstantWeapon(id, count);
+        Weapon.instance.InstantWeapon(id, count);
         //Debug.Log("OK");
         Destroy(gameObject);
     }

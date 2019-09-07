@@ -14,7 +14,7 @@ public class UIManager : MonoBehaviour
     public Text text;
 
     public GameObject backGround;
-    private Inventory inventory;
+
 
     private bool weaponActive = true;
     private int myAmmunition = 0;
@@ -45,10 +45,10 @@ public class UIManager : MonoBehaviour
     }
 
     // Start is called before the first frame update
-    void Start()
-    {
-        inventory = FindObjectOfType<Inventory>();
-    }
+    //void Start()
+    //{
+    //    inventory = FindObjectOfType<Inventory>();
+    //}
 
     // Update is called once per frame
     void Update()
@@ -58,7 +58,7 @@ public class UIManager : MonoBehaviour
             backGround.SetActive(!backGround.activeSelf);
             if (backGround.activeSelf)
             {
-                inventory.UpdateInventory();
+                Inventory.instance.UpdateInventory();
             }
         }
     }

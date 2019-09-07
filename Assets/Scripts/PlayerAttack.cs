@@ -32,9 +32,4 @@ public class PlayerAttack : MonoBehaviour
             timeBtwAttack -= Time.deltaTime;
         }
     }
-
-    //void OnDrawGizmosSelected()
-    //{
-    //    Gizmos.color    
-    //}
 }

@@ -6,6 +6,7 @@ using UnityEngine.EventSystems;
 
 public class Inventory : MonoBehaviour
 {
+    public static Inventory instance;
     public DataBase data;
 
     public List<ItemInventory> items = new List<ItemInventory>(); //Список элементов инвентаря
@@ -25,6 +26,19 @@ public class Inventory : MonoBehaviour
     public Vector3 offset; // Смещение от курсора
 
     public Weapon myWeapon;
+
+    private void Awake()
+    {
+        if (instance == null)
+        {
+            instance = this;
+        }
+        else
+        {
+            Destroy(gameObject);
+            return;
+        }
+    }
 
     public void Start()
     {

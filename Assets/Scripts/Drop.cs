@@ -4,23 +4,22 @@ using UnityEngine;
 
 public class Drop : MonoBehaviour
 {
-    public Inventory inventory;
+    //public Inventory inventory;
 
     //public Item item;
     public int id;
 
-    private void Start()
-    {
-        if (inventory == null)
-        {
-            inventory = FindObjectOfType<Inventory>();
-        }
-    }
+    //private void Start()
+    //{
+    //    if (inventory == null)
+    //    {
+    //        inventory = FindObjectOfType<Inventory>();
+    //    }
+    //}
 
     public void Take()
     {
-        inventory.TakeItem(id, 1);
-
+        Inventory.instance.TakeItem(id, 1);
         Destroy(gameObject);
     }
 }
