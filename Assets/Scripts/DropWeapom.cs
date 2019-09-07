@@ -12,7 +12,10 @@ public class DropWeapom : MonoBehaviour
 
     private void Start()
     {
-        weapon = FindObjectOfType<Weapon>();
+        if (weapon == null)
+        {
+            weapon = FindObjectOfType<Weapon>();
+        }
     }
 
     public void Take()

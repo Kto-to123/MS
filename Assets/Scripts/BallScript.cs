@@ -10,6 +10,11 @@ public class BallScript : MonoBehaviour
 
     void Start()
     {
+        if (rb == null)
+        {
+            rb = GetComponent<Rigidbody>();
+        }
+
         rb.velocity = transform.forward * speed;
     }
 

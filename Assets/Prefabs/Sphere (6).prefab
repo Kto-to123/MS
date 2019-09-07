@@ -121,9 +121,5 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 7b04d8f24e132304e9a7637f6dbc1336, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  data: {fileID: 0}
   inventory: {fileID: 0}
-  item:
-    id: 2
-    name: sphere
-    img: {fileID: 10913, guid: 0000000000000000f000000000000000, type: 0}
+  id: 2

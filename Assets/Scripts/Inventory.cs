@@ -29,6 +29,11 @@ public class Inventory : MonoBehaviour
 
     public void Start()
     {
+        if (data == null)
+        {
+            data = FindObjectOfType<DataBase>();
+        }
+
         if (items.Count == 0)
         {
             AddGraphics();

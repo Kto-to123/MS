@@ -45,19 +45,23 @@ public class Weapon : MonoBehaviour
 
     public void DropWeapon()
     {
+        GameObject drop;
         switch (myWeaponID)
         {
             //case 0:
                 
             //    break;
             case 1:
-                Instantiate(WeaponModel1, fierPoint.position, fierPoint.rotation);
+                drop = Instantiate(WeaponModel1, fierPoint.position, fierPoint.rotation);
+                drop.GetComponent<DropWeapom>().count = myAmmunition;
                 break;
             case 2:
-                Instantiate(WeaponModel2, fierPoint.position, fierPoint.rotation);
+                drop = Instantiate(WeaponModel2, fierPoint.position, fierPoint.rotation);
+                drop.GetComponent<DropWeapom>().count = myAmmunition;
                 break;
             case 3:
-                Instantiate(WeaponModel3, fierPoint.position, fierPoint.rotation);
+                drop = Instantiate(WeaponModel3, fierPoint.position, fierPoint.rotation);
+                drop.GetComponent<DropWeapom>().count = myAmmunition;
                 break;
             //default:
                 

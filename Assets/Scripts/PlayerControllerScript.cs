@@ -19,7 +19,10 @@ public class PlayerControllerScript : MonoBehaviour
 
     void Start()
     {
-        rb = GetComponent<Rigidbody>();
+        if (rb == null)
+        {
+            rb = GetComponent<Rigidbody>();
+        }
     }
 
     void Update()
