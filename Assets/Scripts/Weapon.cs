@@ -17,6 +17,10 @@ public class Weapon : MonoBehaviour
     public Transform fierPoint3;
     public GameObject WeaponModel3;
 
+    public GameObject bow1;
+    public GameObject arrow1;
+    public int mainAmmo;
+
 
     public Transform fierPoint;
     public GameObject bullet;
@@ -83,6 +87,24 @@ public class Weapon : MonoBehaviour
             //default:
                 
             //    break;
+        }
+    }
+
+    public void InstantMainWeapon(int ID, int ammo)
+    {
+        //DropMainWeapon
+        switch (ID)
+        {
+            case 0:
+                bow1.SetActive(false);
+                break;
+            case 1:
+                bow1.SetActive(true);
+                mainAmmo = ammo;
+                break;
+            default:
+                bow1.SetActive(false);
+                break;
         }
     }
 
