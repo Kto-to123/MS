@@ -2,9 +2,8 @@
 using System.Collections.Generic;
 using UnityEngine;
 
-public class WeaponScript// : MonoBehaviour
+public class WeaponScript : MonoBehaviour
 {
-    public GameObject model;
     public int ID { get; set; }
 
     public virtual void Reload()
@@ -14,7 +13,7 @@ public class WeaponScript// : MonoBehaviour
 
     public virtual void Attack()
     {
-
+        Debug.Log("Это базовый клас, так быть не должно");
     }
 
     public virtual void InstantiateThis()
@@ -22,8 +21,8 @@ public class WeaponScript// : MonoBehaviour
         //GameObject.Instantiate()
     }
 
-    public void WeaponSetActiv(bool v) // Скрытие оружия
-    {
-        model.SetActive(v);
-    }
+    //public void WeaponSetActiv(bool v) // Скрытие оружия
+    //{
+    //    model.SetActive(v);
+    //}
 }

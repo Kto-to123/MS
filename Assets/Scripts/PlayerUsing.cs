@@ -11,6 +11,7 @@ public class PlayerUsing : MonoBehaviour
     public float UseRange;
     public LayerMask whatIsDrop;
     public LayerMask whatIsDropWeapon;
+    public LayerMask whatIsDropMainWeapon;
 
 
     void Update()
@@ -27,6 +28,12 @@ public class PlayerUsing : MonoBehaviour
             for (int i = 0; i < dropsToTakeWeapon.Length; i++)
             {
                 dropsToTakeWeapon[i].GetComponent<DropWeapom>().Take();
+            }
+
+            Collider[] dropsToTakeMainWeapon = Physics.OverlapSphere(UsePose.position, UseRange, whatIsDropMainWeapon);
+            for (int i = 0; i < dropsToTakeMainWeapon.Length; i++)
+            {
+                dropsToTakeMainWeapon[i].GetComponent<DropWeapon>().Take();
             }
         }
     }

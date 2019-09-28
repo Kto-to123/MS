@@ -8,20 +8,14 @@ public class ThrowingWeaponsScript : MonoBehaviour
     public int Count { get; set; }
 
     public GameObject Bullet;
-    public GameObject Model;
+    public static GameObject Model;
     public GameObject firePoint;
 
     public int damage;
     public int speed;
 
-    void Start()
+    public static GameObject GetWeapon(int _ID)
     {
-        
-    }
-
-    // Update is called once per frame
-    void Update()
-    {
-        
+        return Model;
     }
 }

@@ -20,9 +20,11 @@ public class Weapon : MonoBehaviour
     // Ячейки для лука и стрел
     public int mainAmmo;
     GameObject activArrow;
+    public Transform bowPoint;
 
     //Основное оружие
-    WeaponScript mainWeapin;
+    static GameObject MainWeaponPrefab;
+    static WeaponScript mainWeapon;
 
     
     public Transform fierPoint;
@@ -64,14 +66,20 @@ public class Weapon : MonoBehaviour
 
     public void MainWeaponSetActiv(bool v) // Скрытие основного оружия
     {
-        mainWeapin.WeaponSetActiv(v);
-        //bow1.SetActive(v);
+        MainWeaponPrefab.SetActive(v);
+
+
+        //mainWeapon.SetActiv(v);
+
+        ////bow1.SetActive(v);
     }
 
     void MainAttack() // Атака основного оружия
     {
-        if (mainWeapin != null)
-            mainWeapin.Attack();
+        if (mainWeapon != null)
+        {
+            mainWeapon.Attack();
+        }
     }
 
 
@@ -85,16 +93,23 @@ public class Weapon : MonoBehaviour
         }
     }
     
-    public void DropMainWeapon()
+    public static void DropMainWeapon()
     {
-
+        if (mainWeapon != null)
+        {
+            Instantiate(WeaponDataManagerScript.instance.GetDropPrefab(mainWeapon.ID));
+            mainWeapon = null;
+            Destroy(MainWeaponPrefab);
+        }
     }
 
-    public void InstantMainWeapon(WeaponScript _weapon, int ammo) // Включение основного оружия
+    public static void InstantMainWeapon(int _id) // Включение основного оружия
     {
-        mainAmmo = ammo;
-        mainWeapin = _weapon;
-        mainWeapin.InstantiateThis();
+        DropMainWeapon();
+        MainWeaponPrefab = WeaponDataManagerScript.instance.GetWeapon(_id); //WeaponDataManagerScript.instance.GetWeapon(_id);
+        MainWeaponPrefab = Instantiate(MainWeaponPrefab, instance.bowPoint);
+        mainWeapon = MainWeaponPrefab.GetComponent<WeaponScript>();
+        
     }
 
     public void DropWeapon() // Выбросить метательное оружие

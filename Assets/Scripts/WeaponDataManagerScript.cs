@@ -6,12 +6,26 @@ public class WeaponDataManagerScript : MonoBehaviour
 {
     public static WeaponDataManagerScript instance;
 
+    [SerializeField]
+    List<Element> Elements = new List<Element>();
+
     // Ячейки для лука и стрел
-    public static Transform bowPoint;
+    public Transform bowPoint;
     public GameObject bow1;
+    public GameObject DropPrefab1;
     public GameObject arrow1;
     public Transform BowPoint;
 
+    public GameObject GetWeapon(int _ID)
+    {
+        bow1.GetComponent<WeaponScript>().ID = _ID;
+        return bow1;
+    }
+
+    public GameObject GetDropPrefab(int id)
+    {
+        return DropPrefab1;
+    }
 
     public static GameObject Inst(GameObject _gameObject, Transform _transform)
     {
@@ -37,4 +51,13 @@ public class WeaponDataManagerScript : MonoBehaviour
     }
 }
 
-//public class 
+[System.Serializable]
+public struct Element
+{
+    public int id;
+    public Transform bowPoint;
+    public GameObject bow1;
+    public GameObject DropPrefab1;
+    public GameObject arrow1;
+    public Transform BowPoint;
+}

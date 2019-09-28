@@ -202,6 +202,12 @@ Transform:
     type: 3}
   m_PrefabInstance: {fileID: 6447699622291917587}
   m_PrefabAsset: {fileID: 0}
+--- !u!4 &160149541 stripped
+Transform:
+  m_CorrespondingSourceObject: {fileID: 8823901003990457208, guid: 859c0b9c82587ad418e815023166109b,
+    type: 3}
+  m_PrefabInstance: {fileID: 1863621202}
+  m_PrefabAsset: {fileID: 0}
 --- !u!1 &170076733
 GameObject:
   m_ObjectHideFlags: 0
@@ -389,7 +395,7 @@ Transform:
   - {fileID: 612497345}
   - {fileID: 170076735}
   m_Father: {fileID: 0}
-  m_RootOrder: 3
+  m_RootOrder: 4
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!4 &351380419 stripped
 Transform:
@@ -901,7 +907,7 @@ Transform:
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 0}
-  m_RootOrder: 2
+  m_RootOrder: 3
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1001 &770639477
 PrefabInstance:
@@ -1324,7 +1330,7 @@ Transform:
   - {fileID: 1660750418}
   - {fileID: 1629289102}
   m_Father: {fileID: 0}
-  m_RootOrder: 4
+  m_RootOrder: 5
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &1151024954
 GameObject:
@@ -1542,7 +1548,19 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 900ec8b7087d5cb44bdb3c5869ff01a8, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  bow1: {fileID: 5546126347447523384, guid: f1e1a360bc4400343a6c771e66990013, type: 3}
+  Elements:
+  - id: 1
+    bowPoint: {fileID: 133122000}
+    bow1: {fileID: 5146473522940661922, guid: 6cde2ca8e4d208f4d8ff64e1a388b0b3, type: 3}
+    DropPrefab1: {fileID: 8823901003990943576, guid: 859c0b9c82587ad418e815023166109b,
+      type: 3}
+    arrow1: {fileID: 8778723401030900448, guid: c445da7a81bfa454aa7bf2edc36711cc,
+      type: 3}
+    BowPoint: {fileID: 160149541}
+  bowPoint: {fileID: 133122000}
+  bow1: {fileID: 5146473522940661922, guid: 6cde2ca8e4d208f4d8ff64e1a388b0b3, type: 3}
+  DropPrefab1: {fileID: 8823901003990943576, guid: 859c0b9c82587ad418e815023166109b,
+    type: 3}
   arrow1: {fileID: 8778723401030900448, guid: c445da7a81bfa454aa7bf2edc36711cc, type: 3}
   BowPoint: {fileID: 133122000}
 --- !u!4 &1615341990
@@ -1557,7 +1575,7 @@ Transform:
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 0}
-  m_RootOrder: 5
+  m_RootOrder: 6
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &1629289097
 GameObject:
@@ -2109,6 +2127,75 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   health: 2
   EnemyRender: {fileID: 0}
+--- !u!1001 &1863621202
+PrefabInstance:
+  m_ObjectHideFlags: 0
+  serializedVersion: 2
+  m_Modification:
+    m_TransformParent: {fileID: 0}
+    m_Modifications:
+    - target: {fileID: 8823901003990943576, guid: 859c0b9c82587ad418e815023166109b,
+        type: 3}
+      propertyPath: m_Name
+      value: DropBow
+      objectReference: {fileID: 0}
+    - target: {fileID: 8823901003990457208, guid: 859c0b9c82587ad418e815023166109b,
+        type: 3}
+      propertyPath: m_LocalPosition.x
+      value: -5.319065
+      objectReference: {fileID: 0}
+    - target: {fileID: 8823901003990457208, guid: 859c0b9c82587ad418e815023166109b,
+        type: 3}
+      propertyPath: m_LocalPosition.y
+      value: -0.52
+      objectReference: {fileID: 0}
+    - target: {fileID: 8823901003990457208, guid: 859c0b9c82587ad418e815023166109b,
+        type: 3}
+      propertyPath: m_LocalPosition.z
+      value: 1.4376669
+      objectReference: {fileID: 0}
+    - target: {fileID: 8823901003990457208, guid: 859c0b9c82587ad418e815023166109b,
+        type: 3}
+      propertyPath: m_LocalRotation.x
+      value: -0.5
+      objectReference: {fileID: 0}
+    - target: {fileID: 8823901003990457208, guid: 859c0b9c82587ad418e815023166109b,
+        type: 3}
+      propertyPath: m_LocalRotation.y
+      value: 0.5
+      objectReference: {fileID: 0}
+    - target: {fileID: 8823901003990457208, guid: 859c0b9c82587ad418e815023166109b,
+        type: 3}
+      propertyPath: m_LocalRotation.z
+      value: 0.5
+      objectReference: {fileID: 0}
+    - target: {fileID: 8823901003990457208, guid: 859c0b9c82587ad418e815023166109b,
+        type: 3}
+      propertyPath: m_LocalRotation.w
+      value: 0.5
+      objectReference: {fileID: 0}
+    - target: {fileID: 8823901003990457208, guid: 859c0b9c82587ad418e815023166109b,
+        type: 3}
+      propertyPath: m_RootOrder
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 8823901003990457208, guid: 859c0b9c82587ad418e815023166109b,
+        type: 3}
+      propertyPath: m_LocalEulerAnglesHint.x
+      value: -90
+      objectReference: {fileID: 0}
+    - target: {fileID: 8823901003990457208, guid: 859c0b9c82587ad418e815023166109b,
+        type: 3}
+      propertyPath: m_LocalEulerAnglesHint.y
+      value: 90
+      objectReference: {fileID: 0}
+    - target: {fileID: 8823901003990457208, guid: 859c0b9c82587ad418e815023166109b,
+        type: 3}
+      propertyPath: m_LocalEulerAnglesHint.z
+      value: 0
+      objectReference: {fileID: 0}
+    m_RemovedComponents: []
+  m_SourcePrefab: {fileID: 100100000, guid: 859c0b9c82587ad418e815023166109b, type: 3}
 --- !u!1 &1872459206
 GameObject:
   m_ObjectHideFlags: 0
@@ -2372,7 +2459,7 @@ PrefabInstance:
     - target: {fileID: 839323537029161378, guid: 7cff39f023aaef64ea0a8a6691281c23,
         type: 3}
       propertyPath: m_IsActive
-      value: 1
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 7218716817016611535, guid: 7cff39f023aaef64ea0a8a6691281c23,
         type: 3}
@@ -2412,7 +2499,7 @@ PrefabInstance:
     - target: {fileID: 7218716817016611535, guid: 7cff39f023aaef64ea0a8a6691281c23,
         type: 3}
       propertyPath: m_RootOrder
-      value: 1
+      value: 2
       objectReference: {fileID: 0}
     - target: {fileID: 7218716817016611535, guid: 7cff39f023aaef64ea0a8a6691281c23,
         type: 3}
@@ -2439,6 +2526,16 @@ PrefabInstance:
       propertyPath: field of view
       value: 70
       objectReference: {fileID: 0}
+    - target: {fileID: 7218716817016611526, guid: 7cff39f023aaef64ea0a8a6691281c23,
+        type: 3}
+      propertyPath: whatIsDropMainWeapon.m_Bits
+      value: 4096
+      objectReference: {fileID: 0}
+    - target: {fileID: 7218716817016611527, guid: 7cff39f023aaef64ea0a8a6691281c23,
+        type: 3}
+      propertyPath: bowPoint
+      value: 
+      objectReference: {fileID: 133122000}
     - target: {fileID: 7218716815927815943, guid: 7cff39f023aaef64ea0a8a6691281c23,
         type: 3}
       propertyPath: es

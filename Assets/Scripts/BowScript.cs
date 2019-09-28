@@ -15,11 +15,11 @@ public class BowScript : WeaponScript
         ID = _ID;
     }
 
-    public override void InstantiateThis()
-    {
-        model = WeaponDataManagerScript.Inst(WeaponDataManagerScript.instance.bow1, WeaponDataManagerScript.instance.BowPoint);
-        model.SetActive(true);
-    }
+    //public override void InstantiateThis()
+    //{
+    //    model = WeaponDataManagerScript.Inst(WeaponDataManagerScript.instance.bow1, WeaponDataManagerScript.instance.BowPoint);
+    //    model.SetActive(true);
+    //}
 
     public override void Attack()
     {

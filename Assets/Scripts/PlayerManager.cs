@@ -23,7 +23,7 @@ public class PlayerManager : MonoBehaviour
     void Start()
     {
         BowScript bow = new BowScript(1);
-        Weapon.instance.InstantMainWeapon(bow, 10);
+        Weapon.InstantMainWeapon(1);
     }
 
     // Update is called once per frame
