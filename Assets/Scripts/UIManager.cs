@@ -53,6 +53,8 @@ public class UIManager : MonoBehaviour
             {
                 Inventory.instance.UpdateInventory();
             }
+
+            Weapon.instance.MainWeaponSetActiv(!backGround.activeSelf);
         }
     }
 

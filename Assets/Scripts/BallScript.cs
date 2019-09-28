@@ -5,7 +5,7 @@ using UnityEngine;
 public class BallScript : MonoBehaviour
 {
     public float speed = 40f;
-    public Rigidbody rb;
+    Rigidbody rb;
     public int damage = 1;
 
     void Start()
@@ -16,6 +16,7 @@ public class BallScript : MonoBehaviour
         }
 
         rb.velocity = transform.forward * speed;
+        Destroy(gameObject, 20f);
     }
 
     private void OnTriggerEnter(Collider other)
@@ -25,6 +26,9 @@ public class BallScript : MonoBehaviour
         {
             enemy.TakeDamage(damage);
         }
-        Destroy(gameObject);
+        if (other.tag != "Player")
+        {
+            Destroy(gameObject);
+        }
     }
 }

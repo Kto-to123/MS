@@ -17,14 +17,17 @@ public class Weapon : MonoBehaviour
     public Transform fierPoint3;
     public GameObject WeaponModel3;
 
-    public GameObject bow1;
-    public GameObject arrow1;
+    // Ячейки для лука и стрел
     public int mainAmmo;
+    GameObject activArrow;
 
+    //Основное оружие
+    WeaponScript mainWeapin;
 
+    
     public Transform fierPoint;
     public GameObject bullet;
-    public bool weaponActive = true;
+    public bool weaponActive = false; // Метательное оружие
     public int myAmmunition = 0;
     public int myWeaponID = 0;
 
@@ -43,10 +46,15 @@ public class Weapon : MonoBehaviour
 
     void Update()
     {
+        // Проверка нажатий клавиш стрельбы
         if (Input.GetButtonDown("Fire1") && weaponActive)
         {
             Shoot();
-        }    
+        }
+        if (Input.GetKeyDown(KeyCode.Mouse0)/* && bow1.activeSelf*/)
+        {
+            MainAttack();
+        }
     }
 
     private void Start()
@@ -54,7 +62,20 @@ public class Weapon : MonoBehaviour
         //InstantWeapon(1, 50);
     }
 
-    void Shoot()
+    public void MainWeaponSetActiv(bool v) // Скрытие основного оружия
+    {
+        mainWeapin.WeaponSetActiv(v);
+        //bow1.SetActive(v);
+    }
+
+    void MainAttack() // Атака основного оружия
+    {
+        if (mainWeapin != null)
+            mainWeapin.Attack();
+    }
+
+
+    void Shoot() // Бросок метательного оружия
     {
         if (myAmmunition > 0)
         {
@@ -63,8 +84,20 @@ public class Weapon : MonoBehaviour
             UIManager.instance.SetAmmo(myAmmunition);
         }
     }
+    
+    public void DropMainWeapon()
+    {
 
-    public void DropWeapon()
+    }
+
+    public void InstantMainWeapon(WeaponScript _weapon, int ammo) // Включение основного оружия
+    {
+        mainAmmo = ammo;
+        mainWeapin = _weapon;
+        mainWeapin.InstantiateThis();
+    }
+
+    public void DropWeapon() // Выбросить метательное оружие
     {
         GameObject drop;
         switch (myWeaponID)
@@ -90,25 +123,7 @@ public class Weapon : MonoBehaviour
         }
     }
 
-    public void InstantMainWeapon(int ID, int ammo)
-    {
-        //DropMainWeapon
-        switch (ID)
-        {
-            case 0:
-                bow1.SetActive(false);
-                break;
-            case 1:
-                bow1.SetActive(true);
-                mainAmmo = ammo;
-                break;
-            default:
-                bow1.SetActive(false);
-                break;
-        }
-    }
-
-    public void InstantWeapon(int WeaponID, int ammunition)//Выбор оружия
+    public void InstantWeapon(int WeaponID, int ammunition) // Включение метательного оружия
     {
         DropWeapon();
         switch (WeaponID)

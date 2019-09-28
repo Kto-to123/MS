@@ -12,12 +12,12 @@ GameObject:
   - component: {fileID: 5546126347450483770}
   - component: {fileID: 5546126347449517818}
   m_Layer: 0
-  m_Name: Cube
-  m_TagString: Untagged
+  m_Name: Bow
+  m_TagString: Player
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!4 &5546126347447616536
 Transform:
   m_ObjectHideFlags: 0
@@ -25,13 +25,13 @@ Transform:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 5546126347447523384}
-  m_LocalRotation: {x: -0.70555216, y: -0.04686267, z: -0.04686267, w: 0.7055523}
-  m_LocalPosition: {x: 0.052868843, y: 0.60529876, z: 5.1440372}
-  m_LocalScale: {x: 21.996567, y: 100, z: 10.846699}
+  m_LocalRotation: {x: -0.5, y: 0.5, z: 0.5, w: 0.5}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 2.9260173, y: 15.56, z: 1.5901878}
   m_Children: []
   m_Father: {fileID: 0}
   m_RootOrder: 0
-  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+  m_LocalEulerAnglesHint: {x: -90, y: 90, z: 0}
 --- !u!33 &5546126347450483770
 MeshFilter:
   m_ObjectHideFlags: 0
