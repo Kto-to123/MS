@@ -2,9 +2,10 @@
 using System.Collections.Generic;
 using UnityEngine;
 
+//Базовый класс основного оружияя, сам он не используется, он нужен как интерфейс для взаимодействия с классами наследниками
 public class WeaponScript : MonoBehaviour
 {
-    public int ID { get; set; }
+    public int ID;
 
     public virtual void Reload()
     {
@@ -18,11 +19,6 @@ public class WeaponScript : MonoBehaviour
 
     public virtual void InstantiateThis()
     {
-        //GameObject.Instantiate()
-    }
 
-    //public void WeaponSetActiv(bool v) // Скрытие оружия
-    //{
-    //    model.SetActive(v);
-    //}
+    }
 }

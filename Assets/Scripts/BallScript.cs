@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using UnityEngine;
 
+// Снаряд метательного оружия
 public class BallScript : MonoBehaviour
 {
     public float speed = 40f;

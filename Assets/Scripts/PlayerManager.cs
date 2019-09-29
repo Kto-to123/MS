@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using UnityEngine;
 
+//Клас отвечает за управление компонентами игрока
 public class PlayerManager : MonoBehaviour
 {
     public static PlayerManager instance;
@@ -19,16 +20,8 @@ public class PlayerManager : MonoBehaviour
         }
     }
 
-    // Start is called before the first frame update
     void Start()
     {
-        BowScript bow = new BowScript(1);
         Weapon.InstantMainWeapon(1);
-    }
-
-    // Update is called once per frame
-    void Update()
-    {
-        
     }
 }

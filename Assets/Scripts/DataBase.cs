@@ -3,13 +3,13 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
 
-//База данных м элиментами, заполняемая в ручную
+//База данных м элиментами инвентаря, заполняемая в ручную
 public class DataBase : MonoBehaviour
 {
     public List<Item> items = new List<Item>();
 }
 
-[System.Serializable] //Позволяет получить доступ к скрипту из всего юнити
+[System.Serializable]
 
 //Клас с информацией об объекте
 public class Item

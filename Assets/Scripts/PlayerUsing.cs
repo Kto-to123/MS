@@ -2,11 +2,10 @@
 using System.Collections.Generic;
 using UnityEngine;
 
+//Класс отвечает за способнось игрока подбирать лежащие предметы
 public class PlayerUsing : MonoBehaviour
 {
     private float timeBtwAttack;
-    //public float startTimeBtwAttack;
-
     public Transform UsePose;
     public float UseRange;
     public LayerMask whatIsDrop;

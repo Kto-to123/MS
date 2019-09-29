@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using UnityEngine;
 
+// Клас метательного оружия которое лежит на земле
 public class DropWeapon : MonoBehaviour
 {
     public int id;

@@ -3,23 +3,19 @@ using System.Collections.Generic;
 using UnityEngine;
 using System;
 
+//Класс лука, может использоваться как основное оружие
 public class BowScript : WeaponScript
 {
-    //public new GameObject model;
-
     public GameObject ActivArrow { get; set; }
     public Transform FierPoint;
+    public GameObject arrow;
 
-    public BowScript(int _ID)
+    ElementMainWeapns Elements;
+
+    public void Start()
     {
-        ID = _ID;
+        Elements = WeaponDataManagerScript.instance.GetElementMainWeapns(ID);
     }
-
-    //public override void InstantiateThis()
-    //{
-    //    model = WeaponDataManagerScript.Inst(WeaponDataManagerScript.instance.bow1, WeaponDataManagerScript.instance.BowPoint);
-    //    model.SetActive(true);
-    //}
 
     public override void Attack()
     {
@@ -28,6 +24,6 @@ public class BowScript : WeaponScript
 
     void Short()
     {
-        WeaponDataManagerScript.Inst(WeaponDataManagerScript.instance.arrow1, WeaponDataManagerScript.instance.BowPoint.position, WeaponDataManagerScript.instance.BowPoint.rotation);
+        Instantiate(Elements.arrow, Elements.BowPoint.position, Elements.BowPoint.rotation);
     }
 }

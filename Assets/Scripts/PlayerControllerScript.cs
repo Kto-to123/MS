@@ -2,19 +2,19 @@
 using System.Collections.Generic;
 using UnityEngine;
 
+//Контроллер игрока и все связанное с движением
 public class PlayerControllerScript : MonoBehaviour
 {
-
     Rigidbody rb;
     public float moveSpeed = 5f;
     public float normalSpeed = 5f;
     public float ranSpeed = 10f;
+
     float dirX;
     float dirY;
     float dirZ;
-    // 
+
     public bool myControl = true;
-    //
     private Vector3 direction;
 
     void Start()

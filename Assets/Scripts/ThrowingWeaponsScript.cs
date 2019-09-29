@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using UnityEngine;
 
+//Класс для метательного оружия. Сейчас не используется
 public class ThrowingWeaponsScript : MonoBehaviour
 {
     public int ID;

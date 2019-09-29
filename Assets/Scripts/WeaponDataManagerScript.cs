@@ -2,39 +2,45 @@
 using System.Collections.Generic;
 using UnityEngine;
 
+//Клас отвечает за хранение информации о снаряжении и выдает данные по ID
 public class WeaponDataManagerScript : MonoBehaviour
 {
     public static WeaponDataManagerScript instance;
 
     [SerializeField]
-    List<Element> Elements = new List<Element>();
+    List<ElementMainWeapns> MainElements = new List<ElementMainWeapns>();
 
-    // Ячейки для лука и стрел
-    public Transform bowPoint;
-    public GameObject bow1;
-    public GameObject DropPrefab1;
-    public GameObject arrow1;
-    public Transform BowPoint;
+    [SerializeField]
+    List<ElementThrowingWeapons> ThrowingElements = new List<ElementThrowingWeapons>();
 
-    public GameObject GetWeapon(int _ID)
+    public GameObject GetMainWeapon(int _ID)
     {
-        bow1.GetComponent<WeaponScript>().ID = _ID;
-        return bow1;
+        return MainElements[_ID].bow;
     }
 
-    public GameObject GetDropPrefab(int id)
+    public GameObject GetMainDropPrefab(int _ID)
     {
-        return DropPrefab1;
+        return MainElements[_ID].DropPrefab;
     }
 
-    public static GameObject Inst(GameObject _gameObject, Transform _transform)
+    public GameObject GetThrowingWeapon(int _ID)
     {
-        return Instantiate(_gameObject, _transform);
+        return ThrowingElements[_ID].bullet;
     }
 
-    public static GameObject Inst(GameObject _gameObject, Vector3 _Vector3, Quaternion _Quaternion)
+    public GameObject GetThrowingDropPrefab(int _ID)
     {
-        return Instantiate(_gameObject, _Vector3, _Quaternion);
+        return ThrowingElements[_ID].WeaponModel;
+    }
+
+    public ElementMainWeapns GetElementMainWeapns(int _ID)
+    {
+        return MainElements[_ID];
+    }
+
+    public ElementThrowingWeapons GetElementThrowingWeapons(int _ID)
+    {
+        return ThrowingElements[_ID];
     }
 
     private void Awake()
@@ -52,12 +58,20 @@ public class WeaponDataManagerScript : MonoBehaviour
 }
 
 [System.Serializable]
-public struct Element
+public struct ElementMainWeapns
 {
     public int id;
     public Transform bowPoint;
-    public GameObject bow1;
-    public GameObject DropPrefab1;
-    public GameObject arrow1;
+    public GameObject bow;
+    public GameObject DropPrefab;
+    public GameObject arrow;
     public Transform BowPoint;
+}
+
+[System.Serializable]
+public struct ElementThrowingWeapons
+{
+    public GameObject bullet;
+    public Transform fierPoint;
+    public GameObject WeaponModel;
 }

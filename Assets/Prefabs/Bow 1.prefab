@@ -92,4 +92,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: bae96c34bab2c2840b5ae69920026342, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  ID: 1
   FierPoint: {fileID: 5146473522940562562}
+  arrow: {fileID: 8778723401030900448, guid: c445da7a81bfa454aa7bf2edc36711cc, type: 3}
