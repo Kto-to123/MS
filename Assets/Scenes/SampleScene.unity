@@ -202,12 +202,6 @@ Transform:
     type: 3}
   m_PrefabInstance: {fileID: 6447699622291917587}
   m_PrefabAsset: {fileID: 0}
---- !u!4 &160149541 stripped
-Transform:
-  m_CorrespondingSourceObject: {fileID: 8823901003990457208, guid: 859c0b9c82587ad418e815023166109b,
-    type: 3}
-  m_PrefabInstance: {fileID: 1863621202}
-  m_PrefabAsset: {fileID: 0}
 --- !u!1 &170076733
 GameObject:
   m_ObjectHideFlags: 0
@@ -1501,6 +1495,12 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   health: 2
   EnemyRender: {fileID: 0}
+--- !u!4 &1315462544 stripped
+Transform:
+  m_CorrespondingSourceObject: {fileID: 6223184375786955269, guid: 7cff39f023aaef64ea0a8a6691281c23,
+    type: 3}
+  m_PrefabInstance: {fileID: 6447699622291917587}
+  m_PrefabAsset: {fileID: 0}
 --- !u!4 &1357385696 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: 3281827481992336657, guid: a79a4a953c5d48349bc5aa6d8edda5d1,
@@ -1548,21 +1548,53 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 900ec8b7087d5cb44bdb3c5869ff01a8, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  Elements:
+  MainElements:
+  - id: 0
+    bowPoint: {fileID: 133122000}
+    bow: {fileID: 5146473522940661922, guid: 6cde2ca8e4d208f4d8ff64e1a388b0b3, type: 3}
+    DropPrefab: {fileID: 8823901003990943576, guid: 859c0b9c82587ad418e815023166109b,
+      type: 3}
+    arrow: {fileID: 8778723401030900448, guid: c445da7a81bfa454aa7bf2edc36711cc, type: 3}
+    BowPoint: {fileID: 133122000}
   - id: 1
     bowPoint: {fileID: 133122000}
-    bow1: {fileID: 5146473522940661922, guid: 6cde2ca8e4d208f4d8ff64e1a388b0b3, type: 3}
-    DropPrefab1: {fileID: 8823901003990943576, guid: 859c0b9c82587ad418e815023166109b,
+    bow: {fileID: 5146473522940661922, guid: 6cde2ca8e4d208f4d8ff64e1a388b0b3, type: 3}
+    DropPrefab: {fileID: 8823901003990943576, guid: 859c0b9c82587ad418e815023166109b,
       type: 3}
-    arrow1: {fileID: 8778723401030900448, guid: c445da7a81bfa454aa7bf2edc36711cc,
+    arrow: {fileID: 8778723401030900448, guid: c445da7a81bfa454aa7bf2edc36711cc, type: 3}
+    BowPoint: {fileID: 133122000}
+  - id: 2
+    bowPoint: {fileID: 133122000}
+    bow: {fileID: 7127806901781011525, guid: 137c924660f85d84a8cece567eff2f45, type: 3}
+    DropPrefab: {fileID: 1839347263359005806, guid: f8ca518ef3c68f7479d1f18470b230d3,
       type: 3}
-    BowPoint: {fileID: 160149541}
-  bowPoint: {fileID: 133122000}
-  bow1: {fileID: 5146473522940661922, guid: 6cde2ca8e4d208f4d8ff64e1a388b0b3, type: 3}
-  DropPrefab1: {fileID: 8823901003990943576, guid: 859c0b9c82587ad418e815023166109b,
-    type: 3}
-  arrow1: {fileID: 8778723401030900448, guid: c445da7a81bfa454aa7bf2edc36711cc, type: 3}
-  BowPoint: {fileID: 133122000}
+    arrow: {fileID: 8778723401030900448, guid: c445da7a81bfa454aa7bf2edc36711cc, type: 3}
+    BowPoint: {fileID: 133122000}
+  - id: 3
+    bowPoint: {fileID: 133122000}
+    bow: {fileID: 3833474440200588025, guid: b969d4b86684af84a8634a3b5a38aeee, type: 3}
+    DropPrefab: {fileID: 4117947613736958551, guid: d9a924e566b822b40afa67c9944bfaab,
+      type: 3}
+    arrow: {fileID: 8778723401030900448, guid: c445da7a81bfa454aa7bf2edc36711cc, type: 3}
+    BowPoint: {fileID: 133122000}
+  ThrowingElements:
+  - bullet: {fileID: 0}
+    fierPoint: {fileID: 0}
+    WeaponModel: {fileID: 0}
+  - bullet: {fileID: 863916321186513203, guid: 2933640f72fe33f4bac176ee10467b6d, type: 3}
+    fierPoint: {fileID: 1315462544}
+    WeaponModel: {fileID: 4946571568238350670, guid: 87932586eb89a5142a8989c793058600,
+      type: 3}
+  - bullet: {fileID: 1728590577095010443, guid: b95f0afc6946ee64c89bfb429ea8d4a8,
+      type: 3}
+    fierPoint: {fileID: 1315462544}
+    WeaponModel: {fileID: 1917816415296335447, guid: 00b0cf3e9caf6c840acb447264dcb2a3,
+      type: 3}
+  - bullet: {fileID: 3487742970471147050, guid: bb6d5395cc1698a4e97621aa98b91524,
+      type: 3}
+    fierPoint: {fileID: 1315462544}
+    WeaponModel: {fileID: 8891199858558129092, guid: 01afabc38ae2f314a82dca58e82d7c59,
+      type: 3}
 --- !u!4 &1615341990
 Transform:
   m_ObjectHideFlags: 0

@@ -2,8 +2,7 @@
 using System.Collections.Generic;
 using UnityEngine;
 
-// Снаряд метательного оружия
-public class BallScript : MonoBehaviour
+public class ArrowScript : MonoBehaviour
 {
     public float speed = 40f;
     Rigidbody rb;
@@ -28,8 +27,9 @@ public class BallScript : MonoBehaviour
             enemy.TakeDamage(damage);
         }
         if (other.tag != "Player")
-        {
-            //Destroy(gameObject);
+        {  
+            rb.velocity = new Vector3(0, 0, 0);
+            rb.useGravity = false;
         }
     }
 }

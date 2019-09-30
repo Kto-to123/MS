@@ -2,8 +2,7 @@
 using System.Collections.Generic;
 using UnityEngine;
 
-//Мечь. Может использоваться как основное оружие
-public class SteelScript : WeaponScript
+public class Pistol : WeaponScript
 {
     public override void Attack()
     {
@@ -12,6 +11,6 @@ public class SteelScript : WeaponScript
 
     void Short()
     {
-        
+
     }
 }

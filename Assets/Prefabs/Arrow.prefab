@@ -11,9 +11,9 @@ GameObject:
   - component: {fileID: 8778723401030993600}
   - component: {fileID: 8778723401031796454}
   - component: {fileID: 8778723401032893478}
-  - component: {fileID: 5645721006531719836}
   - component: {fileID: 5111625762342092963}
   - component: {fileID: 5765511174109169810}
+  - component: {fileID: 5631734009230911555}
   m_Layer: 0
   m_Name: Arrow
   m_TagString: Untagged
@@ -81,21 +81,6 @@ MeshRenderer:
   m_SortingLayerID: 0
   m_SortingLayer: 0
   m_SortingOrder: 0
---- !u!114 &5645721006531719836
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 8778723401030900448}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: a65a0a030bf9fe74aa5b7107fcc80516, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  speed: 60
-  rb: {fileID: 5111625762342092963}
-  damage: 1
 --- !u!54 &5111625762342092963
 Rigidbody:
   m_ObjectHideFlags: 0
@@ -124,4 +109,18 @@ BoxCollider:
   m_Enabled: 1
   serializedVersion: 2
   m_Size: {x: 0.033039965, y: 0.020035194, z: 0.26978707}
-  m_Center: {x: -0.0020710044, y: 0.000017588332, z: -0.104727365}
+  m_Center: {x: -0.0020710044, y: 0.000017588332, z: 0.02}
+--- !u!114 &5631734009230911555
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 8778723401030900448}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: ad0c29e4855f326448c805d6bd66f318, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  speed: 60
+  damage: 1
