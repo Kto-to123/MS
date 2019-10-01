@@ -9,7 +9,6 @@ public class Weapon : MonoBehaviour
     public static Weapon instance;
 
     // Основное оружие
-    //bool MainWeaponActiv;
     GameObject MainWeaponPrefab;
     WeaponScript mainWeapon;
     ElementMainWeapns mainElements;

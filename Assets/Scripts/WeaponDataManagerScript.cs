@@ -1,6 +1,7 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.Serialization;
 
 //Клас отвечает за хранение информации о снаряжении и выдает данные по ID
 public class WeaponDataManagerScript : MonoBehaviour
@@ -60,7 +61,9 @@ public class WeaponDataManagerScript : MonoBehaviour
 [System.Serializable]
 public struct ElementMainWeapns
 {
-    public int id;
+    [FormerlySerializedAs("ID")]
+    public int ID;
+    [FormerlySerializedAs("Activ")]
     public bool activ;
     public Transform bowPoint;
     public GameObject mainPrefab;
