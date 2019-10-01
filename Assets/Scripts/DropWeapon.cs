@@ -9,7 +9,7 @@ public class DropWeapon : MonoBehaviour
 
     public void Take()
     {
-        Weapon.InstantMainWeapon(id);
+        Weapon.instance.InstantMainWeapon(id);
         Destroy(gameObject);
     }
 }

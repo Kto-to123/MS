@@ -15,12 +15,17 @@ public class WeaponDataManagerScript : MonoBehaviour
 
     public GameObject GetMainWeapon(int _ID)
     {
-        return MainElements[_ID].bow;
+        return MainElements[_ID].mainPrefab;
     }
 
     public GameObject GetMainDropPrefab(int _ID)
     {
         return MainElements[_ID].DropPrefab;
+    }
+
+    public ElementMainWeapns GetElementMainWeapns(int _ID)
+    {
+        return MainElements[_ID];
     }
 
     public GameObject GetThrowingWeapon(int _ID)
@@ -31,11 +36,6 @@ public class WeaponDataManagerScript : MonoBehaviour
     public GameObject GetThrowingDropPrefab(int _ID)
     {
         return ThrowingElements[_ID].WeaponModel;
-    }
-
-    public ElementMainWeapns GetElementMainWeapns(int _ID)
-    {
-        return MainElements[_ID];
     }
 
     public ElementThrowingWeapons GetElementThrowingWeapons(int _ID)
@@ -61,8 +61,9 @@ public class WeaponDataManagerScript : MonoBehaviour
 public struct ElementMainWeapns
 {
     public int id;
+    public bool activ;
     public Transform bowPoint;
-    public GameObject bow;
+    public GameObject mainPrefab;
     public GameObject DropPrefab;
     public GameObject arrow;
     public Transform BowPoint;
@@ -71,6 +72,7 @@ public struct ElementMainWeapns
 [System.Serializable]
 public struct ElementThrowingWeapons
 {
+    public int ID;
     public GameObject bullet;
     public Transform fierPoint;
     public GameObject WeaponModel;

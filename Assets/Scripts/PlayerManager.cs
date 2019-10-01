@@ -22,6 +22,6 @@ public class PlayerManager : MonoBehaviour
 
     void Start()
     {
-        Weapon.InstantMainWeapon(1);
+        //Weapon.instance.InstantMainWeapon(1);
     }
 }

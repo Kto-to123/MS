@@ -8,23 +8,17 @@ public class Weapon : MonoBehaviour
 {
     public static Weapon instance;
 
-    // Ячейки для лука и стрел
-    public int mainAmmo;
-    GameObject activArrow;
-    public Transform bowPoint;
-
     // Основное оружие
-    bool MainWeaponActiv;
-    static GameObject MainWeaponPrefab;
-    static WeaponScript mainWeapon;
-    static int mainWeaponID;
+    //bool MainWeaponActiv;
+    GameObject MainWeaponPrefab;
+    WeaponScript mainWeapon;
+    ElementMainWeapns mainElements;
 
     // Метательное оружие
     public bool throwingWeaponActive = false;
-    public int myAmmunition = 0;
-    public int myWeaponID = 0;
-    ElementThrowingWeapons ThrowingWeapon;
-    //Метательное оружие не имеет своего класа, как основное т.к поведение разных типов не сильно отличается.
+    public int throwingAmmunition = 0;
+    ElementThrowingWeapons throwingElement;
+    //Метательное оружие не имеет своего класа как основное т.к поведение разных типов не сильно отличается.
 
     private void Awake()
     {
@@ -46,7 +40,7 @@ public class Weapon : MonoBehaviour
         {
             Shoot();
         }
-        if (Input.GetKeyDown(KeyCode.Mouse0)/* && bow1.activeSelf*/)
+        if (Input.GetKeyDown(KeyCode.Mouse0) && mainElements.activ)
         {
             MainAttack();
         }
@@ -55,7 +49,7 @@ public class Weapon : MonoBehaviour
     public void MainWeaponSetActiv(bool v) // Скрытие основного оружия
     {
         MainWeaponPrefab.SetActive(v);
-        MainWeaponActiv = v;
+        mainElements.activ = v;
     }
 
     void MainAttack() // Атака основного оружия
@@ -68,51 +62,51 @@ public class Weapon : MonoBehaviour
 
     void Shoot() // Бросок метательного оружия
     {
-        if (myAmmunition > 0)
+        if (throwingAmmunition > 0)
         {
-            Instantiate(ThrowingWeapon.bullet, ThrowingWeapon.fierPoint.position, ThrowingWeapon.fierPoint.rotation);
-            myAmmunition--;
-            UIManager.instance.SetAmmo(myAmmunition);
+            Instantiate(throwingElement.bullet, throwingElement.fierPoint.position, throwingElement.fierPoint.rotation);
+            throwingAmmunition--;
+            UIManager.instance.SetAmmo(throwingAmmunition);
         }
     }
     
-    public static void DropMainWeapon() // Выбросить основное оружие
+    public void DropMainWeapon() // Выбросить основное оружие
     {
         if (mainWeapon != null)
         {
-            Instantiate(WeaponDataManagerScript.instance.GetMainDropPrefab(mainWeapon.ID));
+            Instantiate(mainElements.DropPrefab, mainElements.bowPoint.position, mainElements.bowPoint.rotation);
             mainWeapon = null;
             Destroy(MainWeaponPrefab);
         }
     }
 
-    public static void InstantMainWeapon(int _id) // Включение основного оружия
+    public void InstantMainWeapon(int _id) // Включение основного оружия
     {
-        mainWeaponID = _id;
         DropMainWeapon();
+        mainElements = WeaponDataManagerScript.instance.GetElementMainWeapns(_id);
         MainWeaponPrefab = WeaponDataManagerScript.instance.GetMainWeapon(_id);
-        MainWeaponPrefab = Instantiate(MainWeaponPrefab, instance.bowPoint);
+        MainWeaponPrefab = Instantiate(MainWeaponPrefab, mainElements.bowPoint);
         mainWeapon = MainWeaponPrefab.GetComponent<WeaponScript>();
+        mainElements.activ = true;
     }
 
-    public void DropWeapon() // Выбросить метательное оружие
+    public void DropThrowingWeapon() // Выбросить метательное оружие
     {
         if (throwingWeaponActive)
         {
             GameObject drop;
-            drop = Instantiate(ThrowingWeapon.WeaponModel, ThrowingWeapon.fierPoint.position, ThrowingWeapon.fierPoint.rotation);
-            drop.GetComponent<DropWeapom>().count = myAmmunition;
-            myAmmunition = 0;
+            drop = Instantiate(throwingElement.WeaponModel, throwingElement.fierPoint.position, throwingElement.fierPoint.rotation);
+            drop.GetComponent<DropWeapom>().count = throwingAmmunition;
+            throwingAmmunition = 0;
         }
     }
 
-    public void InstantWeapon(int _ID, int _ammunition) // Включение метательного оружия
+    public void InstantWeapon(int _id, int _ammunition) // Включение метательного оружия
     {
-        DropWeapon();
-        myWeaponID = _ID;
-        ThrowingWeapon = WeaponDataManagerScript.instance.GetElementThrowingWeapons(_ID);
+        DropThrowingWeapon();
+        throwingElement = WeaponDataManagerScript.instance.GetElementThrowingWeapons(_id);
         throwingWeaponActive = true;
-        myAmmunition = _ammunition;
-        UIManager.instance.SetWeapon(myWeaponID, myAmmunition);
+        throwingAmmunition = _ammunition;
+        UIManager.instance.SetWeapon(throwingElement.ID, throwingAmmunition);
     }
 }
