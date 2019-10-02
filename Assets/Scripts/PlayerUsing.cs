@@ -9,9 +9,6 @@ public class PlayerUsing : MonoBehaviour
     public Transform UsePose;
     public float UseRange;
     public LayerMask whatIsDrop;
-    public LayerMask whatIsDropWeapon;
-    public LayerMask whatIsDropMainWeapon;
-
 
     void Update()
     {

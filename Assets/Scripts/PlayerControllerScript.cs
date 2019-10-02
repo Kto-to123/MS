@@ -16,6 +16,7 @@ public class PlayerControllerScript : MonoBehaviour
 
     public bool myControl = true;
     private Vector3 direction;
+    public float debDirY;
 
     void Start()
     {
@@ -27,6 +28,7 @@ public class PlayerControllerScript : MonoBehaviour
 
     void Update()
     {
+        debDirY = direction.y;
         if (Input.GetKey(KeyCode.LeftShift))
         {
             moveSpeed = ranSpeed;
@@ -63,6 +65,11 @@ public class PlayerControllerScript : MonoBehaviour
             {
                 dirX = 0;
             }
+
+            if (Input.GetKeyDown(KeyCode.Space))
+            {
+                rb.AddForce(new Vector3(0, 500, 0), ForceMode.Impulse);
+            }
         }
         else
         {
@@ -71,9 +78,9 @@ public class PlayerControllerScript : MonoBehaviour
         }
 
         // вектор направления движения
-        direction = new Vector3(dirX, 0, dirZ);
+        direction = new Vector3(dirX, dirY/* - 2*/, dirZ);
         direction = transform.TransformDirection(direction);
-        direction = new Vector3(direction.x, 0, direction.z);
+        direction = new Vector3(direction.x, direction.y/* * 2000*/, direction.z);
     }
 
     void FixedUpdate()
