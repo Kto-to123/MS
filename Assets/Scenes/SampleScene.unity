@@ -1556,7 +1556,7 @@ MonoBehaviour:
     DropPrefab: {fileID: 8823901003990943576, guid: 859c0b9c82587ad418e815023166109b,
       type: 3}
     arrow: {fileID: 8778723401030900448, guid: c445da7a81bfa454aa7bf2edc36711cc, type: 3}
-    BowPoint: {fileID: 133122000}
+    fierPoint: {fileID: 0}
   - ID: 1
     activ: 0
     bowPoint: {fileID: 133122000}
@@ -1565,7 +1565,7 @@ MonoBehaviour:
     DropPrefab: {fileID: 8823901003990943576, guid: 859c0b9c82587ad418e815023166109b,
       type: 3}
     arrow: {fileID: 8778723401030900448, guid: c445da7a81bfa454aa7bf2edc36711cc, type: 3}
-    BowPoint: {fileID: 133122000}
+    fierPoint: {fileID: 0}
   - ID: 2
     activ: 0
     bowPoint: {fileID: 133122000}
@@ -1574,7 +1574,7 @@ MonoBehaviour:
     DropPrefab: {fileID: 1839347263359005806, guid: f8ca518ef3c68f7479d1f18470b230d3,
       type: 3}
     arrow: {fileID: 8778723401030900448, guid: c445da7a81bfa454aa7bf2edc36711cc, type: 3}
-    BowPoint: {fileID: 133122000}
+    fierPoint: {fileID: 0}
   - ID: 3
     activ: 0
     bowPoint: {fileID: 133122000}
@@ -1583,7 +1583,7 @@ MonoBehaviour:
     DropPrefab: {fileID: 5326792996692767537, guid: 2678faafc56445645ad16d5bdf32bc75,
       type: 3}
     arrow: {fileID: 8778723401030900448, guid: c445da7a81bfa454aa7bf2edc36711cc, type: 3}
-    BowPoint: {fileID: 133122000}
+    fierPoint: {fileID: 0}
   ThrowingElements:
   - ID: 0
     bullet: {fileID: 0}
@@ -2722,6 +2722,11 @@ PrefabInstance:
       propertyPath: es
       value: 
       objectReference: {fileID: 762878582}
+    - target: {fileID: 3222111292145181259, guid: 7cff39f023aaef64ea0a8a6691281c23,
+        type: 3}
+      propertyPath: m_AnchoredPosition.x
+      value: -0.100097656
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 7cff39f023aaef64ea0a8a6691281c23, type: 3}
 --- !u!114 &7218716815927815943 stripped

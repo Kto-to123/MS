@@ -24,6 +24,6 @@ public class BowScript : WeaponScript
 
     void Short()
     {
-        Instantiate(Elements.arrow, Elements.BowPoint.position, Elements.BowPoint.rotation);
+        Instantiate(Elements.arrow, Elements.bowPoint.position, Elements.bowPoint.rotation);
     }
 }

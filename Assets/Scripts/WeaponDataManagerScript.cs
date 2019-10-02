@@ -69,7 +69,7 @@ public struct ElementMainWeapns
     public GameObject mainPrefab;
     public GameObject DropPrefab;
     public GameObject arrow;
-    public Transform BowPoint;
+    public Transform fierPoint;
 }
 
 [System.Serializable]
