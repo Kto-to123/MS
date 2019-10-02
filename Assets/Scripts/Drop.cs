@@ -6,8 +6,9 @@ using UnityEngine;
 public class Drop : MonoBehaviour
 {
     public int id;
+    public int count = 1;
 
-    public void Take()
+    public virtual void Take()
     {
         Inventory.instance.TakeItem(id, 1);
         Destroy(gameObject);

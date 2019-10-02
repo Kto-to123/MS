@@ -12,7 +12,7 @@ GameObject:
   - component: {fileID: 8471706485084090142}
   - component: {fileID: 1401019029}
   - component: {fileID: 1401019028}
-  m_Layer: 12
+  m_Layer: 10
   m_Name: DropSteel
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -47,6 +47,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   id: 2
+  count: 1
 --- !u!54 &1401019029
 Rigidbody:
   m_ObjectHideFlags: 0
@@ -85,7 +86,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 2393469762345677537}
-  m_Layer: 12
+  m_Layer: 10
   m_Name: sword
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -118,7 +119,7 @@ GameObject:
   - component: {fileID: 2393469762345677539}
   - component: {fileID: 2393469762349101763}
   - component: {fileID: 2393469762348101635}
-  m_Layer: 12
+  m_Layer: 10
   m_Name: default
   m_TagString: Untagged
   m_Icon: {fileID: 0}

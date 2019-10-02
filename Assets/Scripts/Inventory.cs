@@ -7,7 +7,7 @@ using UnityEngine.EventSystems;
 public class Inventory : MonoBehaviour
 {
     public static Inventory instance;
-    public DataBase data;
+    //public DataBase data;
 
     public List<ItemInventory> items = new List<ItemInventory>(); //Список элементов инвентаря
 
@@ -42,10 +42,10 @@ public class Inventory : MonoBehaviour
 
     public void Start()
     {
-        if (data == null)
-        {
-            data = FindObjectOfType<DataBase>();
-        }
+        //if (data == null)
+        //{
+        //    data = FindObjectOfType<DataBase>();
+        //}
 
         if (items.Count == 0)
         {
@@ -55,7 +55,7 @@ public class Inventory : MonoBehaviour
         //Тестовое заполнение инвентаря
         for (int i = 0; i < maxCount; i++)
         {
-            AddItem(i, data.items[Random.Range(0, data.items.Count)], Random.Range(1, 99));
+            AddItem(i, WeaponDataManagerScript.instance.GetElementInventory(Random.Range(0, WeaponDataManagerScript.instance.GetInventoryElementCount())), Random.Range(1, 99));
         }
         UpdateInventory();
 
@@ -74,7 +74,7 @@ public class Inventory : MonoBehaviour
 
     public void TakeItem(int id, int count) // Поднять объект
     {
-        Item qitem = data.items[id];
+        ElementInventory qitem = WeaponDataManagerScript.instance.GetElementInventory(id);
         SearchForSameItem(qitem, count);
         
         if (UIManager.instance.backGroundActive)
@@ -83,7 +83,7 @@ public class Inventory : MonoBehaviour
         }
     }
 
-    public void SearchForSameItem(Item item, int count)
+    public void SearchForSameItem(ElementInventory item, int count)
     {
         for (int i = 0; i < maxCount; i++)
         {
@@ -120,7 +120,7 @@ public class Inventory : MonoBehaviour
         }
     }
 
-    public void AddItem(int id, Item item, int count) //Добавление объекта в инвентарь
+    public void AddItem(int id, ElementInventory item, int count) //Добавление объекта в инвентарь
     {
         items[id].id = item.id; //Задаем номер
         items[id].count = count; //Задаем количество
@@ -140,7 +140,7 @@ public class Inventory : MonoBehaviour
     {
         items[id].id = invItem.id;
         items[id].count = invItem.count;
-        items[id].itemGameObj.GetComponent<Image>().sprite = data.items[invItem.id].img;
+        items[id].itemGameObj.GetComponent<Image>().sprite = WeaponDataManagerScript.instance.GetElementInventory(invItem.id).img;
 
         if (invItem.count > 1 && invItem.id != 0)
         {
@@ -189,7 +189,7 @@ public class Inventory : MonoBehaviour
                 items[i].itemGameObj.GetComponentInChildren<Text>().text = ""; // Отрисовываем пустую строку
             }
 
-            items[i].itemGameObj.GetComponent<Image>().sprite = data.items[items[i].id].img; // Отрисовываем изображение соответствующее ID
+            items[i].itemGameObj.GetComponent<Image>().sprite = WeaponDataManagerScript.instance.GetElementInventory(items[i].id).img; // Отрисовываем изображение соответствующее ID
         }
     }
 
@@ -200,9 +200,9 @@ public class Inventory : MonoBehaviour
             currentID = int.Parse(es.currentSelectedGameObject.name);
             currentItem = CopyInventoryItem(items[currentID]);
             movingObject.gameObject.SetActive(true); //Видимость перемещаемого объекта
-            movingObject.GetComponent<Image>().sprite = data.items[currentItem.id].img; //Присвоение перемещаемому объекту изображения
+            movingObject.GetComponent<Image>().sprite = WeaponDataManagerScript.instance.GetElementInventory(currentItem.id).img; //Присвоение перемещаемому объекту изображения
 
-            AddItem(currentID, data.items[0], 0); //Записываем в ячейку пустой элемент
+            AddItem(currentID, WeaponDataManagerScript.instance.GetElementInventory(0), 0); //Записываем в ячейку пустой элемент
         }
         else // если уже взят опускаем
         {
@@ -221,7 +221,7 @@ public class Inventory : MonoBehaviour
                 }
                 else
                 {
-                    AddItem(currentID, data.items[II.id], II.count + currentItem.count - 128);
+                    AddItem(currentID, WeaponDataManagerScript.instance.GetElementInventory(II.id), II.count + currentItem.count - 128);
 
                     II.count = 128;
                 }

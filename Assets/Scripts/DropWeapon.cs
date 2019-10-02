@@ -3,11 +3,9 @@ using System.Collections.Generic;
 using UnityEngine;
 
 // Клас метательного оружия которое лежит на земле
-public class DropWeapon : MonoBehaviour
+public class DropWeapon : Drop
 {
-    public int id;
-
-    public void Take()
+    public override void Take()
     {
         Weapon.instance.InstantMainWeapon(id);
         Destroy(gameObject);

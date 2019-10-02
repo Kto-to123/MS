@@ -103,7 +103,7 @@ GameObject:
   - component: {fileID: 1917816415296335446}
   - component: {fileID: 72593141}
   - component: {fileID: 1964975219}
-  m_Layer: 11
+  m_Layer: 10
   m_Name: Weapon2
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -153,7 +153,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 31a7d7c1a1e9eaa47a632794c7392721, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  weapon: {fileID: 0}
   id: 2
   count: 50
 --- !u!65 &1964975219

@@ -9,6 +9,7 @@ public class Weapon : MonoBehaviour
     public static Weapon instance;
 
     // Основное оружие
+    bool mainWeaponInst = false;
     GameObject MainWeaponPrefab;
     WeaponScript mainWeapon;
     ElementMainWeapns mainElements;
@@ -47,8 +48,11 @@ public class Weapon : MonoBehaviour
 
     public void MainWeaponSetActiv(bool v) // Скрытие основного оружия
     {
-        MainWeaponPrefab.SetActive(v);
-        mainElements.activ = v;
+        if (mainWeaponInst)
+        {
+            MainWeaponPrefab.SetActive(v);
+            mainElements.activ = v;
+        }
     }
 
     void MainAttack() // Атака основного оружия
@@ -76,6 +80,7 @@ public class Weapon : MonoBehaviour
             Instantiate(mainElements.DropPrefab, mainElements.bowPoint.position, mainElements.bowPoint.rotation);
             mainWeapon = null;
             Destroy(MainWeaponPrefab);
+            mainWeaponInst = false;
         }
     }
 
@@ -87,6 +92,7 @@ public class Weapon : MonoBehaviour
         MainWeaponPrefab = Instantiate(MainWeaponPrefab, mainElements.bowPoint);
         mainWeapon = MainWeaponPrefab.GetComponent<WeaponScript>();
         mainElements.activ = true;
+        mainWeaponInst = true;
     }
 
     public void DropThrowingWeapon() // Выбросить метательное оружие

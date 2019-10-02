@@ -14,6 +14,9 @@ public class WeaponDataManagerScript : MonoBehaviour
     [SerializeField]
     List<ElementThrowingWeapons> ThrowingElements = new List<ElementThrowingWeapons>();
 
+    [SerializeField]
+    public List<ElementInventory> InventoryElements = new List<ElementInventory>();
+
     public GameObject GetMainWeapon(int _ID)
     {
         return MainElements[_ID].mainPrefab;
@@ -44,6 +47,16 @@ public class WeaponDataManagerScript : MonoBehaviour
         return ThrowingElements[_ID];
     }
 
+    public ElementInventory GetElementInventory(int _ID)
+    {
+        return InventoryElements[_ID];
+    }
+
+    public int GetInventoryElementCount()
+    {
+        return InventoryElements.Count;
+    }
+
     private void Awake()
     {
         if (instance == null)
@@ -58,6 +71,7 @@ public class WeaponDataManagerScript : MonoBehaviour
     }
 }
 
+// Список основного оружия
 [System.Serializable]
 public struct ElementMainWeapns
 {
@@ -72,6 +86,7 @@ public struct ElementMainWeapns
     public Transform fierPoint;
 }
 
+// Список метательного оружия
 [System.Serializable]
 public struct ElementThrowingWeapons
 {
@@ -79,4 +94,13 @@ public struct ElementThrowingWeapons
     public GameObject bullet;
     public Transform fierPoint;
     public GameObject WeaponModel;
+}
+
+// Список элементов инвентаря
+[System.Serializable]
+public class ElementInventory
+{
+    public int id; // Номер объекта
+    public string name; // Имя объекта
+    public Sprite img; // Изображение объекта
 }

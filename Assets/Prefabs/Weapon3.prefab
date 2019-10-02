@@ -12,7 +12,7 @@ GameObject:
   - component: {fileID: 8891199857912448137}
   - component: {fileID: 8891199857912448136}
   - component: {fileID: 8891199857912448139}
-  m_Layer: 0
+  m_Layer: 10
   m_Name: Sphere
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -103,7 +103,7 @@ GameObject:
   - component: {fileID: 8891199858558129093}
   - component: {fileID: 925357113}
   - component: {fileID: 1770607080}
-  m_Layer: 11
+  m_Layer: 10
   m_Name: Weapon3
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -154,7 +154,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 31a7d7c1a1e9eaa47a632794c7392721, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  weapon: {fileID: 0}
   id: 3
   count: 50
 --- !u!65 &1770607080
@@ -182,7 +181,7 @@ GameObject:
   - component: {fileID: 8891199858778835703}
   - component: {fileID: 8891199858778835702}
   - component: {fileID: 8891199858778835697}
-  m_Layer: 0
+  m_Layer: 10
   m_Name: Weapon2
   m_TagString: Untagged
   m_Icon: {fileID: 0}
