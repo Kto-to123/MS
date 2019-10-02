@@ -5,13 +5,19 @@ using UnityEngine;
 //Мечь. Может использоваться как основное оружие
 public class SteelScript : WeaponScript
 {
+    public int damage = 1;
+
     public override void Attack()
     {
-        Short();
+        gameObject.GetComponent<Animator>().SetTrigger("Attack1");
     }
 
-    void Short()
+    private void OnTriggerEnter(Collider other)
     {
-        
+        Enemy enemy = other.GetComponent<Enemy>();
+        if (enemy != null)
+        {
+            enemy.TakeDamage(damage);
+        }
     }
 }
