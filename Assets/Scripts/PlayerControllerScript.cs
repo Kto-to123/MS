@@ -9,20 +9,25 @@ public class PlayerControllerScript : MonoBehaviour
     public float moveSpeed = 5f;
     public float normalSpeed = 5f;
     public float ranSpeed = 10f;
+    public float jumpForce = 10f;
 
     float dirX;
     float dirY;
     float dirZ;
 
+    Vector3 dirVector;
+
     public bool myControl = true;
     private Vector3 direction;
+
+    private float distanceToGround;
 
     void Start()
     {
         if (rb == null)
-        {
             rb = GetComponent<Rigidbody>();
-        }
+
+        distanceToGround = GetComponent<CapsuleCollider>().bounds.extents.y;
     }
 
     void Update()
@@ -63,6 +68,11 @@ public class PlayerControllerScript : MonoBehaviour
             {
                 dirX = 0;
             }
+
+            if (Input.GetKeyDown(KeyCode.Space))
+            {
+                Jump();
+            }
         }
         else
         {
@@ -71,9 +81,20 @@ public class PlayerControllerScript : MonoBehaviour
         }
 
         // вектор направления движения
-        direction = new Vector3(dirX, 0, dirZ);
+        direction = new Vector3(dirX, rb.velocity.y, dirZ);
         direction = transform.TransformDirection(direction);
-        direction = new Vector3(direction.x, 0, direction.z);
+        direction = new Vector3(direction.x, rb.velocity.y, direction.z);
+    }
+
+    public void Jump()
+    {
+        if (isGrounded())
+            rb.AddForce(transform.up * jumpForce, ForceMode.VelocityChange);
+    }
+
+    bool isGrounded()
+    {
+        return Physics.Raycast(transform.position, -Vector3.up, distanceToGround + 0.1f);
     }
 
     void FixedUpdate()

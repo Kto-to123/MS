@@ -1513,6 +1513,12 @@ Transform:
     type: 3}
   m_PrefabInstance: {fileID: 31200897}
   m_PrefabAsset: {fileID: 0}
+--- !u!4 &1478600653 stripped
+Transform:
+  m_CorrespondingSourceObject: {fileID: 7218716815927815947, guid: 7cff39f023aaef64ea0a8a6691281c23,
+    type: 3}
+  m_PrefabInstance: {fileID: 6447699622291917587}
+  m_PrefabAsset: {fileID: 0}
 --- !u!4 &1566452261 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: 3281827481992336657, guid: a79a4a953c5d48349bc5aa6d8edda5d1,
@@ -2737,6 +2743,16 @@ PrefabInstance:
       propertyPath: m_AnchoredPosition.x
       value: -0.100097656
       objectReference: {fileID: 0}
+    - target: {fileID: 7218716817016611531, guid: 7cff39f023aaef64ea0a8a6691281c23,
+        type: 3}
+      propertyPath: myControl
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 7218716817016611531, guid: 7cff39f023aaef64ea0a8a6691281c23,
+        type: 3}
+      propertyPath: camHolder
+      value: 
+      objectReference: {fileID: 1478600653}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 7cff39f023aaef64ea0a8a6691281c23, type: 3}
 --- !u!114 &7218716815927815943 stripped
