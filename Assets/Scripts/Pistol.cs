@@ -7,6 +7,12 @@ public class Pistol : WeaponScript
     public Transform fierPoint;
     public GameObject Dec;
     public int damage = 1;
+    public ParticleSystem Partial;
+
+    private void Start()
+    {
+        Partial.Stop();
+    }
 
     public override void Attack()
     {
@@ -34,5 +40,6 @@ public class Pistol : WeaponScript
                 r.AddForceAtPosition(-hit.normal * 500, hit.point);
             }
         }
+        Partial.Play();
     }
 }
