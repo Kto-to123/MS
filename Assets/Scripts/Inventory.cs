@@ -46,10 +46,10 @@ public class Inventory : MonoBehaviour
         }
 
         //Тестовое заполнение инвентаря
-        for (int i = 0; i < maxCount; i++)
-        {
-            AddItem(i, WeaponDataManagerScript.instance.GetElementInventory(Random.Range(0, WeaponDataManagerScript.instance.GetInventoryElementCount())), Random.Range(1, 99));
-        }
+        //for (int i = 0; i < maxCount; i++)
+        //{
+        //    AddItem(i, WeaponDataManagerScript.instance.GetElementInventory(Random.Range(0, WeaponDataManagerScript.instance.GetInventoryElementCount())), Random.Range(1, 99));
+        //}
         UpdateInventory();
     }
 
