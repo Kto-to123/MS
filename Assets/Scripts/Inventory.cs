@@ -7,25 +7,23 @@ using UnityEngine.EventSystems;
 public class Inventory : MonoBehaviour
 {
     public static Inventory instance;
-    //public DataBase data;
 
-    public List<ItemInventory> items = new List<ItemInventory>(); //Список элементов инвентаря
+    public List<ItemInventory> items = new List<ItemInventory>(); // Список элементов инвентаря
+    public ItemInventory mainWeaponSlot;
 
-    public GameObject gameObjShow; //Видемый объект?
+    public GameObject gameObjShow; // Видемый объект?
 
-    public GameObject InventoryMainObject; //Основной объект инвентаря
-    public int maxCount; //Количество ячеек инвентаря
+    public GameObject InventoryMainObject; // Основной объект инвентаря
+    public int maxCount; // Количество ячеек инвентаря
 
-    public Camera cam; //Камера
-    public EventSystem es; //Управление графическим интерфейсом
+    public Camera cam; // Камера
+    public EventSystem es; // Управление графическим интерфейсом
 
-    public int currentID; // id перемещаемого предмета
+    public int cellCurrentID = -1; // Ячейка перемещаемого предмета
     public ItemInventory currentItem; // перемещаемый предмет
 
     public RectTransform movingObject; // Переменная для перемещения объекта
     public Vector3 offset; // Смещение от курсора
-
-    public Weapon myWeapon;
 
     private void Awake()
     {
@@ -42,11 +40,6 @@ public class Inventory : MonoBehaviour
 
     public void Start()
     {
-        //if (data == null)
-        //{
-        //    data = FindObjectOfType<DataBase>();
-        //}
-
         if (items.Count == 0)
         {
             AddGraphics();
@@ -58,15 +51,11 @@ public class Inventory : MonoBehaviour
             AddItem(i, WeaponDataManagerScript.instance.GetElementInventory(Random.Range(0, WeaponDataManagerScript.instance.GetInventoryElementCount())), Random.Range(1, 99));
         }
         UpdateInventory();
-
-        //myWeapon = GetComponent<Weapon>();
-
-        InstantWeapon(1, 51);
     }
 
     public void Update()
     {
-        if (currentID != -1) // Если мы удерживаем объект
+        if (cellCurrentID != -1) // Если мы удерживаем объект
         {
             MoveObject(); // Отрисовываем его
         }
@@ -120,6 +109,11 @@ public class Inventory : MonoBehaviour
         }
     }
 
+    //public void AddItem(int id, int count)
+    //{
+    //    AddItem(id, WeaponDataManagerScript.instance.GetElementInventory(id), count);
+    //}
+
     public void AddItem(int id, ElementInventory item, int count) //Добавление объекта в инвентарь
     {
         items[id].id = item.id; //Задаем номер
@@ -136,7 +130,7 @@ public class Inventory : MonoBehaviour
         }
     }
 
-    public void AddInventoryItem(int id, ItemInventory invItem) //Добавление ячеек инвентаря
+    public void AddInventoryItem(int id, ItemInventory invItem)
     {
         items[id].id = invItem.id;
         items[id].count = invItem.count;
@@ -191,18 +185,28 @@ public class Inventory : MonoBehaviour
 
             items[i].itemGameObj.GetComponent<Image>().sprite = WeaponDataManagerScript.instance.GetElementInventory(items[i].id).img; // Отрисовываем изображение соответствующее ID
         }
+
+        if (mainWeaponSlot.id != 0 && mainWeaponSlot.count > 1) // Если в ней есть объект и его количество больше 0
+        {
+            mainWeaponSlot.itemGameObj.GetComponentInChildren<Text>().text = mainWeaponSlot.count.ToString(); // Отрисовываем количество
+        }
+        else
+        {
+            mainWeaponSlot.itemGameObj.GetComponentInChildren<Text>().text = ""; // Отрисовываем пустую строку
+        }
+        mainWeaponSlot.itemGameObj.GetComponent<Image>().sprite = WeaponDataManagerScript.instance.GetElementInventory(mainWeaponSlot.id).img; // Отрисовываем изображение соответствующее ID
     }
 
     public void SelectObject() //Перемещение объекта
     {
-        if (currentID == -1) // Если объект еще не взят, берем
+        if (cellCurrentID == -1) // Если объект еще не взят, берем
         {
-            currentID = int.Parse(es.currentSelectedGameObject.name);
-            currentItem = CopyInventoryItem(items[currentID]);
+            cellCurrentID = int.Parse(es.currentSelectedGameObject.name);
+            currentItem = CopyInventoryItem(items[cellCurrentID]);
             movingObject.gameObject.SetActive(true); //Видимость перемещаемого объекта
             movingObject.GetComponent<Image>().sprite = WeaponDataManagerScript.instance.GetElementInventory(currentItem.id).img; //Присвоение перемещаемому объекту изображения
 
-            AddItem(currentID, WeaponDataManagerScript.instance.GetElementInventory(0), 0); //Записываем в ячейку пустой элемент
+            AddItem(cellCurrentID, WeaponDataManagerScript.instance.GetElementInventory(0), 0); //Записываем в ячейку пустой элемент
         }
         else // если уже взят опускаем
         {
@@ -210,7 +214,7 @@ public class Inventory : MonoBehaviour
 
             if (currentItem.id != II.id)
             {
-                AddInventoryItem(currentID, II);
+                AddInventoryItem(cellCurrentID, II);
                 AddInventoryItem(int.Parse(es.currentSelectedGameObject.name), currentItem);
             }
             else
@@ -221,15 +225,16 @@ public class Inventory : MonoBehaviour
                 }
                 else
                 {
-                    AddItem(currentID, WeaponDataManagerScript.instance.GetElementInventory(II.id), II.count + currentItem.count - 128);
+                    AddItem(cellCurrentID, WeaponDataManagerScript.instance.GetElementInventory(II.id), II.count + currentItem.count - 128);
 
                     II.count = 128;
                 }
 
-                II.itemGameObj.GetComponentInChildren<Text>().text = II.count.ToString();
+                if (II.id != 0)
+                    II.itemGameObj.GetComponentInChildren<Text>().text = II.count.ToString();
             }
 
-            currentID = -1; // Делаем счетчик пустым
+            cellCurrentID = -1; // Делаем счетчик пустым
 
             movingObject.gameObject.SetActive(false); // Скрываем переносимый объект
         }
@@ -253,10 +258,52 @@ public class Inventory : MonoBehaviour
         return New;
     }
 
-    // Взаимодействие с оружием
-    public void InstantWeapon(int WId, int WCount)
+    public void MainWeaponDragAndDrop()
     {
-        myWeapon.InstantWeapon(WId, WCount);
+        int usebl = WeaponDataManagerScript.instance.GetElementInventory(currentItem.id).mainWeapon;
+        if (currentItem.id > 0 && usebl > 0)
+        {
+            //ItemInventory II = items[int.Parse(es.currentSelectedGameObject.name)];
+
+            if (currentItem.id != mainWeaponSlot.id)
+            {
+                if (mainWeaponSlot != null)
+                    AddInventoryItem(cellCurrentID, mainWeaponSlot);
+                //AddInventoryItem(int.Parse(es.currentSelectedGameObject.name), currentItem);
+                //mainWeaponSlot = currentItem;
+                mainWeaponSlot.id = currentItem.id;
+                mainWeaponSlot.count = currentItem.count;
+            }
+            else
+            {
+                if (mainWeaponSlot.count + currentItem.count <= 128)
+                {
+                    mainWeaponSlot.count += currentItem.count;
+                }
+                else
+                {
+                    AddItem(cellCurrentID, WeaponDataManagerScript.instance.GetElementInventory(mainWeaponSlot.id), mainWeaponSlot.count + currentItem.count - 128);
+
+                    mainWeaponSlot.count = 128;
+                }
+
+                //if (mainWeaponSlot.id != 0)
+                mainWeaponSlot.itemGameObj.GetComponentInChildren<Text>().text = mainWeaponSlot.count.ToString();
+            }
+
+            if (mainWeaponSlot.id != 0)
+                mainWeaponSlot.itemGameObj.GetComponentInChildren<Text>().text = mainWeaponSlot.count.ToString();
+            else
+                mainWeaponSlot.itemGameObj.GetComponentInChildren<Text>().text = "";
+
+            UpdateInventory();
+
+            cellCurrentID = -1; // Делаем счетчик пустым
+
+            movingObject.gameObject.SetActive(false); // Скрываем переносимый объект
+
+            Weapon.instance.InstantMainWeapon(usebl);
+        }
     }
 }
 
@@ -267,6 +314,5 @@ public class ItemInventory
 {
     public int id; //Номер ячейки
     public GameObject itemGameObj; //Ссылка на содержимое
-
     public int count; //Количество предметов в ячейке
 }

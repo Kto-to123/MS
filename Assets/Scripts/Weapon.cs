@@ -20,6 +20,8 @@ public class Weapon : MonoBehaviour
     ElementThrowingWeapons throwingElement;
     //Метательное оружие не имеет своего класа как основное т.к поведение разных типов не сильно отличается.
 
+    
+
     private void Awake()
     {
         if (instance == null)
@@ -77,7 +79,7 @@ public class Weapon : MonoBehaviour
     {
         if (mainWeapon != null)
         {
-            Instantiate(mainElements.DropPrefab, mainElements.bowPoint.position, mainElements.bowPoint.rotation);
+            //Instantiate(mainElements.DropPrefab, mainElements.bowPoint.position, mainElements.bowPoint.rotation);
             mainWeapon = null;
             Destroy(MainWeaponPrefab);
             mainWeaponInst = false;

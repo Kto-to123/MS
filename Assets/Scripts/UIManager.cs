@@ -29,8 +29,7 @@ public class UIManager : MonoBehaviour
             backGround.SetActive(value); 
         }
     }
-    #endregion
-
+    
     private void Awake()
     {
         if (instance == null)
@@ -43,6 +42,7 @@ public class UIManager : MonoBehaviour
             return;
         }
     }
+    #endregion
 
     void Update()
     {

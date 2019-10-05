@@ -8,12 +8,15 @@ public class WeaponDataManagerScript : MonoBehaviour
 {
     public static WeaponDataManagerScript instance;
 
+    // Список основного оружия
     [SerializeField]
     List<ElementMainWeapns> MainElements = new List<ElementMainWeapns>();
 
+    //Список метательного оружия
     [SerializeField]
     List<ElementThrowingWeapons> ThrowingElements = new List<ElementThrowingWeapons>();
 
+    //Список элементов инвентаря
     [SerializeField]
     public List<ElementInventory> InventoryElements = new List<ElementInventory>();
 
@@ -75,9 +78,8 @@ public class WeaponDataManagerScript : MonoBehaviour
 [System.Serializable]
 public struct ElementMainWeapns
 {
-    [FormerlySerializedAs("ID")]
     public int ID;
-    [FormerlySerializedAs("Activ")]
+    public int inventoryID;
     public bool activ;
     public Transform bowPoint;
     public GameObject mainPrefab;
@@ -91,6 +93,7 @@ public struct ElementMainWeapns
 public struct ElementThrowingWeapons
 {
     public int ID;
+    public int inventoryID;
     public GameObject bullet;
     public Transform fierPoint;
     public GameObject WeaponModel;
@@ -103,4 +106,7 @@ public class ElementInventory
     public int id; // Номер объекта
     public string name; // Имя объекта
     public Sprite img; // Изображение объекта
+    public int mainWeapon; // Использование элемента как основное оружие
+    public int throwingWeapon; // Использование элемента как метательное оружие
+    public bool stacked; // Можно ли складывать больше одной ячейки в инвентарь
 }
