@@ -22,7 +22,7 @@ public class Weapon : MonoBehaviour
     ElementThrowingWeapons throwingElement;
     //Метательное оружие не имеет своего класа как основное т.к поведение разных типов не сильно отличается.
 
-    public void Start()
+    void Start()
     {
         //Debug.Log(myWeaponData.test);
     }
@@ -42,15 +42,7 @@ public class Weapon : MonoBehaviour
 
     void Update()
     {
-        // Проверка нажатий клавиш стрельбы
-        if (Input.GetButtonDown("Fire1") && throwingWeaponActive)
-        {
-            Shoot();
-        }
-        if (Input.GetKeyDown(KeyCode.Mouse0) && mainElements.activ)
-        {
-            MainAttack();
-        }
+        
     }
 
     public void MainWeaponSetActiv(bool v) // Скрытие основного оружия
@@ -62,17 +54,17 @@ public class Weapon : MonoBehaviour
         }
     }
 
-    void MainAttack() // Атака основного оружия
+    public void MainAttack() // Атака основного оружия
     {
-        if (mainWeapon != null)
+        if (mainWeapon != null && mainElements.activ)
         {
             mainWeapon.Attack();
         }
     }
 
-    void Shoot() // Бросок метательного оружия
+    public void Shoot() // Бросок метательного оружия
     {
-        if (throwingAmmunition > 0)
+        if (throwingAmmunition > 0 && throwingWeaponActive)
         {
             Instantiate(throwingElement.bullet, throwingElement.fierPoint.position, throwingElement.fierPoint.rotation);
             throwingAmmunition--;
@@ -80,7 +72,7 @@ public class Weapon : MonoBehaviour
         }
     }
     
-    public void DropMainWeapon() // Выбросить основное оружие
+    void DropMainWeapon() // Выбросить основное оружие
     {
         if (mainWeapon != null)
         {
@@ -102,7 +94,7 @@ public class Weapon : MonoBehaviour
         mainWeaponInst = true;
     }
 
-    public void DropThrowingWeapon() // Выбросить метательное оружие
+    void DropThrowingWeapon() // Выбросить метательное оружие
     {
         if (throwingWeaponActive)
         {

@@ -29,19 +29,22 @@ public class CameraControllerScript : MonoBehaviour
 
     void Update()
     {
-        rotationX += /*head.localEulerAngles.y +*/ Input.GetAxis("Mouse X") * sensitivity;
-        rotationY += Input.GetAxis("Mouse Y") * sensitivity;
-        if (rotationY > headMaxY)
+        if (!Cursor.visible)
         {
-            rotationY = headMaxY;
-        }
-        if (rotationY < headMinY)
-        {
-            rotationY = headMinY;
-        }
-        //rotationY = Mathf.Clamp(rotationY, headMinY, headMaxY);
-        head.localEulerAngles = new Vector3(-rotationY, 0, 0);
+            rotationX += /*head.localEulerAngles.y +*/ Input.GetAxis("Mouse X") * sensitivity;
+            rotationY += Input.GetAxis("Mouse Y") * sensitivity;
+            if (rotationY > headMaxY)
+            {
+                rotationY = headMaxY;
+            }
+            if (rotationY < headMinY)
+            {
+                rotationY = headMinY;
+            }
+            //rotationY = Mathf.Clamp(rotationY, headMinY, headMaxY);
+            head.localEulerAngles = new Vector3(-rotationY, 0, 0);
 
-        transform.localEulerAngles = new Vector3(0, rotationX, 0);
+            transform.localEulerAngles = new Vector3(0, rotationX, 0);
+        }
     }
 }

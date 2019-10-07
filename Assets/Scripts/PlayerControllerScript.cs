@@ -22,6 +22,10 @@ public class PlayerControllerScript : MonoBehaviour
 
     private float distanceToGround;
 
+    // Управление инвентарем
+    bool inventoryActiv = true;
+    //
+
     void Start()
     {
         if (rb == null)
@@ -32,6 +36,25 @@ public class PlayerControllerScript : MonoBehaviour
 
     void Update()
     {
+        if (Input.GetKeyDown(KeyCode.Tab))
+        {
+            UIManager.instance.ActivateInterfaceInventory();
+            inventoryActiv = !inventoryActiv;
+            Cursor.visible = !Cursor.visible;
+        }
+        // Проверка нажатий клавиш стрельбы
+        if(!inventoryActiv)
+        {
+            if (Input.GetButtonDown("Fire1"))
+            {
+                Weapon.instance.Shoot();
+            }
+            if (Input.GetKeyDown(KeyCode.Mouse0))
+            {
+                Weapon.instance.MainAttack();
+            }
+        }
+
         if (Input.GetKey(KeyCode.LeftShift))
         {
             moveSpeed = ranSpeed;

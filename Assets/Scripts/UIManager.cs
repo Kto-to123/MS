@@ -46,16 +46,18 @@ public class UIManager : MonoBehaviour
 
     void Update()
     {
-        if (Input.GetKeyDown(KeyCode.Tab))
-        {
-            backGround.SetActive(!backGround.activeSelf);
-            if (backGround.activeSelf)
-            {
-                Inventory.instance.UpdateInventory();
-            }
+        
+    }
 
-            Weapon.instance.MainWeaponSetActiv(!backGround.activeSelf);
+    public void ActivateInterfaceInventory()
+    {
+        backGround.SetActive(!backGround.activeSelf);
+        if (backGround.activeSelf)
+        {
+            Inventory.instance.UpdateInventory();
         }
+
+        Weapon.instance.MainWeaponSetActiv(!backGround.activeSelf);
     }
 
     public void SetAmmo(int ammo)

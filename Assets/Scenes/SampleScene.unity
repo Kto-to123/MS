@@ -3008,6 +3008,16 @@ PrefabInstance:
       propertyPath: throwingWeaponSlot.itemGameObj
       value: 
       objectReference: {fileID: 9192350407808897754}
+    - target: {fileID: 7218716815927815943, guid: 7cff39f023aaef64ea0a8a6691281c23,
+        type: 3}
+      propertyPath: offset.x
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 7218716815927815943, guid: 7cff39f023aaef64ea0a8a6691281c23,
+        type: 3}
+      propertyPath: offset.y
+      value: -1
+      objectReference: {fileID: 0}
     - target: {fileID: 3222111292145181259, guid: 7cff39f023aaef64ea0a8a6691281c23,
         type: 3}
       propertyPath: m_AnchoredPosition.x
