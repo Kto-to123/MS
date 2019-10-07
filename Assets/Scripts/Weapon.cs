@@ -6,6 +6,8 @@ using UnityEngine;
 //Здесь собранна стрельба и смена оружия
 public class Weapon : MonoBehaviour
 {
+    public WeaponData myWeaponData;
+
     public static Weapon instance;
 
     // Основное оружие
@@ -20,7 +22,10 @@ public class Weapon : MonoBehaviour
     ElementThrowingWeapons throwingElement;
     //Метательное оружие не имеет своего класа как основное т.к поведение разных типов не сильно отличается.
 
-    
+    public void Start()
+    {
+        //Debug.Log(myWeaponData.test);
+    }
 
     private void Awake()
     {
@@ -110,7 +115,7 @@ public class Weapon : MonoBehaviour
 
     public void InstantWeapon(int _id, int _ammunition) // Включение метательного оружия
     {
-        DropThrowingWeapon();
+        //DropThrowingWeapon();
         throwingElement = WeaponDataManagerScript.instance.GetElementThrowingWeapons(_id);
         throwingWeaponActive = true;
         throwingAmmunition = _ammunition;

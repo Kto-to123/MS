@@ -10,6 +10,7 @@ public class Inventory : MonoBehaviour
 
     public List<ItemInventory> items = new List<ItemInventory>(); // Список элементов инвентаря
     public ItemInventory mainWeaponSlot;
+    public ItemInventory throwingWeaponSlot;
 
     public GameObject gameObjShow; // Видемый объект?
 
@@ -109,11 +110,6 @@ public class Inventory : MonoBehaviour
         }
     }
 
-    //public void AddItem(int id, int count)
-    //{
-    //    AddItem(id, WeaponDataManagerScript.instance.GetElementInventory(id), count);
-    //}
-
     public void AddItem(int id, ElementInventory item, int count) //Добавление объекта в инвентарь
     {
         items[id].id = item.id; //Задаем номер
@@ -186,15 +182,25 @@ public class Inventory : MonoBehaviour
             items[i].itemGameObj.GetComponent<Image>().sprite = WeaponDataManagerScript.instance.GetElementInventory(items[i].id).img; // Отрисовываем изображение соответствующее ID
         }
 
-        if (mainWeaponSlot.id != 0 && mainWeaponSlot.count > 1) // Если в ней есть объект и его количество больше 0
+        if (mainWeaponSlot.id != 0 && mainWeaponSlot.count > 1)
         {
-            mainWeaponSlot.itemGameObj.GetComponentInChildren<Text>().text = mainWeaponSlot.count.ToString(); // Отрисовываем количество
+            mainWeaponSlot.itemGameObj.GetComponentInChildren<Text>().text = mainWeaponSlot.count.ToString();
         }
         else
         {
-            mainWeaponSlot.itemGameObj.GetComponentInChildren<Text>().text = ""; // Отрисовываем пустую строку
+            mainWeaponSlot.itemGameObj.GetComponentInChildren<Text>().text = "";
         }
-        mainWeaponSlot.itemGameObj.GetComponent<Image>().sprite = WeaponDataManagerScript.instance.GetElementInventory(mainWeaponSlot.id).img; // Отрисовываем изображение соответствующее ID
+        mainWeaponSlot.itemGameObj.GetComponent<Image>().sprite = WeaponDataManagerScript.instance.GetElementInventory(mainWeaponSlot.id).img;
+
+        if (throwingWeaponSlot.id != 0 && throwingWeaponSlot.count > 1)
+        {
+            throwingWeaponSlot.itemGameObj.GetComponentInChildren<Text>().text = throwingWeaponSlot.count.ToString();
+        }
+        else
+        {
+            throwingWeaponSlot.itemGameObj.GetComponentInChildren<Text>().text = "";
+        }
+        throwingWeaponSlot.itemGameObj.GetComponent<Image>().sprite = WeaponDataManagerScript.instance.GetElementInventory(throwingWeaponSlot.id).img;
     }
 
     public void SelectObject() //Перемещение объекта
@@ -303,6 +309,54 @@ public class Inventory : MonoBehaviour
             movingObject.gameObject.SetActive(false); // Скрываем переносимый объект
 
             Weapon.instance.InstantMainWeapon(usebl);
+        }
+    }
+
+    public void ThrowingWeaponDragAndDrop()
+    {
+        int usebl = WeaponDataManagerScript.instance.GetElementInventory(currentItem.id).throwingWeapon;
+        if (currentItem.id > 0 && usebl > 0)
+        {
+            //ItemInventory II = items[int.Parse(es.currentSelectedGameObject.name)];
+
+            if (currentItem.id != throwingWeaponSlot.id)
+            {
+                if (throwingWeaponSlot != null)
+                    AddInventoryItem(cellCurrentID, throwingWeaponSlot);
+                //AddInventoryItem(int.Parse(es.currentSelectedGameObject.name), currentItem);
+                //mainWeaponSlot = currentItem;
+                throwingWeaponSlot.id = currentItem.id;
+                throwingWeaponSlot.count = currentItem.count;
+            }
+            else
+            {
+                if (throwingWeaponSlot.count + currentItem.count <= 128)
+                {
+                    throwingWeaponSlot.count += currentItem.count;
+                }
+                else
+                {
+                    AddItem(cellCurrentID, WeaponDataManagerScript.instance.GetElementInventory(throwingWeaponSlot.id), throwingWeaponSlot.count + currentItem.count - 128);
+
+                    throwingWeaponSlot.count = 128;
+                }
+
+                //if (mainWeaponSlot.id != 0)
+                throwingWeaponSlot.itemGameObj.GetComponentInChildren<Text>().text = throwingWeaponSlot.count.ToString();
+            }
+
+            if (throwingWeaponSlot.id != 0)
+                throwingWeaponSlot.itemGameObj.GetComponentInChildren<Text>().text = throwingWeaponSlot.count.ToString();
+            else
+                throwingWeaponSlot.itemGameObj.GetComponentInChildren<Text>().text = "";
+
+            UpdateInventory();
+
+            cellCurrentID = -1; // Делаем счетчик пустым
+
+            movingObject.gameObject.SetActive(false); // Скрываем переносимый объект
+
+            Weapon.instance.InstantWeapon(usebl, throwingWeaponSlot.count);
         }
     }
 }

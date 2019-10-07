@@ -8,7 +8,8 @@ public class DropWeapom : Drop
     public override void Take()
     {
         count = 50;
-        Weapon.instance.InstantWeapon(id, count);
+        Inventory.instance.TakeItem(WeaponDataManagerScript.instance.GetElementThrowingWeapons(id).inventoryID, count);
+        //Weapon.instance.InstantWeapon(id, count);
         Destroy(gameObject);
     }
 }

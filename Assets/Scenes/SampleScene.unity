@@ -1320,7 +1320,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1110000870}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: -1.0952969, y: 0.46043205, z: 2.1816607}
+  m_LocalPosition: {x: -1.0952969, y: 0.791, z: 2.1816607}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children:
   - {fileID: 1830554830}
@@ -1330,7 +1330,7 @@ Transform:
   - {fileID: 1660750418}
   - {fileID: 1629289102}
   m_Father: {fileID: 0}
-  m_RootOrder: 6
+  m_RootOrder: 7
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &1151024954
 GameObject:
@@ -1370,7 +1370,7 @@ Transform:
   - {fileID: 351380419}
   - {fileID: 970501393}
   m_Father: {fileID: 0}
-  m_RootOrder: 1
+  m_RootOrder: 2
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!4 &1160221839 stripped
 Transform:
@@ -2364,7 +2364,7 @@ PrefabInstance:
     - target: {fileID: 2166351836163817990, guid: 2678faafc56445645ad16d5bdf32bc75,
         type: 3}
       propertyPath: m_RootOrder
-      value: 2
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 2166351836163817990, guid: 2678faafc56445645ad16d5bdf32bc75,
         type: 3}
@@ -2433,7 +2433,7 @@ PrefabInstance:
     - target: {fileID: 8823901003990457208, guid: 859c0b9c82587ad418e815023166109b,
         type: 3}
       propertyPath: m_RootOrder
-      value: 7
+      value: 6
       objectReference: {fileID: 0}
     - target: {fileID: 8823901003990457208, guid: 859c0b9c82587ad418e815023166109b,
         type: 3}
@@ -2918,6 +2918,12 @@ PrefabInstance:
       propertyPath: bowPoint
       value: 
       objectReference: {fileID: 133122000}
+    - target: {fileID: 7218716817016611527, guid: 7cff39f023aaef64ea0a8a6691281c23,
+        type: 3}
+      propertyPath: myWeaponData
+      value: 
+      objectReference: {fileID: 11400000, guid: ed5a4b848fd25b54ba9799c2862307d0,
+        type: 2}
     - target: {fileID: 7218716815927815943, guid: 7cff39f023aaef64ea0a8a6691281c23,
         type: 3}
       propertyPath: es
@@ -2948,6 +2954,22 @@ PrefabInstance:
       propertyPath: camHolder
       value: 
       objectReference: {fileID: 1478600653}
+    - target: {fileID: 222177952, guid: 7cff39f023aaef64ea0a8a6691281c23, type: 3}
+      propertyPath: m_AnchoredPosition.y
+      value: -137
+      objectReference: {fileID: 0}
+    - target: {fileID: 1425584557, guid: 7cff39f023aaef64ea0a8a6691281c23, type: 3}
+      propertyPath: m_AnchoredPosition.y
+      value: -137
+      objectReference: {fileID: 0}
+    - target: {fileID: 1030726463, guid: 7cff39f023aaef64ea0a8a6691281c23, type: 3}
+      propertyPath: m_AnchoredPosition.y
+      value: -137
+      objectReference: {fileID: 0}
+    - target: {fileID: 1055129207, guid: 7cff39f023aaef64ea0a8a6691281c23, type: 3}
+      propertyPath: m_AnchoredPosition.y
+      value: -179
+      objectReference: {fileID: 0}
     m_RemovedComponents:
     - {fileID: 7218716815927815944, guid: 7cff39f023aaef64ea0a8a6691281c23, type: 3}
   m_SourcePrefab: {fileID: 100100000, guid: 7cff39f023aaef64ea0a8a6691281c23, type: 3}
