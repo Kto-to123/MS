@@ -248,9 +248,11 @@ public class Inventory : MonoBehaviour
 
     public void MoveObject() // Перемещение объекта курсором
     {
-        Vector3 pos = Input.mousePosition + offset; // Получаем позицию курсора + смещение
-        pos.z = InventoryMainObject.GetComponent<RectTransform>().position.z; 
-        movingObject.position = cam.ScreenToWorldPoint(pos);
+        Vector3 pos;
+        pos.x = Input.mousePosition.x;// + offset; // Получаем позицию курсора + смещение
+        pos.y = Input.mousePosition.y;
+        pos.z = InventoryMainObject.GetComponent<RectTransform>().position.z;
+        movingObject.position = pos;// cam.ScreenToWorldPoint(pos);
     }
 
     public ItemInventory CopyInventoryItem(ItemInventory old) //Копирование содержимоко ячейки в буферную переменную
@@ -267,7 +269,7 @@ public class Inventory : MonoBehaviour
     public void MainWeaponDragAndDrop()
     {
         int usebl = WeaponDataManagerScript.instance.GetElementInventory(currentItem.id).mainWeapon;
-        if (currentItem.id > 0 && usebl > 0)
+        if (currentItem.id > 0 && usebl > 0 && cellCurrentID != -1)
         {
             //ItemInventory II = items[int.Parse(es.currentSelectedGameObject.name)];
 
@@ -315,7 +317,7 @@ public class Inventory : MonoBehaviour
     public void ThrowingWeaponDragAndDrop()
     {
         int usebl = WeaponDataManagerScript.instance.GetElementInventory(currentItem.id).throwingWeapon;
-        if (currentItem.id > 0 && usebl > 0)
+        if (currentItem.id > 0 && usebl > 0 && cellCurrentID != -1)
         {
             //ItemInventory II = items[int.Parse(es.currentSelectedGameObject.name)];
 

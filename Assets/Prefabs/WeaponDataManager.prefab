@@ -1,0 +1,166 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!1 &789392801187944038
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 789392801187944036}
+  - component: {fileID: 789392801187944039}
+  m_Layer: 0
+  m_Name: WeaponDataManager
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &789392801187944036
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 789392801187944038}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 4.416496, y: 1.7299341, z: -3.2554667}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_Children: []
+  m_Father: {fileID: 0}
+  m_RootOrder: 0
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &789392801187944039
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 789392801187944038}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 900ec8b7087d5cb44bdb3c5869ff01a8, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  MainElements:
+  - ID: 0
+    inventoryID: 0
+    activ: 0
+    bowPoint: {fileID: 0}
+    mainPrefab: {fileID: 0}
+    DropPrefab: {fileID: 8823901003990943576, guid: 859c0b9c82587ad418e815023166109b,
+      type: 3}
+    arrow: {fileID: 8778723401030900448, guid: c445da7a81bfa454aa7bf2edc36711cc, type: 3}
+    fierPoint: {fileID: 0}
+  - ID: 1
+    inventoryID: 6
+    activ: 0
+    bowPoint: {fileID: 0}
+    mainPrefab: {fileID: 5146473522940661922, guid: 6cde2ca8e4d208f4d8ff64e1a388b0b3,
+      type: 3}
+    DropPrefab: {fileID: 8823901003990943576, guid: 859c0b9c82587ad418e815023166109b,
+      type: 3}
+    arrow: {fileID: 8778723401030900448, guid: c445da7a81bfa454aa7bf2edc36711cc, type: 3}
+    fierPoint: {fileID: 0}
+  - ID: 2
+    inventoryID: 7
+    activ: 0
+    bowPoint: {fileID: 0}
+    mainPrefab: {fileID: 7127806901781011525, guid: 137c924660f85d84a8cece567eff2f45,
+      type: 3}
+    DropPrefab: {fileID: 1839347263359005806, guid: f8ca518ef3c68f7479d1f18470b230d3,
+      type: 3}
+    arrow: {fileID: 8778723401030900448, guid: c445da7a81bfa454aa7bf2edc36711cc, type: 3}
+    fierPoint: {fileID: 0}
+  - ID: 3
+    inventoryID: 8
+    activ: 0
+    bowPoint: {fileID: 0}
+    mainPrefab: {fileID: 3833474440200588025, guid: b969d4b86684af84a8634a3b5a38aeee,
+      type: 3}
+    DropPrefab: {fileID: 5326792996692767537, guid: 2678faafc56445645ad16d5bdf32bc75,
+      type: 3}
+    arrow: {fileID: 8778723401030900448, guid: c445da7a81bfa454aa7bf2edc36711cc, type: 3}
+    fierPoint: {fileID: 0}
+  ThrowingElements:
+  - ID: 0
+    inventoryID: 0
+    bullet: {fileID: 0}
+    fierPoint: {fileID: 0}
+    WeaponModel: {fileID: 0}
+  - ID: 1
+    inventoryID: 3
+    bullet: {fileID: 863916321186513203, guid: 2933640f72fe33f4bac176ee10467b6d, type: 3}
+    fierPoint: {fileID: 0}
+    WeaponModel: {fileID: 4946571568238350670, guid: 87932586eb89a5142a8989c793058600,
+      type: 3}
+  - ID: 2
+    inventoryID: 4
+    bullet: {fileID: 1728590577095010443, guid: b95f0afc6946ee64c89bfb429ea8d4a8,
+      type: 3}
+    fierPoint: {fileID: 0}
+    WeaponModel: {fileID: 1917816415296335447, guid: 00b0cf3e9caf6c840acb447264dcb2a3,
+      type: 3}
+  - ID: 3
+    inventoryID: 5
+    bullet: {fileID: 3487742970471147050, guid: bb6d5395cc1698a4e97621aa98b91524,
+      type: 3}
+    fierPoint: {fileID: 0}
+    WeaponModel: {fileID: 8891199858558129092, guid: 01afabc38ae2f314a82dca58e82d7c59,
+      type: 3}
+  InventoryElements:
+  - id: 0
+    name: Empty
+    img: {fileID: 10907, guid: 0000000000000000f000000000000000, type: 0}
+    mainWeapon: 0
+    throwingWeapon: 0
+    stacked: 0
+  - id: 1
+    name: Cube
+    img: {fileID: 10911, guid: 0000000000000000f000000000000000, type: 0}
+    mainWeapon: 0
+    throwingWeapon: 0
+    stacked: 0
+  - id: 2
+    name: sphere
+    img: {fileID: 10913, guid: 0000000000000000f000000000000000, type: 0}
+    mainWeapon: 0
+    throwingWeapon: 0
+    stacked: 0
+  - id: 3
+    name: T1
+    img: {fileID: 21300000, guid: 501cc13a932de524ab1a97370e3480ee, type: 3}
+    mainWeapon: 0
+    throwingWeapon: 1
+    stacked: 0
+  - id: 4
+    name: T2
+    img: {fileID: 21300000, guid: 0057b18702cd8cf4e84c4f0dd629957d, type: 3}
+    mainWeapon: 0
+    throwingWeapon: 2
+    stacked: 0
+  - id: 5
+    name: T3
+    img: {fileID: 21300000, guid: 95d572af1ebdc1a4782d175fae8a4148, type: 3}
+    mainWeapon: 0
+    throwingWeapon: 3
+    stacked: 0
+  - id: 6
+    name: bow
+    img: {fileID: 21300000, guid: aa81f9e30e1b3ff498ccbf441576e032, type: 3}
+    mainWeapon: 1
+    throwingWeapon: 0
+    stacked: 0
+  - id: 7
+    name: steel
+    img: {fileID: 21300000, guid: c27a423cf91cdc94ea8b1743cc891e32, type: 3}
+    mainWeapon: 2
+    throwingWeapon: 0
+    stacked: 0
+  - id: 8
+    name: pistol
+    img: {fileID: 21300000, guid: 3120cdfc5c66d2a42a1272b1a0d82c21, type: 3}
+    mainWeapon: 3
+    throwingWeapon: 0
+    stacked: 0
