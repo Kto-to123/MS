@@ -40,14 +40,14 @@ public class PlayerControllerScript : MonoBehaviour
         {
             UIManager.instance.ActivateInterfaceInventory();
             inventoryActiv = !inventoryActiv;
-            Cursor.visible = !Cursor.visible;
+            Cursor.visible = inventoryActiv;
         }
         // Проверка нажатий клавиш стрельбы
         if(!inventoryActiv)
         {
             if (Input.GetButtonDown("Fire1"))
             {
-                Weapon.instance.Shoot();
+                Weapon.instance.ThrowingAttack();
             }
             if (Input.GetKeyDown(KeyCode.Mouse0))
             {

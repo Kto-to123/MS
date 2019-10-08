@@ -9,8 +9,17 @@ public class Inventory : MonoBehaviour
     public static Inventory instance;
 
     public List<ItemInventory> items = new List<ItemInventory>(); // Список элементов инвентаря
+
+    // Слоты экипировки
     public ItemInventory mainWeaponSlot;
+    public ItemInventory mainAmmunitionSlot;
     public ItemInventory throwingWeaponSlot;
+    public ItemInventory shlemSlot;
+    public ItemInventory dospehSlot;
+    public ItemInventory perchatkiSlot;
+    public ItemInventory poyasSlot;
+    public ItemInventory shtaniSlot;
+    public ItemInventory ObyvSlot;
 
     public GameObject gameObjShow; // Видемый объект?
 
@@ -52,6 +61,11 @@ public class Inventory : MonoBehaviour
         //    AddItem(i, WeaponDataManagerScript.instance.GetElementInventory(Random.Range(0, WeaponDataManagerScript.instance.GetInventoryElementCount())), Random.Range(1, 99));
         //}
         UpdateInventory();
+
+        for (int i = 9; i < 21; i++)
+        {
+            TakeItem(i, 1);
+        }
     }
 
     public void Update()
@@ -110,7 +124,7 @@ public class Inventory : MonoBehaviour
         }
     }
 
-    public void AddItem(int id, ElementInventory item, int count) //Добавление объекта в инвентарь
+    public void AddItem(int id, ElementInventory item, int count) // Добавление объекта в инвентарь
     {
         items[id].id = item.id; //Задаем номер
         items[id].count = count; //Задаем количество
@@ -142,7 +156,7 @@ public class Inventory : MonoBehaviour
         }
     }
 
-    public void AddGraphics() //Отрисовка инвентаря
+    public void AddGraphics() // Отрисовка инвентаря
     {
         for (int i = 0; i < maxCount; i++)
         {
@@ -182,16 +196,6 @@ public class Inventory : MonoBehaviour
             items[i].itemGameObj.GetComponent<Image>().sprite = WeaponDataManagerScript.instance.GetElementInventory(items[i].id).img; // Отрисовываем изображение соответствующее ID
         }
 
-        if (mainWeaponSlot.id != 0 && mainWeaponSlot.count > 1)
-        {
-            mainWeaponSlot.itemGameObj.GetComponentInChildren<Text>().text = mainWeaponSlot.count.ToString();
-        }
-        else
-        {
-            mainWeaponSlot.itemGameObj.GetComponentInChildren<Text>().text = "";
-        }
-        mainWeaponSlot.itemGameObj.GetComponent<Image>().sprite = WeaponDataManagerScript.instance.GetElementInventory(mainWeaponSlot.id).img;
-
         if (throwingWeaponSlot.id != 0 && throwingWeaponSlot.count > 1)
         {
             throwingWeaponSlot.itemGameObj.GetComponentInChildren<Text>().text = throwingWeaponSlot.count.ToString();
@@ -201,6 +205,35 @@ public class Inventory : MonoBehaviour
             throwingWeaponSlot.itemGameObj.GetComponentInChildren<Text>().text = "";
         }
         throwingWeaponSlot.itemGameObj.GetComponent<Image>().sprite = WeaponDataManagerScript.instance.GetElementInventory(throwingWeaponSlot.id).img;
+
+        UpdateEquipmentSlots(mainWeaponSlot);
+        UpdateEquipmentSlots(mainAmmunitionSlot);
+        UpdateEquipmentSlots(throwingWeaponSlot);
+        UpdateEquipmentSlots(shlemSlot);
+        UpdateEquipmentSlots(dospehSlot);
+        UpdateEquipmentSlots(perchatkiSlot);
+        UpdateEquipmentSlots(poyasSlot);
+        UpdateEquipmentSlots(shtaniSlot);
+        UpdateEquipmentSlots(ObyvSlot);
+    }
+
+    void UpdateEquipmentSlots(ItemInventory slot)
+    {
+        if (slot.id != 0 && slot.count > 1)
+        {
+            slot.itemGameObj.GetComponentInChildren<Text>().text = slot.count.ToString();
+            slot.itemGameObj.GetComponent<Image>().sprite = WeaponDataManagerScript.instance.GetElementInventory(slot.id).img;
+        }
+        else if (slot.id != 0 && slot.count == 1)
+        {
+            slot.itemGameObj.GetComponent<Image>().sprite = WeaponDataManagerScript.instance.GetElementInventory(slot.id).img;
+            slot.itemGameObj.GetComponentInChildren<Text>().text = "";
+        }
+        else
+        {
+            slot.itemGameObj.GetComponentInChildren<Text>().text = "";
+            slot.itemGameObj.GetComponent<Image>().sprite = slot.standartSprite;
+        }
     }
 
     public void SelectObject() //Перемещение объекта
@@ -258,7 +291,7 @@ public class Inventory : MonoBehaviour
         movingObject.position = pos;// cam.ScreenToWorldPoint(pos);
     }
 
-    public ItemInventory CopyInventoryItem(ItemInventory old) //Копирование содержимоко ячейки в буферную переменную
+    public ItemInventory CopyInventoryItem(ItemInventory old) // Копирование содержимоко ячейки в буферную переменную
     {
         ItemInventory New = new ItemInventory();
 
@@ -286,6 +319,72 @@ public class Inventory : MonoBehaviour
         {
             DragAndDropWeaponSlot(throwingWeaponSlot);
             Weapon.instance.InstantWeapon(usebl, throwingWeaponSlot.count);
+        }
+    }
+
+    public void shlemSlotDragAndDrop()
+    {
+        Equipment usebl = WeaponDataManagerScript.instance.GetElementInventory(currentItem.id).equipment;
+
+        if (currentItem.id > 0 && cellCurrentID != -1 && usebl != null)
+        {
+            if (usebl.type == EquipmanType.Shlem)
+                DragAndDropWeaponSlot(shlemSlot);
+        }
+    }
+
+    public void dospehSlotDragAndDrop()
+    {
+        Equipment usebl = WeaponDataManagerScript.instance.GetElementInventory(currentItem.id).equipment;
+
+        if (currentItem.id > 0 && cellCurrentID != -1 && usebl != null)
+        {
+            if (usebl.type == EquipmanType.Dospeh)
+                DragAndDropWeaponSlot(dospehSlot);
+        }
+    }
+
+    public void perchatkiSlotDragAndDrop()
+    {
+        Equipment usebl = WeaponDataManagerScript.instance.GetElementInventory(currentItem.id).equipment;
+
+        if (currentItem.id > 0 && cellCurrentID != -1 && usebl != null)
+        {
+            if (usebl.type == EquipmanType.Perchatki)
+                DragAndDropWeaponSlot(perchatkiSlot);
+        }
+    }
+
+    public void poyasSlotDragAndDrop()
+    {
+        Equipment usebl = WeaponDataManagerScript.instance.GetElementInventory(currentItem.id).equipment;
+
+        if (currentItem.id > 0 && cellCurrentID != -1 && usebl != null)
+        {
+            if (usebl.type == EquipmanType.Poyas)
+                DragAndDropWeaponSlot(poyasSlot);
+        }
+    }
+
+    public void shtaniSlotDragAndDrop()
+    {
+        Equipment usebl = WeaponDataManagerScript.instance.GetElementInventory(currentItem.id).equipment;
+
+        if (currentItem.id > 0 && cellCurrentID != -1 && usebl != null)
+        {
+            if (usebl.type == EquipmanType.Shtani)
+                DragAndDropWeaponSlot(shtaniSlot);
+        }
+    }
+
+    public void ObyvSlotDragAndDrop()
+    {
+        Equipment usebl = WeaponDataManagerScript.instance.GetElementInventory(currentItem.id).equipment;
+
+        if (currentItem.id > 0 && cellCurrentID != -1 && usebl != null)
+        {
+            if (usebl.type == EquipmanType.Obyv)
+                DragAndDropWeaponSlot(ObyvSlot);
         }
     }
 
@@ -330,7 +429,8 @@ public class Inventory : MonoBehaviour
 [System.Serializable]
 public class ItemInventory // Ячейка инвентаря
 {
-    public int id; //Номер ячейки
-    public GameObject itemGameObj; //Ссылка на содержимое
-    public int count; //Количество предметов в ячейке
+    public int id; // Номер ячейки
+    public GameObject itemGameObj; // Ссылка на содержимое
+    public int count; // Количество предметов в ячейке
+    public Sprite standartSprite;
 }

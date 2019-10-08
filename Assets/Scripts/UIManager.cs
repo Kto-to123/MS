@@ -8,9 +8,9 @@ public class UIManager : MonoBehaviour
 {
     public static UIManager instance;
 
-    public GameObject m1;
-    public GameObject m2;
-    public GameObject m3;
+    public Image ThrowingWeaponIcon;
+    //public GameObject m2;
+    //public GameObject m3;
     public Text text;
 
     public GameObject backGround;
@@ -67,38 +67,7 @@ public class UIManager : MonoBehaviour
 
     public void SetWeapon(int WeaponID, int ammo)
     {
-        switch (WeaponID)
-        {
-            case 0:
-                m1.SetActive(false);
-                m2.SetActive(false);
-                m3.SetActive(false);
-                text.text = ammo.ToString();
-                break;
-            case 1:
-                m1.SetActive(true);
-                m2.SetActive(false);
-                m3.SetActive(false);
-                text.text = ammo.ToString();
-                break;
-            case 2:
-                m1.SetActive(false);
-                m2.SetActive(true);
-                m3.SetActive(false);
-                text.text = ammo.ToString();
-                break;
-            case 3:
-                m1.SetActive(false);
-                m2.SetActive(false);
-                m3.SetActive(true);
-                text.text = ammo.ToString();
-                break;
-            default:
-                m1.SetActive(false);
-                m2.SetActive(false);
-                m3.SetActive(false);
-                text.text = ammo.ToString();
-                break;
-        }
+        ThrowingWeaponIcon.sprite = WeaponDataManagerScript.instance.GetThrowingImg(WeaponID);
+        text.text = ammo.ToString();
     }
 }

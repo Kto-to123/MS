@@ -10,7 +10,7 @@ public class Drop : MonoBehaviour
 
     public virtual void Take()
     {
-        Inventory.instance.TakeItem(id, 1);
+        Inventory.instance.TakeItem(id, count);
         Destroy(gameObject);
     }
 }

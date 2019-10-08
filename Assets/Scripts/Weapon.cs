@@ -62,13 +62,14 @@ public class Weapon : MonoBehaviour
         }
     }
 
-    public void Shoot() // Бросок метательного оружия
+    public void ThrowingAttack() // Бросок метательного оружия
     {
         if (throwingAmmunition > 0 && throwingWeaponActive)
         {
             Instantiate(throwingElement.bullet, throwingElement.fierPoint.position, throwingElement.fierPoint.rotation);
             throwingAmmunition--;
             UIManager.instance.SetAmmo(throwingAmmunition);
+            Inventory.instance.throwingWeaponSlot.count = throwingAmmunition;
         }
     }
     

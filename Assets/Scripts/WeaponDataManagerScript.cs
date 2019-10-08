@@ -20,6 +20,22 @@ public class WeaponDataManagerScript : MonoBehaviour
     [SerializeField]
     public List<ElementInventory> InventoryElements = new List<ElementInventory>();
 
+    private void Start()
+    {
+        int i = 0;
+        foreach (ElementInventory element in InventoryElements)
+        {
+            element.id = i;
+            if (element.equipment != null)
+            {
+                element.img = element.equipment.image;
+                element.name = element.ToString();
+            }
+
+            i++;
+        }
+    }
+
     public GameObject GetMainWeapon(int _ID)
     {
         return MainElements[_ID].mainPrefab;
@@ -48,6 +64,11 @@ public class WeaponDataManagerScript : MonoBehaviour
     public ElementThrowingWeapons GetElementThrowingWeapons(int _ID)
     {
         return ThrowingElements[_ID];
+    }
+
+    public Sprite GetThrowingImg(int _ID)
+    {
+        return InventoryElements[ThrowingElements[_ID].inventoryID].img;
     }
 
     public ElementInventory GetElementInventory(int _ID)
@@ -108,5 +129,7 @@ public class ElementInventory
     public Sprite img; // Изображение объекта
     public int mainWeapon; // Использование элемента как основное оружие
     public int throwingWeapon; // Использование элемента как метательное оружие
-    public bool stacked; // Можно ли складывать больше одной ячейки в инвентарь
+    //public bool stacked; // Можно ли складывать больше одной ячейки в инвентарь
+    //public bool equipmentUsebl;
+    public Equipment equipment;
 }
