@@ -11,7 +11,8 @@ public class UIManager : MonoBehaviour
     public Image ThrowingWeaponIcon;
     //public GameObject m2;
     //public GameObject m3;
-    public Text text;
+    public Text amoText;
+    public Text armorText;
 
     public GameObject backGround;
 
@@ -62,12 +63,17 @@ public class UIManager : MonoBehaviour
 
     public void SetAmmo(int ammo)
     {
-        text.text = ammo.ToString();
+        amoText.text = ammo.ToString();
     }
 
     public void SetWeapon(int WeaponID, int ammo)
     {
         ThrowingWeaponIcon.sprite = WeaponDataManagerScript.instance.GetThrowingImg(WeaponID);
-        text.text = ammo.ToString();
+        amoText.text = ammo.ToString();
+    }
+
+    public void SetDefens(int defens)
+    {
+        armorText.text = "Защита: " + defens.ToString();
     }
 }
