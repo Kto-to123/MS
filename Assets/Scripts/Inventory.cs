@@ -62,10 +62,12 @@ public class Inventory : MonoBehaviour
         //}
         UpdateInventory();
 
-        for (int i = 9; i < 21; i++)
+        for (int i = 9; i <= 21; i++)
         {
             TakeItem(i, 1);
         }
+        TakeItem(22, 50);
+        TakeItem(23, 50);
     }
 
     public void Update()
@@ -129,7 +131,7 @@ public class Inventory : MonoBehaviour
         items[id].id = item.id; // Задаем номер
         items[id].count = count; // Задаем количество
         items[id].itemGameObj.GetComponent<Image>().sprite = item.img; // Задаем изображение
-        items[id].element = item; // Добавляем содержимое ячейки
+        items[id].element = item; // Добавляем ссылку на содержимое ячейки
 
         if (count > 1 && item.id != 0) // Если Объект в ячейке не 1 и ячейка не пустая
         {
@@ -146,7 +148,7 @@ public class Inventory : MonoBehaviour
         items[id].id = invItem.id;
         items[id].count = invItem.count;
         items[id].itemGameObj.GetComponent<Image>().sprite = WeaponDataManagerScript.instance.GetElementInventory(invItem.id).img;
-        items[id].element = invItem.element; // Добавляем содержимое ячейки
+        items[id].element = invItem.element; // Добавляем ссылку на содержимое ячейки
 
         if (invItem.count > 1 && invItem.id != 0)
         {
@@ -294,7 +296,7 @@ public class Inventory : MonoBehaviour
         return New;
     }
 
-    public void SetDefens()
+    public void SetDefens() // Расчет брони
     {
         int armor = 0;
         if(shlemSlot.id != 0)
@@ -312,7 +314,9 @@ public class Inventory : MonoBehaviour
         PlayerManager.instance.SetArmor(armor);
     }
 
-    public void MainWeaponDragAndDrop()
+    #region UI_Func // Функции для Слотов экипировки
+
+    public void MainWeaponDragAndDrop() // Функция для слота основного оружия
     {
         int usebl = WeaponDataManagerScript.instance.GetElementInventory(currentItem.id).mainWeapon;
         if (currentItem.id > 0 && usebl > 0 && cellCurrentID != -1)
@@ -322,7 +326,7 @@ public class Inventory : MonoBehaviour
         }
     }
 
-    public void ThrowingWeaponDragAndDrop()
+    public void ThrowingWeaponDragAndDrop() // Функция для слота метательного оружия
     {
         int usebl = WeaponDataManagerScript.instance.GetElementInventory(currentItem.id).throwingWeapon;
         if (currentItem.id > 0 && usebl > 0 && cellCurrentID != -1)
@@ -332,7 +336,7 @@ public class Inventory : MonoBehaviour
         }
     }
 
-    public void shlemSlotDragAndDrop()
+    public void shlemSlotDragAndDrop() // Функция для слота шлема
     {
         Equipment usebl = WeaponDataManagerScript.instance.GetElementInventory(currentItem.id).equipment;
 
@@ -346,7 +350,7 @@ public class Inventory : MonoBehaviour
         }
     }
 
-    public void dospehSlotDragAndDrop()
+    public void dospehSlotDragAndDrop() // Функция для слота доспехов
     {
         Equipment usebl = WeaponDataManagerScript.instance.GetElementInventory(currentItem.id).equipment;
 
@@ -360,7 +364,7 @@ public class Inventory : MonoBehaviour
         }
     }
 
-    public void perchatkiSlotDragAndDrop()
+    public void perchatkiSlotDragAndDrop() // Функция для слота перчаток
     {
         Equipment usebl = WeaponDataManagerScript.instance.GetElementInventory(currentItem.id).equipment;
 
@@ -374,7 +378,7 @@ public class Inventory : MonoBehaviour
         }
     }
 
-    public void poyasSlotDragAndDrop()
+    public void poyasSlotDragAndDrop() // Функция для слота пояса
     {
         Equipment usebl = WeaponDataManagerScript.instance.GetElementInventory(currentItem.id).equipment;
 
@@ -388,7 +392,7 @@ public class Inventory : MonoBehaviour
         }
     }
 
-    public void shtaniSlotDragAndDrop()
+    public void shtaniSlotDragAndDrop() // Функция для слота штанов
     {
         Equipment usebl = WeaponDataManagerScript.instance.GetElementInventory(currentItem.id).equipment;
 
@@ -402,7 +406,7 @@ public class Inventory : MonoBehaviour
         }
     }
 
-    public void ObyvSlotDragAndDrop()
+    public void ObyvSlotDragAndDrop() // Функция для слота обуви
     {
         Equipment usebl = WeaponDataManagerScript.instance.GetElementInventory(currentItem.id).equipment;
 
@@ -416,7 +420,19 @@ public class Inventory : MonoBehaviour
         }
     }
 
-    void DragAndDropWeaponSlot(ItemInventory _item)
+    public void MainAmmoSlotDragAndDrop() // Функция для слота боеприпасов
+    {
+        ElementInventory usebl = WeaponDataManagerScript.instance.GetElementInventory(currentItem.id);
+
+        if (currentItem.id > 0 && cellCurrentID != -1 && usebl.ammoType != AmmoType.now)
+        {
+            DragAndDropWeaponSlot(mainAmmunitionSlot);
+        }
+    }
+
+    #endregion
+
+    void DragAndDropWeaponSlot(ItemInventory _item) // Перетаскивание экипировки в слот
     {
         if (currentItem.id != _item.id)
         {

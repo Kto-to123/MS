@@ -16,7 +16,12 @@ public class Pistol : WeaponScript
 
     public override void Attack()
     {
-        Short();
+        ElementInventory usebl = WeaponDataManagerScript.instance.GetElementInventory(Inventory.instance.mainAmmunitionSlot.id);
+        if (usebl.ammoType == AmmoType.bullet && Inventory.instance.mainAmmunitionSlot.count > 0)
+        {
+            Inventory.instance.mainAmmunitionSlot.count--;
+            Short();
+        }
     }
 
     void Short()

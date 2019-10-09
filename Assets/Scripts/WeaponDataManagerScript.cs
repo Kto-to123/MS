@@ -30,6 +30,7 @@ public class WeaponDataManagerScript : MonoBehaviour
             {
                 element.img = element.equipment.image;
                 element.name = element.ToString();
+                element.mainWeapon = 0;
             }
 
             i++;
@@ -129,7 +130,15 @@ public class ElementInventory
     public Sprite img; // Изображение объекта
     public int mainWeapon; // Использование элемента как основное оружие
     public int throwingWeapon; // Использование элемента как метательное оружие
+    public AmmoType ammoType; // Использование в качестве боеприпаса
     //public bool stacked; // Можно ли складывать больше одной ячейки в инвентарь
     //public bool equipmentUsebl;
     public Equipment equipment;
+}
+
+public enum AmmoType
+{
+    now,
+    arrow,
+    bullet
 }

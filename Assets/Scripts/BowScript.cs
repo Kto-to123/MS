@@ -24,6 +24,14 @@ public class BowScript : WeaponScript
 
     void Short()
     {
-        Instantiate(Elements.arrow, Elements.bowPoint.position, Elements.bowPoint.rotation);
+        ElementInventory usebl = WeaponDataManagerScript.instance.GetElementInventory(Inventory.instance.mainAmmunitionSlot.id);
+        if (usebl.ammoType == AmmoType.arrow && Inventory.instance.mainAmmunitionSlot.count > 0)
+        {
+            Inventory.instance.mainAmmunitionSlot.count--;
+            Instantiate(Elements.arrow, Elements.bowPoint.position, Elements.bowPoint.rotation);
+        }
+        
+        //Inventory.instance.throwingWeaponSlot.count = throwingAmmunition;
+        //UIManager.instance.SetMainAmmo(throwingAmmunition);
     }
 }
