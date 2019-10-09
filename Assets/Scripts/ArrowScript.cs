@@ -6,6 +6,7 @@ public class ArrowScript : MonoBehaviour
 {
     public float speed = 40f;
     Rigidbody rb;
+    public bool extinction = true; // Должен ли придмет исчезать со временем
     public int damage = 1;
 
     void Start()
@@ -16,7 +17,9 @@ public class ArrowScript : MonoBehaviour
         }
 
         rb.velocity = transform.forward * speed;
-        Destroy(gameObject, 20f);
+
+        if (extinction)
+            Destroy(gameObject, 20f);
     }
 
     private void OnTriggerEnter(Collider other)

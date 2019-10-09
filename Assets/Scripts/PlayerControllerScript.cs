@@ -6,10 +6,14 @@ using UnityEngine;
 public class PlayerControllerScript : MonoBehaviour
 {
     Rigidbody rb;
+    CapsuleCollider capsCollider;
     public float moveSpeed = 5f;
     public float normalSpeed = 5f;
     public float ranSpeed = 10f;
     public float jumpForce = 10f;
+
+    public float bfx = 1;
+    public float bfy = 2;
 
     float dirX;
     float dirY;
@@ -32,6 +36,7 @@ public class PlayerControllerScript : MonoBehaviour
             rb = GetComponent<Rigidbody>();
 
         distanceToGround = GetComponent<CapsuleCollider>().bounds.extents.y;
+        capsCollider = GetComponent<CapsuleCollider>();
     }
 
     void Update()
@@ -62,6 +67,21 @@ public class PlayerControllerScript : MonoBehaviour
         else
         {
             moveSpeed = normalSpeed;
+        }
+
+        if (Input.GetKey(KeyCode.X)) // Отскок назад
+        {
+            JumpBack();
+        }
+
+        if (Input.GetKeyDown(KeyCode.LeftControl))
+        {
+            Squatting(1);
+        }
+
+        if (Input.GetKeyUp(KeyCode.LeftControl))
+        {
+            Squatting(2);
         }
 
         if (myControl)
@@ -109,10 +129,24 @@ public class PlayerControllerScript : MonoBehaviour
         direction = new Vector3(direction.x, rb.velocity.y, direction.z);
     }
 
-    public void Jump()
+    void Squatting(int _CapsCol)
+    {
+        capsCollider.height = _CapsCol;
+    }
+
+    void Jump()
     {
         if (isGrounded())
             rb.AddForce(transform.up * jumpForce, ForceMode.VelocityChange);
+    }
+
+    void JumpBack()
+    {
+        if (isGrounded())
+        {
+            rb.AddForce((transform.up * (jumpForce * bfx) + (transform.forward * (jumpForce * bfy)) * -1), ForceMode.VelocityChange);
+            //rb.AddForce(, ForceMode.VelocityChange);
+        }
     }
 
     bool isGrounded()
