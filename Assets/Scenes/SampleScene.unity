@@ -5094,6 +5094,16 @@ PrefabInstance:
       propertyPath: jumpForce
       value: 5
       objectReference: {fileID: 0}
+    - target: {fileID: 7218716817016611531, guid: 7cff39f023aaef64ea0a8a6691281c23,
+        type: 3}
+      propertyPath: bfx
+      value: 0.2
+      objectReference: {fileID: 0}
+    - target: {fileID: 7218716817016611531, guid: 7cff39f023aaef64ea0a8a6691281c23,
+        type: 3}
+      propertyPath: bfy
+      value: 4
+      objectReference: {fileID: 0}
     - target: {fileID: 222177952, guid: 7cff39f023aaef64ea0a8a6691281c23, type: 3}
       propertyPath: m_AnchoredPosition.y
       value: -137
@@ -5137,6 +5147,11 @@ PrefabInstance:
     - target: {fileID: 1030726462, guid: 7cff39f023aaef64ea0a8a6691281c23, type: 3}
       propertyPath: m_IsActive
       value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 7218716817016611529, guid: 7cff39f023aaef64ea0a8a6691281c23,
+        type: 3}
+      propertyPath: m_Enabled
+      value: 1
       objectReference: {fileID: 0}
     m_RemovedComponents:
     - {fileID: 7218716815927815944, guid: 7cff39f023aaef64ea0a8a6691281c23, type: 3}
