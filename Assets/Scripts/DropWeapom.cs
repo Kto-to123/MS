@@ -13,5 +13,3 @@ public class DropWeapom : Drop
         Destroy(gameObject);
     }
 }
-
-//Позже унаследовать этот клас от дропа

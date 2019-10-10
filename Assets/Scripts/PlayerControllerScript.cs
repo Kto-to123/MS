@@ -47,6 +47,7 @@ public class PlayerControllerScript : MonoBehaviour
             inventoryActiv = !inventoryActiv;
             Cursor.visible = inventoryActiv;
         }
+
         // Проверка нажатий клавиш стрельбы
         if(!inventoryActiv)
         {
@@ -145,7 +146,6 @@ public class PlayerControllerScript : MonoBehaviour
         if (isGrounded())
         {
             rb.AddForce((transform.up * (jumpForce * bfx) + (transform.forward * (jumpForce * bfy)) * -1), ForceMode.VelocityChange);
-            //rb.AddForce(, ForceMode.VelocityChange);
         }
     }
 

@@ -55,11 +55,6 @@ public class Inventory : MonoBehaviour
             AddGraphics();
         }
 
-        //Тестовое заполнение инвентаря
-        //for (int i = 0; i < maxCount; i++)
-        //{
-        //    AddItem(i, WeaponDataManagerScript.instance.GetElementInventory(Random.Range(0, WeaponDataManagerScript.instance.GetInventoryElementCount())), Random.Range(1, 99));
-        //}
         UpdateInventory();
 
         for (int i = 9; i <= 21; i++)
@@ -314,7 +309,7 @@ public class Inventory : MonoBehaviour
         PlayerManager.instance.SetArmor(armor);
     }
 
-    #region UI_Func // Функции для Слотов экипировки
+    #region Функции для Слотов экипировки
 
     public void MainWeaponDragAndDrop() // Функция для слота основного оружия
     {
@@ -438,8 +433,7 @@ public class Inventory : MonoBehaviour
         {
             if (_item != null)
                 AddInventoryItem(cellCurrentID, _item);
-            //AddInventoryItem(int.Parse(es.currentSelectedGameObject.name), currentItem);
-            //mainWeaponSlot = currentItem;
+            
             _item.id = currentItem.id;
             _item.count = currentItem.count;
         }
@@ -455,7 +449,6 @@ public class Inventory : MonoBehaviour
                 _item.count = 128;
             }
 
-            //if (mainWeaponSlot.id != 0)
             _item.itemGameObj.GetComponentInChildren<Text>().text = _item.count.ToString();
         }
 

@@ -11,8 +11,7 @@ public class PlayerManager : MonoBehaviour
 
     void Start()
     {
-        //Weapon.instance.InstantMainWeapon(1);
-        //Weapon.instance.InstantWeapon(1, 51);
+        
     }
 
     public void SetArmor(int _Armor)
