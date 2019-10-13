@@ -21,7 +21,7 @@ public class Inventory : MonoBehaviour
     public ItemInventory shtaniSlot;
     public ItemInventory ObyvSlot;
 
-    public GameObject gameObjShow; // Видемый объект?
+    public GameObject gameObjShow; // Видемый объект
 
     public GameObject InventoryMainObject; // Основной объект инвентаря
     public int maxCount; // Количество ячеек инвентаря
@@ -35,7 +35,7 @@ public class Inventory : MonoBehaviour
     public RectTransform movingObject; // Переменная для перемещения объекта
     public Vector3 offset; // Смещение от курсора
 
-    private void Awake()
+    void Awake()
     {
         if (instance == null)
         {
@@ -48,7 +48,7 @@ public class Inventory : MonoBehaviour
         }
     }
 
-    public void Start()
+    void Start()
     {
         if (items.Count == 0)
         {
@@ -65,7 +65,7 @@ public class Inventory : MonoBehaviour
         TakeItem(23, 50);
     }
 
-    public void Update()
+    void Update()
     {
         if (cellCurrentID != -1) // Если мы удерживаем объект
         {
@@ -84,7 +84,7 @@ public class Inventory : MonoBehaviour
         }
     }
 
-    public void SearchForSameItem(ElementInventory item, int count)
+    void SearchForSameItem(ElementInventory item, int count)
     {
         for (int i = 0; i < maxCount; i++)
         {
@@ -121,7 +121,7 @@ public class Inventory : MonoBehaviour
         }
     }
 
-    public void AddItem(int id, ElementInventory item, int count) // Добавление объекта в инвентарь
+    void AddItem(int id, ElementInventory item, int count) // Добавление объекта в инвентарь
     {
         items[id].id = item.id; // Задаем номер
         items[id].count = count; // Задаем количество
@@ -138,7 +138,7 @@ public class Inventory : MonoBehaviour
         }
     }
 
-    public void AddInventoryItem(int id, ItemInventory invItem)
+    void AddInventoryItem(int id, ItemInventory invItem)
     {
         items[id].id = invItem.id;
         items[id].count = invItem.count;
@@ -155,7 +155,7 @@ public class Inventory : MonoBehaviour
         }
     }
 
-    public void AddGraphics() // Отрисовка инвентаря
+    void AddGraphics() // Отрисовка инвентаря
     {
         for (int i = 0; i < maxCount; i++)
         {
@@ -225,7 +225,7 @@ public class Inventory : MonoBehaviour
         }
     }
 
-    public void SelectObject() //Перемещение объекта
+    void SelectObject() //Перемещение объекта
     {
         if (cellCurrentID == -1) // Если объект еще не взят, берем
         {
@@ -273,14 +273,14 @@ public class Inventory : MonoBehaviour
         }
     }
 
-    public void MoveObject() // Отрисовка перемещаемого объекта
+    void MoveObject() // Отрисовка перемещаемого объекта
     {
         Vector3 pos = Input.mousePosition + offset;
         pos.z = InventoryMainObject.GetComponent<RectTransform>().position.z;
         movingObject.position = pos;// cam.ScreenToWorldPoint(pos);
     }
 
-    public ItemInventory CopyInventoryItem(ItemInventory old) // Копирование содержимоко ячейки в буферную переменную
+    ItemInventory CopyInventoryItem(ItemInventory old) // Копирование содержимоко ячейки в буферную переменную
     {
         ItemInventory New = new ItemInventory();
 

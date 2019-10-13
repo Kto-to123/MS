@@ -22,11 +22,6 @@ public class Weapon : MonoBehaviour
     ElementThrowingWeapons throwingElement;
     //Метательное оружие не имеет своего класа как основное т.к поведение разных типов не сильно отличается.
 
-    void Start()
-    {
-        //Debug.Log(myWeaponData.test);
-    }
-
     private void Awake()
     {
         if (instance == null)
@@ -38,11 +33,6 @@ public class Weapon : MonoBehaviour
             Destroy(gameObject);
             return;
         }
-    }
-
-    void Update()
-    {
-        
     }
 
     public void MainWeaponSetActiv(bool v) // Скрытие основного оружия
