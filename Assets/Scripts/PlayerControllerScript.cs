@@ -11,6 +11,8 @@ public class PlayerControllerScript : MonoBehaviour
     public float normalSpeed = 5f;
     public float ranSpeed = 10f;
     public float jumpForce = 10f;
+    public float jumpBackCooldown = 0.3f;
+    bool jumpBackActiv = true;
 
     public float bfx = 1;
     public float bfy = 2;
@@ -143,10 +145,17 @@ public class PlayerControllerScript : MonoBehaviour
 
     void JumpBack()
     {
-        if (isGrounded())
-        {
-            rb.AddForce((transform.up * (jumpForce * bfx) + (transform.forward * (jumpForce * bfy)) * -1), ForceMode.VelocityChange);
-        }
+        //if (jumpBackActiv)
+        //{
+            jumpBackActiv = false;
+            rb.AddForce((transform.up * (jumpForce * bfx) + (transform.forward * (jumpForce * bfy) * -1)), ForceMode.VelocityChange);
+            Invoke("JumpBackCooldown", jumpBackCooldown);
+        //}
+    }
+
+    void JumpBackCooldown()
+    {
+        jumpBackActiv = true;
     }
 
     bool isGrounded()
