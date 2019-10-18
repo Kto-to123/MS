@@ -5,6 +5,8 @@ using UnityEngine;
 //Контроллер игрока и все связанное с движением
 public class PlayerControllerScript : MonoBehaviour
 {
+    public static PlayerControllerScript instance;
+
     Rigidbody rb;
     CapsuleCollider capsCollider;
     public float moveSpeed = 5f;
@@ -30,7 +32,22 @@ public class PlayerControllerScript : MonoBehaviour
 
     // Управление инвентарем
     bool inventoryActiv = true;
+    // Управление меню прогрессии
+    bool skillUIActiv = false;
     //
+
+    private void Awake()
+    {
+        if (instance == null)
+        {
+            instance = this;
+        }
+        else
+        {
+            Destroy(gameObject);
+            return;
+        }
+    }
 
     void Start()
     {
@@ -41,17 +58,54 @@ public class PlayerControllerScript : MonoBehaviour
         capsCollider = GetComponent<CapsuleCollider>();
     }
 
+    void UIClose()
+    {
+        Cursor.visible = false;
+        inventoryActiv = false;
+        UIManager.instance.ActivateInterfaceInventory(false);
+        skillUIActiv = false;
+        UIManager.instance.ActivateInterfaceSkillProgras(false);
+    }
+
     void Update()
     {
         if (Input.GetKeyDown(KeyCode.Tab))
         {
-            UIManager.instance.ActivateInterfaceInventory();
-            inventoryActiv = !inventoryActiv;
-            Cursor.visible = inventoryActiv;
+            if (!inventoryActiv)
+            {
+                UIClose();
+                inventoryActiv = true;
+                UIManager.instance.ActivateInterfaceInventory(inventoryActiv);
+                Cursor.visible = inventoryActiv;
+            }
+            else
+            {
+                UIClose();
+            }
+        }
+
+        if (Input.GetKeyDown(KeyCode.P))
+        {
+            if (!skillUIActiv)
+            {
+                UIClose();
+                skillUIActiv = true;
+                UIManager.instance.ActivateInterfaceSkillProgras(skillUIActiv);
+                Cursor.visible = skillUIActiv;
+            }
+            else
+            {
+                UIClose();
+            }
+        }
+
+        if (Input.GetKeyDown(KeyCode.Escape))
+        {
+            UIClose();
         }
 
         // Проверка нажатий клавиш стрельбы
-        if(!inventoryActiv)
+        if (!inventoryActiv)
         {
             if (Input.GetButtonDown("Fire1"))
             {
@@ -130,6 +184,12 @@ public class PlayerControllerScript : MonoBehaviour
         direction = new Vector3(dirX, rb.velocity.y, dirZ);
         direction = transform.TransformDirection(direction);
         direction = new Vector3(direction.x, rb.velocity.y, direction.z);
+    }
+
+    public void SetMoveSpeed(float _Speed)
+    {
+        normalSpeed = _Speed;
+        ranSpeed = normalSpeed * 2;
     }
 
     void Squatting(int _CapsCol)

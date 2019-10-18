@@ -9,13 +9,11 @@ public class UIManager : MonoBehaviour
     public static UIManager instance;
 
     public Image ThrowingWeaponIcon;
-    //public GameObject m2;
-    //public GameObject m3;
     public Text amoText;
     public Text armorText;
 
-    public GameObject backGround;
-
+    public GameObject inventoryUI;
+    public GameObject skillPrograsUI;
 
     private bool weaponActive = true;
     private int myAmmunition = 0;
@@ -23,11 +21,11 @@ public class UIManager : MonoBehaviour
     #region Structur
     public bool backGroundActive {
         get {
-            return backGround.activeSelf;
+            return inventoryUI.activeSelf;
         }
 
         set {
-            backGround.SetActive(value); 
+            inventoryUI.SetActive(value); 
         }
     }
     
@@ -50,15 +48,26 @@ public class UIManager : MonoBehaviour
         
     }
 
-    public void ActivateInterfaceInventory()
+    public void ActivateInterfaceSkillProgras(bool active)
     {
-        backGround.SetActive(!backGround.activeSelf);
-        if (backGround.activeSelf)
+        skillPrograsUI.SetActive(active);
+        if (skillPrograsUI.activeSelf)
         {
             Inventory.instance.UpdateInventory();
         }
 
-        Weapon.instance.MainWeaponSetActiv(!backGround.activeSelf);
+        Weapon.instance.MainWeaponSetActiv(!active);
+    }
+
+    public void ActivateInterfaceInventory(bool active)
+    {
+        inventoryUI.SetActive(active);
+        if (inventoryUI.activeSelf)
+        {
+            Inventory.instance.UpdateInventory();
+        }
+
+        Weapon.instance.MainWeaponSetActiv(!active);
     }
 
     public void SetAmmo(int ammo)
