@@ -19,7 +19,7 @@ public class SkillProgress : MonoBehaviour
     public Text moveSpeedliteUIText;
     public Text moveSpeedDarkUIText;
     public Text moveSpeedUIText;
-    public Slider generalIndicatorSlider; // Показывает к какой стороне магии более склонен игрок
+    public Slider generalIndicatorSlider;
     public Text generalIndicatorUIText;
 
     public int lightPoint; // Количество балов светлой магии
