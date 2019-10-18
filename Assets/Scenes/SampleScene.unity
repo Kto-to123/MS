@@ -2602,6 +2602,31 @@ PrefabInstance:
       propertyPath: moveSpeedLite
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 4399700918909899954, guid: 13d39768b5b588640a8c748e5bb488e5,
+        type: 3}
+      propertyPath: m_AnchorMax.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 4399700918909899954, guid: 13d39768b5b588640a8c748e5bb488e5,
+        type: 3}
+      propertyPath: m_AnchorMax.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 4087511600993036580, guid: 13d39768b5b588640a8c748e5bb488e5,
+        type: 3}
+      propertyPath: m_AnchorMax.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 4087511600993036580, guid: 13d39768b5b588640a8c748e5bb488e5,
+        type: 3}
+      propertyPath: m_AnchorMin.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 4087511600993036580, guid: 13d39768b5b588640a8c748e5bb488e5,
+        type: 3}
+      propertyPath: m_AnchorMax.x
+      value: 0
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 13d39768b5b588640a8c748e5bb488e5, type: 3}
 --- !u!1001 &789392799581011906
