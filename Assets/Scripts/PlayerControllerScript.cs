@@ -128,7 +128,7 @@ public class PlayerControllerScript : MonoBehaviour
 
         if (Input.GetKey(KeyCode.X)) // Отскок назад
         {
-            JumpBack();
+            //JumpBack();
         }
 
         if (Input.GetKeyDown(KeyCode.LeftControl))

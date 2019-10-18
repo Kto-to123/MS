@@ -19,8 +19,8 @@ public class SkillProgress : MonoBehaviour
     public Text moveSpeedliteUIText;
     public Text moveSpeedDarkUIText;
     public Text moveSpeedUIText;
-    public Slider progresSlider;
-    public Text sliderText;
+    public Slider generalIndicatorSlider; // Показывает к какой стороне магии более склонен игрок
+    public Text generalIndicatorUIText;
 
     public int lightPoint; // Количество балов светлой магии
     public int darkPoint; // Количество балов темной магии
@@ -56,8 +56,8 @@ public class SkillProgress : MonoBehaviour
         moveSpeedliteUIText.text = moveSpeedLite.ToString();
         moveSpeedDarkUIText.text = moveSpeedDark.ToString();
         moveSpeedUIText.text = "Общая скорость: " + MoveSpeedConversion().ToString();
-        progresSlider.value = generalIndicator;
-        sliderText.text = generalIndicator.ToString();
+        generalIndicatorSlider.value = generalIndicator;
+        generalIndicatorUIText.text = generalIndicator.ToString();
     }
 
     float MoveSpeedConversion()
