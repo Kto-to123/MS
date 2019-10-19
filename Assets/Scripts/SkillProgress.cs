@@ -14,6 +14,7 @@ public class SkillProgress : MonoBehaviour
 {
     public static SkillProgress instance;
 
+    // Гафика
     public Text lightPointUIText;
     public Text darkPointUIText;
     public Text moveSpeedliteUIText;
@@ -21,6 +22,8 @@ public class SkillProgress : MonoBehaviour
     public Text moveSpeedUIText;
     public Slider generalIndicatorSlider;
     public Text generalIndicatorUIText;
+    public Text steelDamageUIText;
+    public Text SteelSpeedUIText;
 
     public int lightPoint; // Количество балов светлой магии
     public int darkPoint; // Количество балов темной магии
@@ -30,6 +33,9 @@ public class SkillProgress : MonoBehaviour
     public float moveSpeed = 0f;
     public float moveSpeedLite = 0f;
     public float moveSpeedDark = 0f;
+
+    public double steelDamage = 1;
+    public double steelSpeed = 1;
 
     private void Awake()
     {
@@ -58,6 +64,8 @@ public class SkillProgress : MonoBehaviour
         moveSpeedUIText.text = "Общая скорость: " + MoveSpeedConversion().ToString();
         generalIndicatorSlider.value = generalIndicator;
         generalIndicatorUIText.text = generalIndicator.ToString();
+        steelDamageUIText.text = steelDamage.ToString();
+        SteelSpeedUIText.text = steelSpeed.ToString();
     }
 
     float MoveSpeedConversion()
@@ -114,6 +122,50 @@ public class SkillProgress : MonoBehaviour
             moveSpeedDark = moveSpeedDark - 1f;
             generalIndicator++;
             MoveSpeedInstans();
+        }
+    }
+
+    public void SteelDamageUp()
+    {
+        if (darkPoint > 0)
+        {
+            darkPoint--;
+            steelDamage = steelDamage + 0.1;
+            generalIndicator--;
+            UpdateUI();
+        }
+    }
+
+    public void SteelDamageDown()
+    {
+        if (steelDamage > 1)
+        {
+            darkPoint++;
+            steelDamage = steelDamage - 0.1;
+            generalIndicator++;
+            UpdateUI();
+        }
+    }
+
+    public void SteelSpeedUp()
+    {
+        if (darkPoint > 0)
+        {
+            darkPoint--;
+            steelSpeed = steelSpeed + 0.1;
+            generalIndicator--;
+            UpdateUI();
+        }
+    }
+
+    public void SteelSpeedDown()
+    {
+        if (steelSpeed > 1)
+        {
+            darkPoint++;
+            steelSpeed = steelSpeed - 0.1;
+            generalIndicator++;
+            UpdateUI();
         }
     }
 }

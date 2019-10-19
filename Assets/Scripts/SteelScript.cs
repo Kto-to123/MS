@@ -5,11 +5,23 @@ using UnityEngine;
 //Мечь. Может использоваться как основное оружие
 public class SteelScript : WeaponScript
 {
-    public int damage = 1;
+    public double damage = 1;
+    public double speedAttack;
+    Animator myAnimator;
+
+    private void Start()
+    {
+        myAnimator = gameObject.GetComponent<Animator>();
+        speedAttack = SkillProgress.instance.steelSpeed;
+        damage = SkillProgress.instance.steelDamage;
+    }
 
     public override void Attack()
     {
-        gameObject.GetComponent<Animator>().SetTrigger("Attack1");
+        damage = SkillProgress.instance.steelDamage;
+        speedAttack = SkillProgress.instance.steelSpeed;
+        myAnimator.SetFloat("SpeedAttacke", (float)speedAttack);
+        myAnimator.SetTrigger("Attack1");
     }
 
     private void OnTriggerEnter(Collider other)

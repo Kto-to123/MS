@@ -4,7 +4,7 @@ using UnityEngine;
 
 public class Enemy : MonoBehaviour
 {
-    public int health;
+    public double health;
     public Renderer EnemyRender;
 
     private void Start()
@@ -12,7 +12,7 @@ public class Enemy : MonoBehaviour
         EnemyRender = GetComponent<Renderer>();
     }
 
-    public void TakeDamage(int damage)
+    public void TakeDamage(double damage)
     {
         health -= damage;
 
