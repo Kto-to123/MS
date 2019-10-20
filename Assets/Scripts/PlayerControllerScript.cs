@@ -14,8 +14,9 @@ public class PlayerControllerScript : MonoBehaviour
     public float ranSpeed = 10f;
     public float jumpForce = 10f;
     public float jumpBackCooldown = 0.3f;
-    bool jumpBackActiv = true;
+    bool jumpBackActiv = true; // Персонаж может прыгруть назад
 
+    // Переменные для настройки прыжка назад
     public float bfx = 1;
     public float bfy = 2;
 
@@ -29,12 +30,6 @@ public class PlayerControllerScript : MonoBehaviour
     private Vector3 direction;
 
     private float distanceToGround;
-
-    // Управление инвентарем
-    bool inventoryActiv = true;
-    // Управление меню прогрессии
-    bool skillUIActiv = false;
-    //
 
     private void Awake()
     {
@@ -58,54 +53,25 @@ public class PlayerControllerScript : MonoBehaviour
         capsCollider = GetComponent<CapsuleCollider>();
     }
 
-    void UIClose()
-    {
-        Cursor.visible = false;
-        inventoryActiv = false;
-        UIManager.instance.ActivateInterfaceInventory(false);
-        skillUIActiv = false;
-        UIManager.instance.ActivateInterfaceSkillProgras(false);
-    }
-
     void Update()
     {
         if (Input.GetKeyDown(KeyCode.Tab))
-        {
-            if (!inventoryActiv)
-            {
-                UIClose();
-                inventoryActiv = true;
-                UIManager.instance.ActivateInterfaceInventory(inventoryActiv);
-                Cursor.visible = inventoryActiv;
-            }
-            else
-            {
-                UIClose();
-            }
+        {            
+            UIManager.instance.SetUIMode(UImode.Inventory);
         }
 
         if (Input.GetKeyDown(KeyCode.P))
         {
-            if (!skillUIActiv)
-            {
-                UIClose();
-                skillUIActiv = true;
-                UIManager.instance.ActivateInterfaceSkillProgras(skillUIActiv);
-                Cursor.visible = skillUIActiv;
-            }
-            else
-            {
-                UIClose();
-            }
+            UIManager.instance.SetUIMode(UImode.Skills);
         }
 
         if (Input.GetKeyDown(KeyCode.Escape))
         {
-            UIClose();
+            UIManager.instance.SetUIMode(UImode.Game);
         }
 
         // Проверка нажатий клавиш стрельбы
-        if (!inventoryActiv)
+        if (UIManager.instance.activUImode == UImode.Game)
         {
             if (Input.GetButtonDown("Fire1"))
             {
