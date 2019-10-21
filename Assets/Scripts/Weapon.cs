@@ -20,7 +20,8 @@ public class Weapon : MonoBehaviour
     public bool throwingWeaponActive = false;
     public int throwingAmmunition = 0;
     ElementThrowingWeapons throwingElement;
-    //Метательное оружие не имеет своего класа как основное т.к поведение разных типов не сильно отличается.
+    // Метательное оружие не имеет своего класа как основное т.к поведение разных 
+    // типов не сильно отличается.
 
     private void Awake()
     {

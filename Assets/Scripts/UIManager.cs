@@ -10,15 +10,22 @@ public class UIManager : MonoBehaviour
 {
     public static UIManager instance;
 
-    public Image ThrowingWeaponIcon;
-    public Text amoText; // Боезапас метательного оружия
-    public Text armorText;
-
+    // Активный режим интерфейса
     public UImode activUImode;
 
-    public GameObject inventoryUI;
-    public GameObject skillPrograsUI;
-    public GameObject GameUI;
+    [SerializeField]
+    Image ThrowingWeaponIcon; // Значек отображающий активное метательное оружие
+    [SerializeField]
+    Text amoText; // Боезапас метательного оружия
+    [SerializeField]
+    Text armorText; // Отрожает количество брони
+
+    [SerializeField]
+    GameObject inventoryUI; // Интерфейс отображаемый при открытии инвентаря
+    [SerializeField]
+    GameObject skillPrograsUI; // Интерфейс отображаемый при открытии меню прокачки
+    [SerializeField]
+    GameObject GameUI; // Игровой интерфейс
 
     private bool weaponActive = true;
     private int myAmmunition = 0;
@@ -65,7 +72,8 @@ public class UIManager : MonoBehaviour
         }
     }
 
-    void UIClose() //Перенести в UImanager
+    // Закрытие не игрового интерфейса
+    void UIClose()
     {
         Cursor.visible = false;
         inventoryUI.SetActive(false);
