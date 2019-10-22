@@ -55,7 +55,7 @@ public class SkillProgress : MonoBehaviour
         UpdateUI();
     }
 
-    void UpdateUI()
+    public void UpdateUI()
     {
         lightPointUIText.text = "Светлая магия " + lightPoint.ToString();
         darkPointUIText.text = "Темная магия " + darkPoint.ToString();
