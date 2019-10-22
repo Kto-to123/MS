@@ -4,6 +4,8 @@ using UnityEngine;
 using UnityEngine.UI;
 using UnityEngine.EventSystems;
 
+// Дерево прокачки содержит открываемые скилы
+// Новые навоки открываются за счет балов магии
 public class SkillTree : MonoBehaviour
 {
     [SerializeField]

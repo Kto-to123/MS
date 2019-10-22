@@ -15,15 +15,25 @@ public class SkillProgress : MonoBehaviour
     public static SkillProgress instance;
 
     // Гафика
-    public Text lightPointUIText;
-    public Text darkPointUIText;
-    public Text moveSpeedliteUIText;
-    public Text moveSpeedDarkUIText;
-    public Text moveSpeedUIText;
-    public Slider generalIndicatorSlider;
-    public Text generalIndicatorUIText;
-    public Text steelDamageUIText;
-    public Text SteelSpeedUIText;
+    [SerializeField]
+    Text lightPointUIText;
+    [SerializeField]
+    Text darkPointUIText;
+    [SerializeField]
+    Text moveSpeedliteUIText;
+    [SerializeField]
+    Text moveSpeedDarkUIText;
+    [SerializeField]
+    Text moveSpeedUIText;
+    [SerializeField]
+    Slider generalIndicatorSlider;
+    [SerializeField]
+    Text generalIndicatorUIText;
+    [SerializeField]
+    Text steelDamageUIText;
+    [SerializeField]
+    Text SteelSpeedUIText;
+    [SerializeField]
 
     public int lightPoint; // Количество балов светлой магии
     public int darkPoint; // Количество балов темной магии
