@@ -28,7 +28,7 @@ public class Pistol : WeaponScript
     {
         Ray ray = new Ray(fierPoint.position, fierPoint.forward * 10f);
         RaycastHit hit;
-        if(Physics.Raycast(ray, out hit))
+        if(Physics.Raycast(ray, out hit, 500f, 1, QueryTriggerInteraction.Ignore))
         {
             Enemy enemy = hit.transform.gameObject.GetComponent<Enemy>();
             if (enemy != null)

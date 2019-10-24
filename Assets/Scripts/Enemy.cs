@@ -5,7 +5,7 @@ using UnityEngine;
 public class Enemy : MonoBehaviour
 {
     public double health;
-    public Renderer EnemyRender;
+    Renderer EnemyRender;
 
     private void Start()
     {
