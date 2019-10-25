@@ -113,18 +113,6 @@ public class Weapon : MonoBehaviour
         UIManager.instance.SetWeapon(throwingElement.ID, throwingAmmunition);
     }
 
-    private void Update()
-    {
-        if (Input.GetKey(KeyCode.F))
-        {
-            TrapSetting();
-        }
-        if (Input.GetKeyUp(KeyCode.F))
-        {
-            TrapIstanse();
-        }
-    }
-
     public void TrapSetting()
     {
         Ray ray = new Ray(cameraT.position, cameraT.forward * 10f);

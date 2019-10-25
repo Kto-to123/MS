@@ -70,6 +70,15 @@ public class PlayerControllerScript : MonoBehaviour
             UIManager.instance.SetUIMode(UImode.Game);
         }
 
+        if (Input.GetKey(KeyCode.F))
+        {
+            Weapon.instance.TrapSetting();
+        }
+        if (Input.GetKeyUp(KeyCode.F))
+        {
+            Weapon.instance.TrapIstanse();
+        }
+
         // Проверка нажатий клавиш стрельбы
         if (UIManager.instance.activUImode == UImode.Game)
         {
