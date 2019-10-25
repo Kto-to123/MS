@@ -24,15 +24,18 @@ public class ArrowScript : MonoBehaviour
 
     private void OnTriggerEnter(Collider other)
     {
-        Enemy enemy = other.GetComponent<Enemy>();
-        if (enemy != null)
-        {
-            enemy.TakeDamage(damage);
-        }
-        if (other.tag != "Player")
+        if (other.tag != "Player" && other.tag != "Trigger")
         {  
             rb.velocity = new Vector3(0, 0, 0);
             rb.useGravity = false;
+
+            Enemy enemy = other.GetComponent<Enemy>();
+            if (enemy != null)
+            {
+                enemy.TakeDamage(damage);
+            }
+
+            damage = 0;
         }
     }
 }
