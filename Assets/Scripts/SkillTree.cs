@@ -8,18 +8,14 @@ using UnityEngine.EventSystems;
 // Новые навоки открываются за счет балов магии
 public class SkillTree : MonoBehaviour
 {
-    [SerializeField]
-    Image[] skillsImage;
+    [SerializeField] Image[] skillsImage;
 
-    [SerializeField]
-    Image[] treeElements;
+    [SerializeField] Image[] treeElements;
 
-    [SerializeField]
-    Button[] litheButtons;
+    [SerializeField] Button[] litheButtons;
     bool[] litheButtonActive;
 
-    [SerializeField]
-    Button[] darckButtons;
+    [SerializeField] Button[] darckButtons;
     bool[] darckButtonActive;
 
     private void Awake()

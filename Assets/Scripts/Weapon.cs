@@ -137,9 +137,12 @@ public class Weapon : MonoBehaviour
 
     public void TrapIstanse()
     {
-        var NewTrap = Instantiate(trap);
-        NewTrap.transform.position = trapGhostInstanse.transform.position;
-        NewTrap.transform.rotation = trapGhostInstanse.transform.rotation;
-        GameObject.Destroy(trapGhostInstanse);
+        if (trapGhostInstanse != null)
+        {
+            var NewTrap = Instantiate(trap);
+            NewTrap.transform.position = trapGhostInstanse.transform.position;
+            NewTrap.transform.rotation = trapGhostInstanse.transform.rotation;
+            Destroy(trapGhostInstanse);
+        }
     }
 }

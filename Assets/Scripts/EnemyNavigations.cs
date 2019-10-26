@@ -21,6 +21,9 @@ public class EnemyNavigations : MonoBehaviour
 
     public void SetDestantion(Transform _transform)
     {
-        myAgent.destination = _transform.position;
+        if (myAgent.isActiveAndEnabled)
+        {
+            myAgent.destination = _transform.position;
+        }
     }
 }

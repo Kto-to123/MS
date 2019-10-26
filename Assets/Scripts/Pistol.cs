@@ -2,10 +2,11 @@
 using System.Collections.Generic;
 using UnityEngine;
 
+// Пистолет. Может использоваться в качестве основного оружия
 public class Pistol : WeaponScript
 {
     public Transform fierPoint;
-    public GameObject Dec;
+    public GameObject Dec; // Дырка от пули
     public int damage = 1;
     public ParticleSystem Partial;
 
@@ -16,6 +17,7 @@ public class Pistol : WeaponScript
 
     public override void Attack()
     {
+        // Если есть патроны, стреляем
         ElementInventory usebl = WeaponDataManagerScript.instance.GetElementInventory(Inventory.instance.mainAmmunitionSlot.id);
         if (usebl.ammoType == AmmoType.bullet && Inventory.instance.mainAmmunitionSlot.count > 0)
         {
@@ -26,15 +28,19 @@ public class Pistol : WeaponScript
 
     void Short()
     {
+        // Пускаем лучь
         Ray ray = new Ray(fierPoint.position, fierPoint.forward * 10f);
         RaycastHit hit;
-        if(Physics.Raycast(ray, out hit, 500f, 1, QueryTriggerInteraction.Ignore))
+        if(Physics.Raycast(ray, out hit, 500f, 13, QueryTriggerInteraction.Ignore))
         {
+            // Если попали во врага, наносим урон
             Enemy enemy = hit.transform.gameObject.GetComponent<Enemy>();
             if (enemy != null)
             {
                 enemy.TakeDamage(damage);
             }
+
+            // Устанавливаем декаль
             GameObject g = Instantiate<GameObject>(Dec);
             g.transform.position = hit.point + hit.normal * 0.01f;
             g.transform.rotation = Quaternion.LookRotation(-hit.normal);

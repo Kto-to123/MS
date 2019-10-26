@@ -14,7 +14,7 @@ public class PlayerControllerScript : MonoBehaviour
     public float ranSpeed = 10f;
     public float jumpForce = 10f;
     public float jumpBackCooldown = 0.3f;
-    bool jumpBackActiv = true; // Персонаж может прыгруть назад
+    bool jumpBackActiv = true; // Показывает что персоонаж не находится в полете после прыжка
 
     // Переменные для настройки прыжка назад
     public float bfx = 1;
@@ -51,6 +51,8 @@ public class PlayerControllerScript : MonoBehaviour
 
         distanceToGround = GetComponent<CapsuleCollider>().bounds.extents.y;
         capsCollider = GetComponent<CapsuleCollider>();
+
+        UIManager.instance.SetUIMode(UImode.Game);
     }
 
     void Update()

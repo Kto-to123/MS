@@ -15,25 +15,15 @@ public class SkillProgress : MonoBehaviour
     public static SkillProgress instance;
 
     // Гафика
-    [SerializeField]
-    Text lightPointUIText;
-    [SerializeField]
-    Text darkPointUIText;
-    [SerializeField]
-    Text moveSpeedliteUIText;
-    [SerializeField]
-    Text moveSpeedDarkUIText;
-    [SerializeField]
-    Text moveSpeedUIText;
-    [SerializeField]
-    Slider generalIndicatorSlider;
-    [SerializeField]
-    Text generalIndicatorUIText;
-    [SerializeField]
-    Text steelDamageUIText;
-    [SerializeField]
-    Text SteelSpeedUIText;
-    [SerializeField]
+    [SerializeField] Text lightPointUIText;
+    [SerializeField] Text darkPointUIText;
+    [SerializeField] Text moveSpeedliteUIText;
+    [SerializeField] Text moveSpeedDarkUIText;
+    [SerializeField] Text moveSpeedUIText;
+    [SerializeField] Slider generalIndicatorSlider;
+    [SerializeField] Text generalIndicatorUIText;
+    [SerializeField] Text steelDamageUIText;
+    [SerializeField] Text SteelSpeedUIText;
 
     public int lightPoint; // Количество балов светлой магии
     public int darkPoint; // Количество балов темной магии
@@ -65,7 +55,8 @@ public class SkillProgress : MonoBehaviour
         UpdateUI();
     }
 
-    public void UpdateUI()
+    // Обновление информации в интерфейсе
+    public void UpdateUI() 
     {
         lightPointUIText.text = "Светлая магия " + lightPoint.ToString();
         darkPointUIText.text = "Темная магия " + darkPoint.ToString();
@@ -78,18 +69,21 @@ public class SkillProgress : MonoBehaviour
         SteelSpeedUIText.text = steelSpeed.ToString();
     }
 
+    // Просчет скорости перемещения с учетом прокачки
     float MoveSpeedConversion()
     {
         moveSpeed = moveSpeedStart + moveSpeedLite + moveSpeedDark;
         return moveSpeed;
     }
 
+    // Установка скорости перемещения
     void MoveSpeedInstans()
     {
-        MoveSpeedConversion();
-        PlayerControllerScript.instance.SetMoveSpeed(moveSpeed);
+        PlayerControllerScript.instance.SetMoveSpeed(MoveSpeedConversion());
         UpdateUI();
     }
+
+    #region Функции кнопок в графическом интерфейсе
 
     public void MoveSpeedUpWhite()
     {
@@ -178,4 +172,6 @@ public class SkillProgress : MonoBehaviour
             UpdateUI();
         }
     }
+
+    #endregion
 }

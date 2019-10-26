@@ -13,19 +13,14 @@ public class UIManager : MonoBehaviour
     // Активный режим интерфейса
     public UImode activUImode;
 
-    [SerializeField]
-    Image ThrowingWeaponIcon; // Значек отображающий активное метательное оружие
-    [SerializeField]
-    Text amoText; // Боезапас метательного оружия
-    [SerializeField]
-    Text armorText; // Отрожает количество брони
+    [SerializeField] Image ThrowingWeaponIcon; // Значек отображающий активное метательное оружие
+    [SerializeField] Text amoText; // Боезапас метательного оружия
+    [SerializeField] Text armorText; // Отрожает количество брони
 
-    [SerializeField]
-    GameObject inventoryUI; // Интерфейс отображаемый при открытии инвентаря
-    [SerializeField]
-    GameObject skillPrograsUI; // Интерфейс отображаемый при открытии меню прокачки
-    [SerializeField]
-    GameObject GameUI; // Игровой интерфейс
+    // Видиы интерфейса
+    [SerializeField] GameObject inventoryUI; // Интерфейс отображаемый при открытии инвентаря
+    [SerializeField] GameObject skillPrograsUI; // Интерфейс отображаемый при открытии меню прокачки
+    [SerializeField] GameObject GameUI; // Игровой интерфейс
 
     private bool weaponActive = true;
     private int myAmmunition = 0;

@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using UnityEngine;
 
+// Отвечает за внешнее взаимодействие с объектами врагов
 public class Enemy : MonoBehaviour
 {
     public double health;
@@ -12,6 +13,7 @@ public class Enemy : MonoBehaviour
         EnemyRender = GetComponent<Renderer>();
     }
 
+    // Получение урона
     public void TakeDamage(double damage)
     {
         health -= damage;
