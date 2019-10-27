@@ -5,12 +5,14 @@ using UnityEngine;
 public class TrapScript : MonoBehaviour
 {
     public int damage = 1;
+    public GameObject Explosion;
 
     private void OnTriggerEnter(Collider other)
     {
         if (other.tag == "Enemy")
         {
-            other.GetComponent<Enemy>().TakeDamage(damage);
+            GameObject g = Instantiate(Explosion);
+            g.transform.position = gameObject.transform.position;
             Destroy(gameObject);
         }
     }

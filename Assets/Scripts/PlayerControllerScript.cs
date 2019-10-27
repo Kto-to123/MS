@@ -27,7 +27,7 @@ public class PlayerControllerScript : MonoBehaviour
 
     Vector3 dirVector;
 
-    public bool myControl = true;
+    public bool castomControlInput = true; 
     [SerializeField] private Vector3 direction;
 
     private float distanceToGround;
@@ -124,7 +124,7 @@ public class PlayerControllerScript : MonoBehaviour
             Jump();
         }
 
-        if (myControl)
+        if (castomControlInput)
         {
             if (Input.GetKey(KeyCode.W))
             {
@@ -170,6 +170,7 @@ public class PlayerControllerScript : MonoBehaviour
         ranSpeed = normalSpeed * 2;
     }
 
+    // Перемещение по лестницам
     public void StairsSetUsing(bool _using)
     {
         stairsUsing = _using;
@@ -183,11 +184,13 @@ public class PlayerControllerScript : MonoBehaviour
         }
     }
 
+    // Приседания
     void Squatting(int _CapsCol)
     {
         capsCollider.height = _CapsCol;
     }
-
+    
+    // Прыжок
     void Jump()
     {
         if (IsGrounded())

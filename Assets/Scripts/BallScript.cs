@@ -9,6 +9,7 @@ public class BallScript : MonoBehaviour
     Rigidbody rb;
     public bool extinction = true; // Должен ли придмет исчезать со временем
     public int damage = 1;
+    [SerializeField] GameObject explosion;
 
     void Start()
     {
@@ -28,7 +29,15 @@ public class BallScript : MonoBehaviour
         Enemy enemy = other.GetComponent<Enemy>();
         if (enemy != null)
         {
-            enemy.TakeDamage(damage);
+            if (explosion != null)
+            {
+                var expl = Instantiate(explosion);
+                expl.transform.position = gameObject.transform.position;
+            }
+            else
+            {
+                enemy.TakeDamage(damage);
+            }
         }
         if (other.tag != "Player")
         {
