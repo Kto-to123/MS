@@ -20,14 +20,14 @@ public class PlayerControllerScript : MonoBehaviour
     public float bfx = 1;
     public float bfy = 2;
 
-    float dirX;
-    float dirY;
-    float dirZ;
+    [SerializeField] float dirX;
+    [SerializeField] float dirY;
+    [SerializeField] float dirZ;
 
     Vector3 dirVector;
 
     public bool myControl = true;
-    private Vector3 direction;
+    [SerializeField] private Vector3 direction;
 
     private float distanceToGround;
 
@@ -117,6 +117,11 @@ public class PlayerControllerScript : MonoBehaviour
         {
             Squatting(2);
         }
+        
+        if (Input.GetKeyDown(KeyCode.Space))
+        {
+            Jump();
+        }
 
         if (myControl)
         {
@@ -145,11 +150,6 @@ public class PlayerControllerScript : MonoBehaviour
             {
                 dirX = 0;
             }
-
-            if (Input.GetKeyDown(KeyCode.Space))
-            {
-                Jump();
-            }
         }
         else
         {
@@ -160,7 +160,7 @@ public class PlayerControllerScript : MonoBehaviour
         // вектор направления движения
         direction = new Vector3(dirX, rb.velocity.y, dirZ);
         direction = transform.TransformDirection(direction);
-        direction = new Vector3(direction.x, rb.velocity.y, direction.z);
+        //direction = new Vector3(direction.x + (rb.velocity.x - moveSpeed), direction.y, direction.z + (rb.velocity.z - moveSpeed));
     }
 
     public void SetMoveSpeed(float _Speed)

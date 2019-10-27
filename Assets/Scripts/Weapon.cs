@@ -2,8 +2,8 @@
 using System.Collections.Generic;
 using UnityEngine;
 
-//Менеджер вооружения, он отвечает за боевую систему.
-//Здесь собранна стрельба и смена оружия
+// Менеджер вооружения, он отвечает за боевую систему.
+// Здесь собранна стрельба и смена оружия
 public class Weapon : MonoBehaviour
 {
     public WeaponData myWeaponData;
@@ -23,8 +23,7 @@ public class Weapon : MonoBehaviour
     ElementThrowingWeapons throwingElement;
     // Метательное оружие не имеет своего класа как основное т.к поведение разных типов не отличается.
 
-    //Ловушки
-    //Разработка системы установки ловушек и копканов
+    // Ловушки и копканы
     public GameObject trapGhost;
     GameObject trapGhostInstanse;
     public GameObject trap;
@@ -113,7 +112,7 @@ public class Weapon : MonoBehaviour
         UIManager.instance.SetWeapon(throwingElement.ID, throwingAmmunition);
     }
 
-    public void TrapSetting()
+    public void TrapSetting() // Отрисовка оброза ловушки перед установкой
     {
         Ray ray = new Ray(cameraT.position, cameraT.forward * 10f);
         RaycastHit hit;
@@ -124,18 +123,16 @@ public class Weapon : MonoBehaviour
                 trapGhostInstanse = Instantiate<GameObject>(trapGhost);
                 trapGhostInstanse.transform.position = hit.point + hit.normal * 0.01f;
                 trapGhostInstanse.transform.rotation = Quaternion.LookRotation(-hit.normal);
-                //trapGhostInstanse.transform.SetParent(hit.transform);
             }
             else
             {
                 trapGhostInstanse.transform.position = hit.point + hit.normal * 0.01f;
                 trapGhostInstanse.transform.rotation = Quaternion.LookRotation(-hit.normal);
-                //trapGhostInstanse.transform.SetParent(hit.transform);
             }
         }
     }
 
-    public void TrapIstanse()
+    public void TrapIstanse() // Установка ловушки
     {
         if (trapGhostInstanse != null)
         {
