@@ -15,6 +15,7 @@ public class PlayerControllerScript : MonoBehaviour
     public float jumpForce = 10f;
     public float jumpBackCooldown = 0.3f;
     bool jumpBackActiv = true; // Показывает что персоонаж не находится в полете после прыжка
+    bool stairsUsing = false; // Использование лестницы
 
     // Переменные для настройки прыжка назад
     public float bfx = 1;
@@ -169,6 +170,19 @@ public class PlayerControllerScript : MonoBehaviour
         ranSpeed = normalSpeed * 2;
     }
 
+    public void StairsSetUsing(bool _using)
+    {
+        stairsUsing = _using;
+        if (_using)
+        {
+            rb.useGravity = false;
+        }
+        else
+        {
+            rb.useGravity = true;
+        }
+    }
+
     void Squatting(int _CapsCol)
     {
         capsCollider.height = _CapsCol;
@@ -176,7 +190,7 @@ public class PlayerControllerScript : MonoBehaviour
 
     void Jump()
     {
-        if (isGrounded())
+        if (IsGrounded())
             rb.AddForce(transform.up * jumpForce, ForceMode.VelocityChange);
     }
 
@@ -195,13 +209,21 @@ public class PlayerControllerScript : MonoBehaviour
         jumpBackActiv = true;
     }
 
-    bool isGrounded()
+    bool IsGrounded()
     {
         return Physics.Raycast(transform.position, -Vector3.up, distanceToGround + 0.1f);
     }
 
     void FixedUpdate()
     {
-        rb.velocity = direction;
+        if (stairsUsing)
+        {
+            var v = new Vector3(direction.z, direction.x, 0);
+            rb.velocity = v;
+        }
+        else
+        {
+            rb.velocity = direction;
+        }
     }
 }
