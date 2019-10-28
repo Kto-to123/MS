@@ -221,7 +221,7 @@ public class PlayerControllerScript : MonoBehaviour
     {
         if (stairsUsing)
         {
-            var v = new Vector3(direction.z, direction.x, 0);
+            var v = new Vector3(dirX, dirZ, 0);
             rb.velocity = v;
         }
         else

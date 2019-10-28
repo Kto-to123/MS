@@ -6,7 +6,7 @@ public class StairsScript : MonoBehaviour
 {
     private void OnTriggerStay(Collider other)
     {
-        if (other.tag == "Player")
+        if (other.CompareTag("Player"))
         {
             if (Input.GetKeyDown(KeyCode.E))
             {
@@ -17,7 +17,7 @@ public class StairsScript : MonoBehaviour
 
     private void OnTriggerExit(Collider other)
     {
-        if (other.tag == "Player")
+        if (other.CompareTag("Player"))
         {
             PlayerControllerScript.instance.StairsSetUsing(false);
         }
