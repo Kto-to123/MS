@@ -16,6 +16,7 @@ public class UIManager : MonoBehaviour
     [SerializeField] Image ThrowingWeaponIcon; // Значек отображающий активное метательное оружие
     [SerializeField] Text amoText; // Боезапас метательного оружия
     [SerializeField] Text armorText; // Отрожает количество брони
+    [SerializeField] Text healthText; // HP
 
     // Видиы интерфейса
     [SerializeField] GameObject inventoryUI; // Интерфейс отображаемый при открытии инвентаря
@@ -127,6 +128,19 @@ public class UIManager : MonoBehaviour
     public void SetDefens(int defens)
     {
         armorText.text = "Защита: " + defens.ToString();
+    }
+
+    public void SetHealth(int _health)
+    {
+        healthText.text = _health.ToString();
+    }
+
+    public void Death()
+    {
+        Cursor.visible = false;
+        inventoryUI.SetActive(false);
+        skillPrograsUI.SetActive(false);
+        GameUI.SetActive(false);
     }
 }
 

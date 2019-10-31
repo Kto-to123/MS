@@ -57,10 +57,11 @@ public class Inventory : MonoBehaviour
 
         UpdateInventory();
 
-        for (int i = 9; i <= 21; i++)
-        {
-            TakeItem(i, 1);
-        }
+        TakeItem(10, 1);
+        TakeItem(13, 1);
+        TakeItem(16, 1);
+        TakeItem(19, 1);
+        TakeItem(21, 1);
         TakeItem(22, 50);
         TakeItem(23, 50);
     }

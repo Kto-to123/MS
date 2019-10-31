@@ -8,10 +8,12 @@ public class PlayerUsing : MonoBehaviour
     private float timeBtwAttack;
     public Transform UsePose;
     public float UseRange;
-    public LayerMask whatIsDrop;
-    public LayerMask whatIsDropWeapon;
-    public LayerMask whatIsDropMainWeapon;
+    LayerMask whatIsDrop;
 
+    private void Start()
+    {
+        whatIsDrop = LayerMask.GetMask("Drop");
+    }
 
     void Update()
     {

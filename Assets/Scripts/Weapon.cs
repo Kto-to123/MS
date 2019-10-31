@@ -23,7 +23,7 @@ public class Weapon : MonoBehaviour
     ElementThrowingWeapons throwingElement;
     // Метательное оружие не имеет своего класа как основное т.к поведение разных типов не отличается.
 
-    // Ловушки и копканы
+    // Ловушки
     public GameObject trapGhost;
     GameObject trapGhostInstanse;
     public GameObject trap;

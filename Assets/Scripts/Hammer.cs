@@ -6,14 +6,16 @@ using UnityEngine;
 public class Hammer : MonoBehaviour
 {
     public Transform Enemy;
+    [SerializeField] int damage;
 
     private void OnTriggerEnter(Collider other)
     {
-        if (other.tag == "Player")
+        if (other.CompareTag("Player"))
         {
             PlayerManager player = other.GetComponent<PlayerManager>();
             if (player != null)
             {
+                player.GetDamage(damage);
                 Vector3 v = new Vector3(player.transform.position.x - Enemy.position.x, 0, player.transform.position.z - Enemy.position.z);
                 player.GetComponent<Rigidbody>().AddForce((v).normalized * 200, ForceMode.Impulse);
             }

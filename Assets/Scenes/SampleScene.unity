@@ -44,7 +44,7 @@ RenderSettings:
 LightmapSettings:
   m_ObjectHideFlags: 0
   serializedVersion: 11
-  m_GIWorkflowMode: 0
+  m_GIWorkflowMode: 1
   m_GISettings:
     serializedVersion: 2
     m_BounceScale: 1
@@ -1922,7 +1922,7 @@ PrefabInstance:
     - target: {fileID: 701413246765085776, guid: fb6905cf17e668243a3cf624f4d9f836,
         type: 3}
       propertyPath: m_RootOrder
-      value: 2
+      value: 3
       objectReference: {fileID: 0}
     - target: {fileID: 701413246765085776, guid: fb6905cf17e668243a3cf624f4d9f836,
         type: 3}
@@ -2828,7 +2828,7 @@ PrefabInstance:
     - target: {fileID: 2166351836163817990, guid: 2678faafc56445645ad16d5bdf32bc75,
         type: 3}
       propertyPath: m_RootOrder
-      value: 3
+      value: 4
       objectReference: {fileID: 0}
     - target: {fileID: 2166351836163817990, guid: 2678faafc56445645ad16d5bdf32bc75,
         type: 3}
@@ -3225,7 +3225,7 @@ PrefabInstance:
     - target: {fileID: 7909470903241995161, guid: c7bad1562a0877142bd9a0bf069e2031,
         type: 3}
       propertyPath: m_RootOrder
-      value: 1
+      value: 2
       objectReference: {fileID: 0}
     - target: {fileID: 7909470903241995161, guid: c7bad1562a0877142bd9a0bf069e2031,
         type: 3}
@@ -3300,7 +3300,7 @@ PrefabInstance:
     - target: {fileID: 4028551082517191626, guid: 13d39768b5b588640a8c748e5bb488e5,
         type: 3}
       propertyPath: m_RootOrder
-      value: 4
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 4028551082517191626, guid: 13d39768b5b588640a8c748e5bb488e5,
         type: 3}
@@ -3326,6 +3326,11 @@ PrefabInstance:
         type: 3}
       propertyPath: myControl
       value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 4028551082517191630, guid: 13d39768b5b588640a8c748e5bb488e5,
+        type: 3}
+      propertyPath: m_Enabled
+      value: 1
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 13d39768b5b588640a8c748e5bb488e5, type: 3}
@@ -3379,7 +3384,7 @@ PrefabInstance:
     - target: {fileID: 789392801187944036, guid: 63510b40fb6a1b54b8c39ffc753754ff,
         type: 3}
       propertyPath: m_RootOrder
-      value: 0
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 789392801187944036, guid: 63510b40fb6a1b54b8c39ffc753754ff,
         type: 3}
