@@ -6,7 +6,7 @@ using UnityEngine;
 public class Hammer : MonoBehaviour
 {
     public Transform Enemy;
-    [SerializeField] int damage;
+    [SerializeField] double damage;
 
     private void OnTriggerEnter(Collider other)
     {

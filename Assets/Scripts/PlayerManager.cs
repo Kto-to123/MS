@@ -7,7 +7,7 @@ public class PlayerManager : MonoBehaviour
 {
     public static PlayerManager instance;
 
-    [SerializeField] int health = 100;
+    [SerializeField] double health = 100;
     [SerializeField] int armor = 0;
     Rigidbody rb;
 
@@ -22,20 +22,20 @@ public class PlayerManager : MonoBehaviour
         UIManager.instance.SetDefens(armor);
     }
 
-    public void GetDamage(int _Damage)
+    public void GetDamage(double _Damage)
     {
-        health -= armor == 0 ? _Damage : _Damage / armor;
-        UIManager.instance.SetHealth(health);
+        health -= armor == 0 ? _Damage : _Damage / (armor / 10);
+        UIManager.instance.SetHealth(((int)health));
 
         if (health <= 0)
             Death();
     }
 
-    public void GetDamage(int _Damage, int armorPenetration)
+    public void GetDamage(double _Damage, int armorPenetration)
     {
         int _brokenArmor = armor - armorPenetration;
         health -= _Damage / _brokenArmor;
-        UIManager.instance.SetHealth(health);
+        UIManager.instance.SetHealth((int)health);
 
         if (health <= 0)
             Death();
