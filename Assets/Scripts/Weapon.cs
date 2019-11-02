@@ -42,7 +42,11 @@ public class Weapon : MonoBehaviour
         }
     }
 
-    public void MainWeaponSetActiv(bool v) // Скрытие основного оружия
+    /// <summary>
+    /// Установка видимости основного оружия
+    /// </summary>
+    /// <param name="v"></param>
+    public void MainWeaponSetActiv(bool v)
     {
         if (mainWeaponInst)
         {
@@ -51,7 +55,10 @@ public class Weapon : MonoBehaviour
         }
     }
 
-    public void MainAttack() // Атака основного оружия
+    /// <summary>
+    /// Атака основного оружия
+    /// </summary>
+    public void MainAttack()
     {
         if (mainWeapon != null && mainElements.activ)
         {
@@ -59,7 +66,10 @@ public class Weapon : MonoBehaviour
         }
     }
 
-    public void ThrowingAttack() // Бросок метательного оружия
+    /// <summary>
+    /// Бросок метательного оружия
+    /// </summary>
+    public void ThrowingAttack()
     {
         if (throwingAmmunition > 0 && throwingWeaponActive)
         {
@@ -69,8 +79,11 @@ public class Weapon : MonoBehaviour
             Inventory.instance.throwingWeaponSlot.count = throwingAmmunition;
         }
     }
-    
-    void DropMainWeapon() // Выбросить основное оружие
+
+    /// <summary>
+    /// Выбросить основное оружие
+    /// </summary>
+    void DropMainWeapon()
     {
         if (mainWeapon != null)
         {
@@ -81,7 +94,11 @@ public class Weapon : MonoBehaviour
         }
     }
 
-    public void InstantMainWeapon(int _id) // Включение основного оружия
+    /// <summary>
+    /// Включение основного оружия
+    /// </summary>
+    /// <param name="_id">ID включаемого оружия</param>
+    public void InstantMainWeapon(int _id)
     {
         DropMainWeapon();
         mainElements = WeaponDataManagerScript.instance.GetElementMainWeapns(_id);
@@ -92,7 +109,10 @@ public class Weapon : MonoBehaviour
         mainWeaponInst = true;
     }
 
-    void DropThrowingWeapon() // Выбросить метательное оружие
+    /// <summary>
+    /// Выбросить метательное оружие
+    /// </summary>
+    void DropThrowingWeapon()
     {
         if (throwingWeaponActive)
         {
@@ -103,7 +123,12 @@ public class Weapon : MonoBehaviour
         }
     }
 
-    public void InstantWeapon(int _id, int _ammunition) // Включение метательного оружия
+    /// <summary>
+    /// Включение метательного оружия
+    /// </summary>
+    /// <param name="_id">ID включаемого оружия</param>
+    /// <param name="_ammunition">Боеприпасы</param>
+    public void InstantWeapon(int _id, int _ammunition)
     {
         //DropThrowingWeapon();
         throwingElement = WeaponDataManagerScript.instance.GetElementThrowingWeapons(_id);
@@ -112,7 +137,10 @@ public class Weapon : MonoBehaviour
         UIManager.instance.SetWeapon(throwingElement.ID, throwingAmmunition);
     }
 
-    public void TrapSetting() // Отрисовка оброза ловушки перед установкой
+    /// <summary>
+    /// Отрисовка оброза ловушки перед установкой
+    /// </summary>
+    public void TrapSetting()
     {
         Ray ray = new Ray(cameraT.position, cameraT.forward * 10f);
         RaycastHit hit;
@@ -132,7 +160,10 @@ public class Weapon : MonoBehaviour
         }
     }
 
-    public void TrapIstanse() // Установка ловушки
+    /// <summary>
+    /// Установка ловушки
+    /// </summary>
+    public void TrapIstanse()
     {
         if (trapGhostInstanse != null)
         {

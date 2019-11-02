@@ -335,97 +335,31 @@ public class Inventory : MonoBehaviour
     public void shlemSlotDragAndDrop() // Функция для слота шлема
     {
         InstallabilityCheck(EquipmanType.Shlem, shlemSlot);
-
-        //Equipment usebl = WeaponDataManagerScript.instance.GetElementInventory(currentItem.id).equipment;
-
-        //if (currentItem.id > 0 && cellCurrentID != -1 && usebl != null)
-        //{
-        //    if (usebl.type == EquipmanType.Shlem)
-        //    {
-        //        DragAndDropWeaponSlot(shlemSlot);
-        //        SetDefens();
-        //    }
-        //}
     }
 
     public void dospehSlotDragAndDrop() // Функция для слота доспехов
     {
         InstallabilityCheck(EquipmanType.Dospeh, dospehSlot);
-
-        //Equipment usebl = WeaponDataManagerScript.instance.GetElementInventory(currentItem.id).equipment;
-
-        //if (currentItem.id > 0 && cellCurrentID != -1 && usebl != null)
-        //{
-        //    if (usebl.type == EquipmanType.Dospeh)
-        //    {
-        //        DragAndDropWeaponSlot(dospehSlot);
-        //        SetDefens();
-        //    }
-        //}
     }
 
     public void perchatkiSlotDragAndDrop() // Функция для слота перчаток
     {
         InstallabilityCheck(EquipmanType.Perchatki, perchatkiSlot);
-
-        //Equipment usebl = WeaponDataManagerScript.instance.GetElementInventory(currentItem.id).equipment;
-
-        //if (currentItem.id > 0 && cellCurrentID != -1 && usebl != null)
-        //{
-        //    if (usebl.type == EquipmanType.Perchatki)
-        //    {
-        //        DragAndDropWeaponSlot(perchatkiSlot);
-        //        SetDefens();
-        //    }
-        //}
     }
 
     public void poyasSlotDragAndDrop() // Функция для слота пояса
     {
         InstallabilityCheck(EquipmanType.Poyas, poyasSlot);
-
-        //Equipment usebl = WeaponDataManagerScript.instance.GetElementInventory(currentItem.id).equipment;
-
-        //if (currentItem.id > 0 && cellCurrentID != -1 && usebl != null)
-        //{
-        //    if (usebl.type == EquipmanType.Poyas)
-        //    {
-        //        DragAndDropWeaponSlot(poyasSlot);
-        //        SetDefens();
-        //    }
-        //}
     }
 
     public void shtaniSlotDragAndDrop() // Функция для слота штанов
     {
         InstallabilityCheck(EquipmanType.Shtani, shtaniSlot);
-
-        //Equipment usebl = WeaponDataManagerScript.instance.GetElementInventory(currentItem.id).equipment;
-
-        //if (currentItem.id > 0 && cellCurrentID != -1 && usebl != null)
-        //{
-        //    if (usebl.type == EquipmanType.Shtani)
-        //    {
-        //        DragAndDropWeaponSlot(shtaniSlot);
-        //        SetDefens();
-        //    }
-        //}
     }
 
     public void ObyvSlotDragAndDrop() // Функция для слота обуви
     {
         InstallabilityCheck(EquipmanType.Obyv, ObyvSlot);
-
-        //Equipment usebl = WeaponDataManagerScript.instance.GetElementInventory(currentItem.id).equipment;
-
-        //if (currentItem.id > 0 && cellCurrentID != -1 && usebl != null)
-        //{
-        //    if (usebl.type == EquipmanType.Obyv)
-        //    {
-        //        DragAndDropWeaponSlot(ObyvSlot);
-        //        SetDefens();
-        //    }
-        //}
     }
 
     public void MainAmmoSlotDragAndDrop() // Функция для слота боеприпасов
