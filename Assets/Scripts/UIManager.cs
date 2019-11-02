@@ -17,6 +17,7 @@ public class UIManager : MonoBehaviour
     [SerializeField] Text amoText; // Боезапас метательного оружия
     [SerializeField] Text armorText; // Отрожает количество брони
     [SerializeField] Text healthText; // HP
+    [SerializeField] Slider healthSlider;
 
     // Видиы интерфейса
     [SerializeField] GameObject inventoryUI; // Интерфейс отображаемый при открытии инвентаря
@@ -50,6 +51,11 @@ public class UIManager : MonoBehaviour
         }
     }
     #endregion
+
+    private void Start()
+    {
+        healthSlider.value = 100;
+    }
 
     // Установка режима UI
     public void SetUIMode(UImode mode)
@@ -133,6 +139,7 @@ public class UIManager : MonoBehaviour
     public void SetHealth(int _health)
     {
         healthText.text = _health.ToString();
+        healthSlider.value = _health;
     }
 
     public void Death()
