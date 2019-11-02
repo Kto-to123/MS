@@ -334,86 +334,98 @@ public class Inventory : MonoBehaviour
 
     public void shlemSlotDragAndDrop() // Функция для слота шлема
     {
-        Equipment usebl = WeaponDataManagerScript.instance.GetElementInventory(currentItem.id).equipment;
+        InstallabilityCheck(EquipmanType.Shlem, shlemSlot);
 
-        if (currentItem.id > 0 && cellCurrentID != -1 && usebl != null)
-        {
-            if (usebl.type == EquipmanType.Shlem)
-            {
-                DragAndDropWeaponSlot(shlemSlot);
-                SetDefens();
-            }
-        }
+        //Equipment usebl = WeaponDataManagerScript.instance.GetElementInventory(currentItem.id).equipment;
+
+        //if (currentItem.id > 0 && cellCurrentID != -1 && usebl != null)
+        //{
+        //    if (usebl.type == EquipmanType.Shlem)
+        //    {
+        //        DragAndDropWeaponSlot(shlemSlot);
+        //        SetDefens();
+        //    }
+        //}
     }
 
     public void dospehSlotDragAndDrop() // Функция для слота доспехов
     {
-        Equipment usebl = WeaponDataManagerScript.instance.GetElementInventory(currentItem.id).equipment;
+        InstallabilityCheck(EquipmanType.Dospeh, dospehSlot);
 
-        if (currentItem.id > 0 && cellCurrentID != -1 && usebl != null)
-        {
-            if (usebl.type == EquipmanType.Dospeh)
-            {
-                DragAndDropWeaponSlot(dospehSlot);
-                SetDefens();
-            }
-        }
+        //Equipment usebl = WeaponDataManagerScript.instance.GetElementInventory(currentItem.id).equipment;
+
+        //if (currentItem.id > 0 && cellCurrentID != -1 && usebl != null)
+        //{
+        //    if (usebl.type == EquipmanType.Dospeh)
+        //    {
+        //        DragAndDropWeaponSlot(dospehSlot);
+        //        SetDefens();
+        //    }
+        //}
     }
 
     public void perchatkiSlotDragAndDrop() // Функция для слота перчаток
     {
-        Equipment usebl = WeaponDataManagerScript.instance.GetElementInventory(currentItem.id).equipment;
+        InstallabilityCheck(EquipmanType.Perchatki, perchatkiSlot);
 
-        if (currentItem.id > 0 && cellCurrentID != -1 && usebl != null)
-        {
-            if (usebl.type == EquipmanType.Perchatki)
-            {
-                DragAndDropWeaponSlot(perchatkiSlot);
-                SetDefens();
-            }
-        }
+        //Equipment usebl = WeaponDataManagerScript.instance.GetElementInventory(currentItem.id).equipment;
+
+        //if (currentItem.id > 0 && cellCurrentID != -1 && usebl != null)
+        //{
+        //    if (usebl.type == EquipmanType.Perchatki)
+        //    {
+        //        DragAndDropWeaponSlot(perchatkiSlot);
+        //        SetDefens();
+        //    }
+        //}
     }
 
     public void poyasSlotDragAndDrop() // Функция для слота пояса
     {
-        Equipment usebl = WeaponDataManagerScript.instance.GetElementInventory(currentItem.id).equipment;
+        InstallabilityCheck(EquipmanType.Poyas, poyasSlot);
 
-        if (currentItem.id > 0 && cellCurrentID != -1 && usebl != null)
-        {
-            if (usebl.type == EquipmanType.Poyas)
-            {
-                DragAndDropWeaponSlot(poyasSlot);
-                SetDefens();
-            }
-        }
+        //Equipment usebl = WeaponDataManagerScript.instance.GetElementInventory(currentItem.id).equipment;
+
+        //if (currentItem.id > 0 && cellCurrentID != -1 && usebl != null)
+        //{
+        //    if (usebl.type == EquipmanType.Poyas)
+        //    {
+        //        DragAndDropWeaponSlot(poyasSlot);
+        //        SetDefens();
+        //    }
+        //}
     }
 
     public void shtaniSlotDragAndDrop() // Функция для слота штанов
     {
-        Equipment usebl = WeaponDataManagerScript.instance.GetElementInventory(currentItem.id).equipment;
+        InstallabilityCheck(EquipmanType.Shtani, shtaniSlot);
 
-        if (currentItem.id > 0 && cellCurrentID != -1 && usebl != null)
-        {
-            if (usebl.type == EquipmanType.Shtani)
-            {
-                DragAndDropWeaponSlot(shtaniSlot);
-                SetDefens();
-            }
-        }
+        //Equipment usebl = WeaponDataManagerScript.instance.GetElementInventory(currentItem.id).equipment;
+
+        //if (currentItem.id > 0 && cellCurrentID != -1 && usebl != null)
+        //{
+        //    if (usebl.type == EquipmanType.Shtani)
+        //    {
+        //        DragAndDropWeaponSlot(shtaniSlot);
+        //        SetDefens();
+        //    }
+        //}
     }
 
     public void ObyvSlotDragAndDrop() // Функция для слота обуви
     {
-        Equipment usebl = WeaponDataManagerScript.instance.GetElementInventory(currentItem.id).equipment;
+        InstallabilityCheck(EquipmanType.Obyv, ObyvSlot);
 
-        if (currentItem.id > 0 && cellCurrentID != -1 && usebl != null)
-        {
-            if (usebl.type == EquipmanType.Obyv)
-            {
-                DragAndDropWeaponSlot(ObyvSlot);
-                SetDefens();
-            }
-        }
+        //Equipment usebl = WeaponDataManagerScript.instance.GetElementInventory(currentItem.id).equipment;
+
+        //if (currentItem.id > 0 && cellCurrentID != -1 && usebl != null)
+        //{
+        //    if (usebl.type == EquipmanType.Obyv)
+        //    {
+        //        DragAndDropWeaponSlot(ObyvSlot);
+        //        SetDefens();
+        //    }
+        //}
     }
 
     public void MainAmmoSlotDragAndDrop() // Функция для слота боеприпасов
@@ -427,6 +439,20 @@ public class Inventory : MonoBehaviour
     }
 
     #endregion
+
+    void InstallabilityCheck(EquipmanType _EquipmanType, ItemInventory _slot)
+    {
+        Equipment usebl = WeaponDataManagerScript.instance.GetElementInventory(currentItem.id).equipment;
+
+        if (currentItem.id > 0 && cellCurrentID != -1 && usebl != null)
+        {
+            if (usebl.type == _EquipmanType)
+            {
+                DragAndDropWeaponSlot(_slot);
+                SetDefens();
+            }
+        }
+    }
 
     void DragAndDropWeaponSlot(ItemInventory _item) // Перетаскивание экипировки в слот
     {

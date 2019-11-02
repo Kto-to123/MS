@@ -6,7 +6,7 @@ using UnityEngine.AI;
 public class EnemyNavigations : MonoBehaviour
 {
     NavMeshAgent myAgent;
-    public GameObject player;
+    GameObject player;
 
     void Start()
     {
