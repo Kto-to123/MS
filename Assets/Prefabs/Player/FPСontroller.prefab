@@ -3696,7 +3696,7 @@ GameObject:
   - component: {fileID: 4028551082517191618}
   - component: {fileID: 4028551082517191637}
   m_Layer: 13
-  m_Name: "FP\u0421ontroller 2"
+  m_Name: "FP\u0421ontroller"
   m_TagString: Player
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -3742,7 +3742,7 @@ MeshRenderer:
   m_RenderingLayerMask: 1
   m_RendererPriority: 0
   m_Materials:
-  - {fileID: 2100000, guid: 4ec50f248d6bc3847bba70dda346583d, type: 2}
+  - {fileID: 2100000, guid: 2292b196fa436e04e8dfef669c844ec9, type: 2}
   m_StaticBatchInfo:
     firstSubMesh: 0
     subMeshCount: 0
