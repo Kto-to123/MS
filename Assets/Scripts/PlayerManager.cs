@@ -6,14 +6,58 @@ using UnityEngine;
 public class PlayerManager : MonoBehaviour
 {
     public static PlayerManager instance;
+    Weapon weaponManager;
 
     [SerializeField] double health = 100;
     [SerializeField] int armor = 0;
+    [SerializeField] Transform bowPoint;
+    [SerializeField] Transform faerPoint;
     Rigidbody rb;
 
     void Start()
     {
         rb = GetComponent<Rigidbody>();
+        weaponManager = GetComponent<Weapon>();
+    }
+
+    public void AttackMainWeapon()
+    {
+        weaponManager.MainAttack();
+    }
+
+    public void ThrowingAttack()
+    {
+        weaponManager.ThrowingAttack();
+    }
+
+    public void TrapSetting()
+    {
+        weaponManager.TrapSetting();
+    }
+
+    public void TrapIstanse()
+    {
+        weaponManager.TrapIstanse();
+    }
+
+    public void InstantMainWeapon(int id)
+    {
+        weaponManager.InstantMainWeapon(id);
+    }
+
+    public void DropMainWeapon()
+    {
+        weaponManager.DropMainWeapon();
+    }
+
+    public void InstantWeapon(int id, int ammo)
+    {
+        weaponManager.InstantWeapon(id, ammo);
+    }
+
+    public void DropThrowingWeapon()
+    {
+        weaponManager.DropThrowingWeapon();
     }
 
     /// <summary>

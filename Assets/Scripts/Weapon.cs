@@ -4,12 +4,11 @@ using UnityEngine;
 
 // Менеджер вооружения, он отвечает за боевую систему.
 // Здесь собранна стрельба и смена оружия
-public class Weapon : MonoBehaviour
+public class Weapon : WeaponManager
 {
     public WeaponData myWeaponData;
-    public static Weapon instance;
 
-    [SerializeField] Transform cameraT;
+    Transform cameraT;
 
     // Основное оружие
     bool mainWeaponInst = false;
@@ -31,15 +30,7 @@ public class Weapon : MonoBehaviour
 
     private void Awake()
     {
-        if (instance == null)
-        {
-            instance = this;
-        }
-        else
-        {
-            Destroy(gameObject);
-            return;
-        }
+        cameraT = GetComponentInChildren<Camera>().transform;
     }
 
     /// <summary>

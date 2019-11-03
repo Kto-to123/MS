@@ -75,11 +75,11 @@ public class PlayerControllerScript : MonoBehaviour
 
         if (Input.GetKey(KeyCode.F))
         {
-            Weapon.instance.TrapSetting();
+            PlayerManager.instance.TrapSetting();
         }
         if (Input.GetKeyUp(KeyCode.F))
         {
-            Weapon.instance.TrapIstanse();
+            PlayerManager.instance.TrapIstanse();
         }
 
         // Проверка нажатий клавиш стрельбы
@@ -87,11 +87,11 @@ public class PlayerControllerScript : MonoBehaviour
         {
             if (Input.GetButtonDown("Fire1"))
             {
-                Weapon.instance.ThrowingAttack();
+                PlayerManager.instance.ThrowingAttack();
             }
             if (Input.GetKeyDown(KeyCode.Mouse0))
             {
-                Weapon.instance.MainAttack();
+                PlayerManager.instance.AttackMainWeapon();
             }
         }
 

@@ -396,11 +396,11 @@ public class Inventory : MonoBehaviour
         if (currentItem.id > 0 && usebl > 0 && cellCurrentID != -1)
         {
             DragAndDropWeaponSlot(mainWeaponSlot);
-            Weapon.instance.InstantMainWeapon(usebl);
+            PlayerManager.instance.InstantMainWeapon(usebl);
         }
         else if (mainWeaponSlot.id != 0 && cellCurrentID == -1) // Снять снаряжение
         {
-            Weapon.instance.DropMainWeapon();
+            PlayerManager.instance.DropMainWeapon();
             TakeItem(mainWeaponSlot.id, mainWeaponSlot.count);
             mainWeaponSlot.itemGameObj.GetComponentInChildren<Text>().text = "";
             mainWeaponSlot.id = 0;
@@ -417,11 +417,11 @@ public class Inventory : MonoBehaviour
         if (currentItem.id > 0 && usebl > 0 && cellCurrentID != -1)
         {
             DragAndDropWeaponSlot(throwingWeaponSlot);
-            Weapon.instance.InstantWeapon(usebl, throwingWeaponSlot.count);
+            PlayerManager.instance.InstantWeapon(usebl, throwingWeaponSlot.count);
         }
         else if (throwingWeaponSlot.id != 0 && cellCurrentID == -1) // Снять снаряжение
         {
-            Weapon.instance.DropThrowingWeapon();
+            PlayerManager.instance.DropThrowingWeapon();
             TakeItem(throwingWeaponSlot.id, throwingWeaponSlot.count);
             throwingWeaponSlot.itemGameObj.GetComponentInChildren<Text>().text = "";
             throwingWeaponSlot.id = 0;
