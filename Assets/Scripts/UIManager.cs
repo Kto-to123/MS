@@ -77,6 +77,7 @@ public class UIManager : MonoBehaviour
     // Закрытие не игрового интерфейса
     void UIClose()
     {
+        Cursor.lockState = CursorLockMode.Locked;
         Cursor.visible = false;
         inventoryUI.SetActive(false);
         skillPrograsUI.SetActive(false);
@@ -90,6 +91,7 @@ public class UIManager : MonoBehaviour
         if (!inventoryUI.activeSelf)
         {
             UIClose();
+            Cursor.lockState = CursorLockMode.None;
             Cursor.visible = true;
             inventoryUI.SetActive(true);
             Inventory.instance.UpdateInventory();
@@ -107,6 +109,7 @@ public class UIManager : MonoBehaviour
         if (!skillPrograsUI.activeSelf)
         {
             UIClose();
+            Cursor.lockState = CursorLockMode.None;
             Cursor.visible = true;
             skillPrograsUI.SetActive(true);
             activUImode = UImode.Skills;

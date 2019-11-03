@@ -387,7 +387,6 @@ public class Inventory : MonoBehaviour
     }
 
     #region Функции для Слотов экипировки
-
     /// <summary>
     /// Функция для слота основного оружия
     /// </summary>
@@ -474,8 +473,8 @@ public class Inventory : MonoBehaviour
             DragAndDropWeaponSlot(mainAmmunitionSlot);
         }
     }
-
     #endregion
+
     /// <summary>
     /// Проверка возможности установить в слот выбранное снаряжение
     /// </summary>
