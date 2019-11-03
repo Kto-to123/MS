@@ -3,20 +3,28 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.Serialization;
 
-//Клас отвечает за хранение информации о снаряжении и выдает данные по ID
+/// <summary>
+/// Клас отвечает за хранение информации о снаряжении и выдает данные по ID
+/// </summary>
 public class WeaponDataManagerScript : MonoBehaviour
 {
     public static WeaponDataManagerScript instance;
 
-    // Список основного оружия
+    /// <summary>
+    /// Список основного оружия
+    /// </summary>
     [SerializeField]
     List<ElementMainWeapns> MainElements = new List<ElementMainWeapns>();
 
-    //Список метательного оружия
+    /// <summary>
+    /// Список метательного оружия
+    /// </summary>
     [SerializeField]
     List<ElementThrowingWeapons> ThrowingElements = new List<ElementThrowingWeapons>();
 
-    //Список элементов инвентаря
+    /// <summary>
+    /// Список элементов инвентаря
+    /// </summary>
     [SerializeField]
     public List<ElementInventory> InventoryElements = new List<ElementInventory>();
 
@@ -37,46 +45,90 @@ public class WeaponDataManagerScript : MonoBehaviour
         }
     }
 
+    /// <summary>
+    /// Получить модель основного оружия
+    /// </summary>
+    /// <param name="_ID"></param>
+    /// <returns></returns>
     public GameObject GetMainWeapon(int _ID)
     {
         return MainElements[_ID].mainPrefab;
     }
 
+    /// <summary>
+    /// Получить подбираемую модель основного оружия
+    /// </summary>
+    /// <param name="_ID"></param>
+    /// <returns></returns>
     public GameObject GetMainDropPrefab(int _ID)
     {
         return MainElements[_ID].DropPrefab;
     }
 
+    /// <summary>
+    /// Получить основное оружие
+    /// </summary>
+    /// <param name="_ID"></param>
+    /// <returns></returns>
     public ElementMainWeapns GetElementMainWeapns(int _ID)
     {
         return MainElements[_ID];
     }
 
+    /// <summary>
+    /// Получить модель снаряда метательного оружия
+    /// </summary>
+    /// <param name="_ID"></param>
+    /// <returns></returns>
     public GameObject GetThrowingWeapon(int _ID)
     {
         return ThrowingElements[_ID].bullet;
     }
 
+    /// <summary>
+    /// Получить подбираемую модель метательного оружия
+    /// </summary>
+    /// <param name="_ID"></param>
+    /// <returns></returns>
     public GameObject GetThrowingDropPrefab(int _ID)
     {
         return ThrowingElements[_ID].WeaponModel;
     }
 
+    /// <summary>
+    /// Получить метательное оружие
+    /// </summary>
+    /// <param name="_ID"></param>
+    /// <returns></returns>
     public ElementThrowingWeapons GetElementThrowingWeapons(int _ID)
     {
         return ThrowingElements[_ID];
     }
 
+    /// <summary>
+    /// Получить изображение элемента
+    /// </summary>
+    /// <param name="_ID"></param>
+    /// <returns></returns>
     public Sprite GetThrowingImg(int _ID)
     {
         return InventoryElements[ThrowingElements[_ID].inventoryID].img;
     }
 
+    /// <summary>
+    /// Получить определенный элемент инвентаря
+    /// </summary>
+    /// <param name="_ID"></param>
+    /// <returns></returns>
     public ElementInventory GetElementInventory(int _ID)
     {
         return InventoryElements[_ID];
     }
 
+    /// <summary>
+    /// Получить количество элементов инвентаря
+    /// </summary>
+    /// <returns></returns>
     public int GetInventoryElementCount()
     {
         return InventoryElements.Count;
@@ -96,7 +148,9 @@ public class WeaponDataManagerScript : MonoBehaviour
     }
 }
 
-// Список основного оружия
+/// <summary>
+/// Список основного оружия
+/// </summary>
 [System.Serializable]
 public struct ElementMainWeapns
 {
@@ -110,7 +164,9 @@ public struct ElementMainWeapns
     public Transform fierPoint;
 }
 
-// Список метательного оружия
+/// <summary>
+/// Список метательного оружия
+/// </summary>
 [System.Serializable]
 public struct ElementThrowingWeapons
 {
@@ -121,16 +177,36 @@ public struct ElementThrowingWeapons
     public GameObject WeaponModel;
 }
 
-// Список элементов инвентаря
+/// <summary>
+/// Список элементов инвентаря
+/// </summary>
 [System.Serializable]
 public class ElementInventory
 {
-    public int id; // Номер объекта
-    public string name; // Имя объекта
-    public Sprite img; // Изображение объекта
-    public int mainWeapon; // Использование элемента как основное оружие
-    public int throwingWeapon; // Использование элемента как метательное оружие
-    public AmmoType ammoType; // Использование в качестве боеприпаса
+    /// <summary>
+    /// Номер объекта
+    /// </summary>
+    public int id;
+    /// <summary>
+    /// Имя объекта
+    /// </summary>
+    public string name;
+    /// <summary>
+    /// Изображение объекта
+    /// </summary>
+    public Sprite img;
+    /// <summary>
+    /// Использование элемента как основное оружие
+    /// </summary>
+    public int mainWeapon;
+    /// <summary>
+    /// Использование элемента как метательное оружие
+    /// </summary>
+    public int throwingWeapon;
+    /// <summary>
+    /// Использование в качестве боеприпаса
+    /// </summary>
+    public AmmoType ammoType;
     //public bool stacked; // Можно ли складывать больше одной ячейки в инвентарь
     //public bool equipmentUsebl;
     public Equipment equipment;

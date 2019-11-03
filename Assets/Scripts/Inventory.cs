@@ -164,7 +164,7 @@ public class Inventory : MonoBehaviour
     }
 
     /// <summary>
-    /// Добавление ячейки
+    /// Добавление ячейки с элементом
     /// </summary>
     /// <param name="id"></param>
     /// <param name="item"></param>
@@ -187,7 +187,7 @@ public class Inventory : MonoBehaviour
     }
 
     /// <summary>
-    /// Забыл что это за функция, но она нужна!
+    /// Добавление ячейки с элементом
     /// </summary>
     /// <param name="id"></param>
     /// <param name="invItem"></param>

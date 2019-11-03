@@ -5944,6 +5944,11 @@ PrefabInstance:
       propertyPath: es
       value: 
       objectReference: {fileID: 762878582}
+    - target: {fileID: 4028551083694364162, guid: 13d39768b5b588640a8c748e5bb488e5,
+        type: 3}
+      propertyPath: maxCount
+      value: 30
+      objectReference: {fileID: 0}
     - target: {fileID: 4028551082517191630, guid: 13d39768b5b588640a8c748e5bb488e5,
         type: 3}
       propertyPath: myControl

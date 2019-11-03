@@ -55,7 +55,9 @@ public class SkillProgress : MonoBehaviour
         UpdateUI();
     }
 
-    // Обновление информации в интерфейсе
+    /// <summary>
+    /// Обновить информацию в интерфейсе
+    /// </summary>
     public void UpdateUI() 
     {
         lightPointUIText.text = "Светлая магия " + lightPoint.ToString();
@@ -69,14 +71,19 @@ public class SkillProgress : MonoBehaviour
         SteelSpeedUIText.text = steelSpeed.ToString();
     }
 
-    // Просчет скорости перемещения с учетом прокачки
+    /// <summary>
+    /// Просчет скорости перемещения с учетом прокачки
+    /// </summary>
+    /// <returns></returns>
     float MoveSpeedConversion()
     {
         moveSpeed = moveSpeedStart + moveSpeedLite + moveSpeedDark;
         return moveSpeed;
     }
 
-    // Установка скорости перемещения
+    /// <summary>
+    /// Установка скорости перемещения
+    /// </summary>
     void MoveSpeedInstans()
     {
         PlayerControllerScript.instance.SetMoveSpeed(MoveSpeedConversion());

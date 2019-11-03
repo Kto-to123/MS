@@ -16,12 +16,20 @@ public class PlayerManager : MonoBehaviour
         rb = GetComponent<Rigidbody>();
     }
 
+    /// <summary>
+    /// Установить значение брони
+    /// </summary>
+    /// <param name="_Armor"></param>
     public void SetArmor(int _Armor)
     {
         armor = _Armor;
         UIManager.instance.SetDefens(armor);
     }
 
+    /// <summary>
+    /// Получить урон, бронепробитие = 0
+    /// </summary>
+    /// <param name="_Damage"></param>
     public void GetDamage(double _Damage)
     {
         health -= armor <= 10 ? _Damage : _Damage / (armor / 10);
@@ -31,6 +39,11 @@ public class PlayerManager : MonoBehaviour
             Death();
     }
 
+    /// <summary>
+    /// Получить урон с бронипробитием
+    /// </summary>
+    /// <param name="_Damage"></param>
+    /// <param name="armorPenetration"></param>
     public void GetDamage(double _Damage, int armorPenetration)
     {
         int _brokenArmor = armor - armorPenetration;
@@ -41,6 +54,9 @@ public class PlayerManager : MonoBehaviour
             Death();
     }
 
+    /// <summary>
+    /// Смерть
+    /// </summary>
     void Death()
     {
         gameObject.tag = "Untagged";

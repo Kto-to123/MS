@@ -13,7 +13,10 @@ public class Enemy : MonoBehaviour
         EnemyRender = GetComponent<Renderer>();
     }
 
-    // Получение урона
+    /// <summary>
+    /// Получение урона
+    /// </summary>
+    /// <param name="damage"></param>
     public void TakeDamage(double damage)
     {
         health -= damage;
