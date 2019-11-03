@@ -8,7 +8,10 @@ public class Inventory : MonoBehaviour
 {
     public static Inventory instance;
 
-    public List<ItemInventory> items = new List<ItemInventory>(); // Список элементов инвентаря
+    /// <summary>
+    /// Список элементов инвентаря
+    /// </summary>
+    public List<ItemInventory> items = new List<ItemInventory>();
 
     // Слоты экипировки
     public ItemInventory mainWeaponSlot;
@@ -21,19 +24,45 @@ public class Inventory : MonoBehaviour
     public ItemInventory shtaniSlot;
     public ItemInventory ObyvSlot;
 
-    public GameObject gameObjShow; // Видемый объект
+    /// <summary>
+    /// Видемый объект
+    /// </summary>
+    [SerializeField] GameObject gameObjShow;
 
-    public GameObject InventoryMainObject; // Основной объект инвентаря
-    public int maxCount; // Количество ячеек инвентаря
+    /// <summary>
+    /// Основной объект инвентаря
+    /// </summary>
+    [SerializeField] GameObject InventoryMainObject;
 
-    public Camera cam; // Камера
-    public EventSystem es; // Управление графическим интерфейсом
+    /// <summary>
+    /// Количество ячеек инвентаря
+    /// </summary>
+    [SerializeField] int maxCount;
 
-    public int cellCurrentID = -1; // Ячейка перемещаемого предмета
-    public ItemInventory currentItem; // перемещаемый предмет
+    /// <summary>
+    /// Управление графическим интерфейсом
+    /// </summary>
+    EventSystem es;
 
-    public RectTransform movingObject; // Переменная для перемещения объекта
-    public Vector3 offset; // Смещение от курсора
+    /// <summary>
+    /// Ячейка перемещаемого предмета
+    /// </summary>
+    int cellCurrentID = -1;
+
+    /// <summary>
+    /// перемещаемый предмет
+    /// </summary>
+    public ItemInventory currentItem;
+
+    /// <summary>
+    /// Переменная для перемещения объекта
+    /// </summary>
+    public RectTransform movingObject;
+
+    /// <summary>
+    /// Смещение от курсора
+    /// </summary>
+    public Vector3 offset;
 
     void Awake()
     {
@@ -46,6 +75,8 @@ public class Inventory : MonoBehaviour
             Destroy(gameObject);
             return;
         }
+
+        es = FindObjectOfType<EventSystem>();
     }
 
     void Start()
@@ -74,7 +105,12 @@ public class Inventory : MonoBehaviour
         }
     }
 
-    public void TakeItem(int id, int count) // Поднять объект
+    /// <summary>
+    /// Добавить объект в инвентарь
+    /// </summary>
+    /// <param name="id">ID Добавляемого объекта</param>
+    /// <param name="count">Количество объектов</param>
+    public void TakeItem(int id, int count) 
     {
         ElementInventory qitem = WeaponDataManagerScript.instance.GetElementInventory(id);
         SearchForSameItem(qitem, count);
@@ -85,6 +121,11 @@ public class Inventory : MonoBehaviour
         }
     }
 
+    /// <summary>
+    /// Добавление элемента в свободную ячейку, или добавление нужного количества объектов в ячейку с таким-же объектом
+    /// </summary>
+    /// <param name="item"></param>
+    /// <param name="count"></param>
     void SearchForSameItem(ElementInventory item, int count)
     {
         for (int i = 0; i < maxCount; i++)
@@ -122,7 +163,13 @@ public class Inventory : MonoBehaviour
         }
     }
 
-    void AddItem(int id, ElementInventory item, int count) // Добавление объекта в инвентарь
+    /// <summary>
+    /// Добавление ячейки
+    /// </summary>
+    /// <param name="id"></param>
+    /// <param name="item"></param>
+    /// <param name="count"></param>
+    void AddItem(int id, ElementInventory item, int count)
     {
         items[id].id = item.id; // Задаем номер
         items[id].count = count; // Задаем количество
@@ -139,6 +186,11 @@ public class Inventory : MonoBehaviour
         }
     }
 
+    /// <summary>
+    /// Забыл что это за функция, но она нужна!
+    /// </summary>
+    /// <param name="id"></param>
+    /// <param name="invItem"></param>
     void AddInventoryItem(int id, ItemInventory invItem)
     {
         items[id].id = invItem.id;
@@ -156,7 +208,10 @@ public class Inventory : MonoBehaviour
         }
     }
 
-    void AddGraphics() // Отрисовка инвентаря
+    /// <summary>
+    /// Отрисовка инвентаря
+    /// </summary>
+    void AddGraphics()
     {
         for (int i = 0; i < maxCount; i++)
         {
@@ -180,7 +235,10 @@ public class Inventory : MonoBehaviour
         }
     }
 
-    public void UpdateInventory() // Обновление графики инвентаря
+    /// <summary>
+    /// Обновление графики инвентаря
+    /// </summary>
+    public void UpdateInventory()
     {
         for (int i = 0; i < maxCount; i++) // Пройтись по каждой клетке
         {
@@ -207,6 +265,10 @@ public class Inventory : MonoBehaviour
         UpdateEquipmentSlots(ObyvSlot);
     }
 
+    /// <summary>
+    /// Обновление графики слота экипировки
+    /// </summary>
+    /// <param name="slot"></param>
     void UpdateEquipmentSlots(ItemInventory slot)
     {
         if (slot.id != 0 && slot.count > 1)
@@ -226,7 +288,10 @@ public class Inventory : MonoBehaviour
         }
     }
 
-    void SelectObject() //Перемещение объекта
+    /// <summary>
+    /// Перемещение объекта
+    /// </summary>
+    void SelectObject()
     {
         if (cellCurrentID == -1) // Если объект еще не взят, берем
         {
@@ -274,14 +339,22 @@ public class Inventory : MonoBehaviour
         }
     }
 
-    void MoveObject() // Отрисовка перемещаемого объекта
+    /// <summary>
+    /// Отрисовка перемещаемого объекта
+    /// </summary>
+    void MoveObject()
     {
         Vector3 pos = Input.mousePosition + offset;
         pos.z = InventoryMainObject.GetComponent<RectTransform>().position.z;
         movingObject.position = pos;// cam.ScreenToWorldPoint(pos);
     }
 
-    ItemInventory CopyInventoryItem(ItemInventory old) // Копирование содержимоко ячейки в буферную переменную
+    /// <summary>
+    /// Копирование содержимоко ячейки в буферную переменную
+    /// </summary>
+    /// <param name="old"></param>
+    /// <returns></returns>
+    ItemInventory CopyInventoryItem(ItemInventory old)
     {
         ItemInventory New = new ItemInventory();
 
@@ -292,7 +365,10 @@ public class Inventory : MonoBehaviour
         return New;
     }
 
-    public void SetDefens() // Расчет брони
+    /// <summary>
+    /// Расчет брони
+    /// </summary>
+    public void SetDefens()
     {
         int armor = 0;
         if(shlemSlot.id != 0)
@@ -312,7 +388,10 @@ public class Inventory : MonoBehaviour
 
     #region Функции для Слотов экипировки
 
-    public void MainWeaponDragAndDrop() // Функция для слота основного оружия
+    /// <summary>
+    /// Функция для слота основного оружия
+    /// </summary>
+    public void MainWeaponDragAndDrop()
     {
         int usebl = WeaponDataManagerScript.instance.GetElementInventory(currentItem.id).mainWeapon;
         if (currentItem.id > 0 && usebl > 0 && cellCurrentID != -1)
@@ -322,7 +401,10 @@ public class Inventory : MonoBehaviour
         }
     }
 
-    public void ThrowingWeaponDragAndDrop() // Функция для слота метательного оружия
+    /// <summary>
+    /// Функция для слота метательного оружия
+    /// </summary>
+    public void ThrowingWeaponDragAndDrop()
     {
         int usebl = WeaponDataManagerScript.instance.GetElementInventory(currentItem.id).throwingWeapon;
         if (currentItem.id > 0 && usebl > 0 && cellCurrentID != -1)
@@ -332,37 +414,58 @@ public class Inventory : MonoBehaviour
         }
     }
 
-    public void shlemSlotDragAndDrop() // Функция для слота шлема
+    /// <summary>
+    /// Функция для слота шлема
+    /// </summary>
+    public void shlemSlotDragAndDrop()
     {
         InstallabilityCheck(EquipmanType.Shlem, shlemSlot);
     }
 
-    public void dospehSlotDragAndDrop() // Функция для слота доспехов
+    /// <summary>
+    /// Функция для слота доспехов
+    /// </summary>
+    public void dospehSlotDragAndDrop()
     {
         InstallabilityCheck(EquipmanType.Dospeh, dospehSlot);
     }
 
-    public void perchatkiSlotDragAndDrop() // Функция для слота перчаток
+    /// <summary>
+    /// Функция для слота перчаток
+    /// </summary>
+    public void perchatkiSlotDragAndDrop()
     {
         InstallabilityCheck(EquipmanType.Perchatki, perchatkiSlot);
     }
 
-    public void poyasSlotDragAndDrop() // Функция для слота пояса
+    /// <summary>
+    /// Функция для слота пояса
+    /// </summary>
+    public void poyasSlotDragAndDrop()
     {
         InstallabilityCheck(EquipmanType.Poyas, poyasSlot);
     }
 
-    public void shtaniSlotDragAndDrop() // Функция для слота штанов
+    /// <summary>
+    /// Функция для слота штанов
+    /// </summary>
+    public void shtaniSlotDragAndDrop()
     {
         InstallabilityCheck(EquipmanType.Shtani, shtaniSlot);
     }
 
-    public void ObyvSlotDragAndDrop() // Функция для слота обуви
+    /// <summary>
+    /// Функция для слота обуви
+    /// </summary>
+    public void ObyvSlotDragAndDrop()
     {
         InstallabilityCheck(EquipmanType.Obyv, ObyvSlot);
     }
 
-    public void MainAmmoSlotDragAndDrop() // Функция для слота боеприпасов
+    /// <summary>
+    /// Функция для слота боеприпасов
+    /// </summary>
+    public void MainAmmoSlotDragAndDrop()
     {
         ElementInventory usebl = WeaponDataManagerScript.instance.GetElementInventory(currentItem.id);
 
@@ -373,7 +476,11 @@ public class Inventory : MonoBehaviour
     }
 
     #endregion
-
+    /// <summary>
+    /// Проверка возможности установить в слот выбранное снаряжение
+    /// </summary>
+    /// <param name="_EquipmanType">Снаряжение которое можно установить слот</param>
+    /// <param name="_slot">Слот для снаряжения</param>
     void InstallabilityCheck(EquipmanType _EquipmanType, ItemInventory _slot)
     {
         Equipment usebl = WeaponDataManagerScript.instance.GetElementInventory(currentItem.id).equipment;
@@ -388,7 +495,11 @@ public class Inventory : MonoBehaviour
         }
     }
 
-    void DragAndDropWeaponSlot(ItemInventory _item) // Перетаскивание экипировки в слот
+    /// <summary>
+    /// Перетаскивание экипировки в слот
+    /// </summary>
+    /// <param name="_item">Ячейка снаряжения</param>
+    void DragAndDropWeaponSlot(ItemInventory _item)
     {
         if (currentItem.id != _item.id)
         {
@@ -427,9 +538,24 @@ public class Inventory : MonoBehaviour
 [System.Serializable]
 public class ItemInventory // Ячейка инвентаря
 {
-    public int id; // Номер ячейки
-    public GameObject itemGameObj; // Ссылка объект на сцене
-    public int count; // Количество предметов в ячейке
-    public ElementInventory element; // Содержимое ячейки
+    /// <summary>
+    /// Номер ячейки
+    /// </summary>
+    public int id;
+    /// <summary>
+    /// Ссылка объект на сцене
+    /// </summary>
+    public GameObject itemGameObj;
+    /// <summary>
+    /// Количество предметов в ячейке
+    /// </summary>
+    public int count;
+    /// <summary>
+    /// Содержимое ячейки
+    /// </summary>
+    public ElementInventory element;
+    /// <summary>
+    /// Изображениен предмета
+    /// </summary>
     public Sprite standartSprite;
 }
