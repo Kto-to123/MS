@@ -8,6 +8,9 @@ public class Drop : MonoBehaviour
     public int id;
     public int count = 1;
 
+    /// <summary>
+    /// Взять предмет
+    /// </summary>
     public virtual void Take()
     {
         Inventory.instance.TakeItem(id, count);

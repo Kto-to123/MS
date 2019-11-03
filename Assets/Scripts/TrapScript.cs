@@ -9,7 +9,7 @@ public class TrapScript : MonoBehaviour
 
     private void OnTriggerEnter(Collider other)
     {
-        if (other.tag == "Enemy")
+        if (other.CompareTag("Enemy"))
         {
             GameObject g = Instantiate(Explosion);
             g.transform.position = gameObject.transform.position;

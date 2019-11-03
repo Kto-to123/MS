@@ -83,7 +83,7 @@ public class Weapon : MonoBehaviour
     /// <summary>
     /// Выбросить основное оружие
     /// </summary>
-    void DropMainWeapon()
+    public void DropMainWeapon()
     {
         if (mainWeapon != null)
         {
@@ -112,13 +112,13 @@ public class Weapon : MonoBehaviour
     /// <summary>
     /// Выбросить метательное оружие
     /// </summary>
-    void DropThrowingWeapon()
+    public void DropThrowingWeapon()
     {
         if (throwingWeaponActive)
         {
             GameObject drop;
-            drop = Instantiate(throwingElement.WeaponModel, throwingElement.fierPoint.position, throwingElement.fierPoint.rotation);
-            drop.GetComponent<DropWeapom>().count = throwingAmmunition;
+            //drop = Instantiate(throwingElement.WeaponModel, throwingElement.fierPoint.position, throwingElement.fierPoint.rotation);
+            //drop.GetComponent<DropWeapom>().count = throwingAmmunition;
             throwingAmmunition = 0;
         }
     }

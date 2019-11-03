@@ -8,10 +8,7 @@ public class StairsScript : MonoBehaviour
     {
         if (other.CompareTag("Player"))
         {
-            //if (Input.GetKeyDown(KeyCode.E))
-            //{
             PlayerControllerScript.instance.StairsSetUsing(true);
-            //}
         }
     }
 

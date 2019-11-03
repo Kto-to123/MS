@@ -38,8 +38,9 @@ public class BallScript : MonoBehaviour
             {
                 enemy.TakeDamage(damage);
             }
+            Destroy(gameObject);
         }
-        if (other.tag != "Player")
+        if (!other.CompareTag("Player"))
         {
             //Destroy(gameObject);
         }

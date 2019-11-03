@@ -24,7 +24,7 @@ public class PlayerManager : MonoBehaviour
 
     public void GetDamage(double _Damage)
     {
-        health -= armor == 0 ? _Damage : _Damage / (armor / 10);
+        health -= armor <= 10 ? _Damage : _Damage / (armor / 10);
         UIManager.instance.SetHealth(((int)health));
 
         if (health <= 0)

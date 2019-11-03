@@ -398,6 +398,14 @@ public class Inventory : MonoBehaviour
             DragAndDropWeaponSlot(mainWeaponSlot);
             Weapon.instance.InstantMainWeapon(usebl);
         }
+        else if (mainWeaponSlot.id != 0 && cellCurrentID == -1) // Снять снаряжение
+        {
+            Weapon.instance.DropMainWeapon();
+            TakeItem(mainWeaponSlot.id, mainWeaponSlot.count);
+            mainWeaponSlot.itemGameObj.GetComponentInChildren<Text>().text = "";
+            mainWeaponSlot.id = 0;
+            UpdateEquipmentSlots(mainWeaponSlot);
+        }
     }
 
     /// <summary>
@@ -410,6 +418,14 @@ public class Inventory : MonoBehaviour
         {
             DragAndDropWeaponSlot(throwingWeaponSlot);
             Weapon.instance.InstantWeapon(usebl, throwingWeaponSlot.count);
+        }
+        else if (throwingWeaponSlot.id != 0 && cellCurrentID == -1) // Снять снаряжение
+        {
+            Weapon.instance.DropThrowingWeapon();
+            TakeItem(throwingWeaponSlot.id, throwingWeaponSlot.count);
+            throwingWeaponSlot.itemGameObj.GetComponentInChildren<Text>().text = "";
+            throwingWeaponSlot.id = 0;
+            UpdateEquipmentSlots(throwingWeaponSlot);
         }
     }
 
@@ -472,6 +488,13 @@ public class Inventory : MonoBehaviour
         {
             DragAndDropWeaponSlot(mainAmmunitionSlot);
         }
+        else if (mainAmmunitionSlot.id != 0 && cellCurrentID == -1) // Снять снаряжение
+        {
+            TakeItem(mainAmmunitionSlot.id, mainAmmunitionSlot.count);
+            mainAmmunitionSlot.itemGameObj.GetComponentInChildren<Text>().text = "";
+            mainAmmunitionSlot.id = 0;
+            UpdateEquipmentSlots(mainAmmunitionSlot);
+        }
     }
     #endregion
 
@@ -491,6 +514,14 @@ public class Inventory : MonoBehaviour
                 DragAndDropWeaponSlot(_slot);
                 SetDefens();
             }
+        }
+        else if (_slot.id != 0 && cellCurrentID == -1) // Снять снаряжение
+        {
+            TakeItem(_slot.id, _slot.count);
+            _slot.itemGameObj.GetComponentInChildren<Text>().text = "";
+            _slot.id = 0;
+            UpdateEquipmentSlots(_slot);
+            SetDefens();
         }
     }
 
@@ -538,7 +569,7 @@ public class Inventory : MonoBehaviour
 public class ItemInventory // Ячейка инвентаря
 {
     /// <summary>
-    /// Номер ячейки
+    /// ID предмета в ячейке
     /// </summary>
     public int id;
     /// <summary>
