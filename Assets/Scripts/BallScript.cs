@@ -26,23 +26,22 @@ public class BallScript : MonoBehaviour
 
     private void OnTriggerEnter(Collider other)
     {
-        Enemy enemy = other.GetComponent<Enemy>();
-        if (enemy != null)
-        {
-            if (explosion != null)
-            {
-                var expl = Instantiate(explosion);
-                expl.transform.position = gameObject.transform.position;
-            }
-            else
-            {
-                enemy.TakeDamage(damage);
-            }
-            Destroy(gameObject);
-        }
         if (!other.CompareTag("Player"))
         {
-            //Destroy(gameObject);
+            IDamagable enemy = other.GetComponent<IDamagable>();
+            if (enemy != null)
+            {
+                if (explosion != null)
+                {
+                    var expl = Instantiate(explosion);
+                    expl.transform.position = gameObject.transform.position;
+                }
+                else
+                {
+                    enemy.GetDamage(damage);
+                }
+                Destroy(gameObject);
+            }
         }
     }
 }

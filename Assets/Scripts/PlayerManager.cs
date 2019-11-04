@@ -3,7 +3,7 @@ using System.Collections.Generic;
 using UnityEngine;
 
 //Клас отвечает за управление компонентами игрока
-public class PlayerManager : MonoBehaviour
+public class PlayerManager : MonoBehaviour, IDamagable
 {
     public static PlayerManager instance;
     Weapon weaponManager;
@@ -42,7 +42,7 @@ public class PlayerManager : MonoBehaviour
 
     public void InstantMainWeapon(int id)
     {
-        weaponManager.InstantMainWeapon(id);
+        weaponManager.InstantMainWeapon(id, bowPoint, gameObject.layer);
     }
 
     public void DropMainWeapon()

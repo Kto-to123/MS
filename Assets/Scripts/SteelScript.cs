@@ -26,10 +26,11 @@ public class SteelScript : WeaponScript
 
     private void OnTriggerEnter(Collider other)
     {
-        Enemy enemy = other.GetComponent<Enemy>();
+        //myAnimator.animat
+        IDamagable enemy = other.GetComponent<IDamagable>();
         if (enemy != null)
         {
-            enemy.TakeDamage(damage);
+            enemy.GetDamage(damage);
         }
     }
 }

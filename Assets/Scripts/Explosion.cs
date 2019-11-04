@@ -6,10 +6,15 @@ public class Explosion : MonoBehaviour
 {
     private void OnTriggerEnter(Collider other)
     {
-        if (other.tag == "Enemy")
+        IDamagable enemy = other.GetComponent<IDamagable>();
+        if (enemy != null)
         {
-            other.GetComponent<Enemy>().TakeDamage(1);
-            Destroy(gameObject, 2f);
+            if (other.tag == "Enemy")
+            {
+                enemy.GetDamage(2f);
+                //other.GetComponent<Enemy>().TakeDamage(1);
+                Destroy(gameObject, 2f);
+            }
         }
     }
 }

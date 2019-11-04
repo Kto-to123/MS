@@ -29,10 +29,10 @@ public class ArrowScript : MonoBehaviour
             rb.velocity = new Vector3(0, 0, 0);
             rb.useGravity = false;
 
-            Enemy enemy = other.GetComponent<Enemy>();
+            IDamagable enemy = other.GetComponent<IDamagable>();
             if (enemy != null)
             {
-                enemy.TakeDamage(damage);
+                enemy.GetDamage(damage);
             }
 
             damage = 0;

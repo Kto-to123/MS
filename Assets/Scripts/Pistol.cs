@@ -22,11 +22,11 @@ public class Pistol : WeaponScript
         if (usebl.ammoType == AmmoType.bullet && Inventory.instance.mainAmmunitionSlot.count > 0)
         {
             Inventory.instance.mainAmmunitionSlot.count--;
-            Short();
+            Shot();
         }
     }
 
-    void Short()
+    void Shot()
     {
         // Пускаем лучь
         Ray ray = new Ray(fierPoint.position, fierPoint.forward * 10f);
@@ -34,10 +34,10 @@ public class Pistol : WeaponScript
         if(Physics.Raycast(ray, out hit, 500f, 13, QueryTriggerInteraction.Ignore))
         {
             // Если попали во врага, наносим урон
-            Enemy enemy = hit.transform.gameObject.GetComponent<Enemy>();
+            IDamagable enemy = hit.transform.gameObject.GetComponent<IDamagable>();
             if (enemy != null)
             {
-                enemy.TakeDamage(damage);
+                enemy.GetDamage(damage);
             }
 
             // Устанавливаем декаль

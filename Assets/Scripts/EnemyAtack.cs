@@ -5,16 +5,19 @@ using UnityEngine;
 public class EnemyAtack : MonoBehaviour
 {
     public GameObject Hammer;
-    Animator hammerAnimator;
+    //Animator hammerAnimator;
+    WeaponManager weapon;
 
     private void Start()
     {
-        hammerAnimator = Hammer.GetComponent<Animator>();
+        //hammerAnimator = Hammer.GetComponent<Animator>();
+        weapon = transform.parent.GetComponent<WeaponManager>();
     }
 
-    private void OnTriggerEnter(Collider other)
+    private void OnTriggerStay(Collider other)
     {
         if (other.tag == "Player")
-            hammerAnimator.SetTrigger("Attack");
+            weapon.MainAttack();
+            //hammerAnimator.SetTrigger("Attack");
     }
 }
