@@ -30,10 +30,6 @@ public class Enemy : MonoBehaviour, IDamagable
         {
             Destroy(gameObject);
         }
-        else if (health <= 1)
-        {
-            EnemyRender.material.color = Color.red;
-        }
     }
 
     public void GetDamage(double _Damage)
@@ -44,9 +40,13 @@ public class Enemy : MonoBehaviour, IDamagable
         {
             Destroy(gameObject);
         }
-        else if (health <= 1)
-        {
-            EnemyRender.material.color = Color.red;
-        }
+
+        EnemyRender.material.color = Color.red;
+        Invoke("NormalColor", 0.3f);
+    }
+
+    void NormalColor()
+    {
+        EnemyRender.material.color = Color.white;
     }
 }

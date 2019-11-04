@@ -54,6 +54,8 @@ public class UIManager : MonoBehaviour
 
     private void Start()
     {
+        activUImode = UImode.Game;
+        SetUIMode(UImode.Game);
         healthSlider.value = 100;
     }
 

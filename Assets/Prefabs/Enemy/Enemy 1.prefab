@@ -251,7 +251,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: c234d28fa243840458af1722a57a2997, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  health: 2
+  health: 20
   point: {fileID: 6873523220459732811}
 --- !u!54 &286049186970291202
 Rigidbody:

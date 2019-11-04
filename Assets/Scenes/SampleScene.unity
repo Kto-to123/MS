@@ -5027,6 +5027,25 @@ PrefabInstance:
       propertyPath: faerPoint
       value: 
       objectReference: {fileID: 1092093853909625110}
+    - target: {fileID: 4028551082517191630, guid: 13d39768b5b588640a8c748e5bb488e5,
+        type: 3}
+      propertyPath: moveSpeed
+      value: 10
+      objectReference: {fileID: 0}
+    - target: {fileID: 4028551082517191630, guid: 13d39768b5b588640a8c748e5bb488e5,
+        type: 3}
+      propertyPath: normalSpeed
+      value: 4
+      objectReference: {fileID: 0}
+    - target: {fileID: 4028551082517191630, guid: 13d39768b5b588640a8c748e5bb488e5,
+        type: 3}
+      propertyPath: ranSpeed
+      value: 8
+      objectReference: {fileID: 0}
+    - target: {fileID: 414483591, guid: 13d39768b5b588640a8c748e5bb488e5, type: 3}
+      propertyPath: m_Enabled
+      value: 0
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 13d39768b5b588640a8c748e5bb488e5, type: 3}
 --- !u!1001 &789392799581011906
