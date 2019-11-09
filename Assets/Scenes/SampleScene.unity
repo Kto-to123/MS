@@ -38,13 +38,13 @@ RenderSettings:
   m_ReflectionIntensity: 1
   m_CustomReflection: {fileID: 0}
   m_Sun: {fileID: 170076734}
-  m_IndirectSpecularColor: {r: 0.44657874, g: 0.49641258, b: 0.574817, a: 1}
+  m_IndirectSpecularColor: {r: 0, g: 0, b: 0, a: 1}
   m_UseRadianceAmbientProbe: 0
 --- !u!157 &3
 LightmapSettings:
   m_ObjectHideFlags: 0
   serializedVersion: 11
-  m_GIWorkflowMode: 0
+  m_GIWorkflowMode: 1
   m_GISettings:
     serializedVersion: 2
     m_BounceScale: 1
@@ -5015,35 +5015,6 @@ PrefabInstance:
     - target: {fileID: 2033847757196190304, guid: 13d39768b5b588640a8c748e5bb488e5,
         type: 3}
       propertyPath: m_AnchorMax.y
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 4028551082517191637, guid: 13d39768b5b588640a8c748e5bb488e5,
-        type: 3}
-      propertyPath: bowPoint
-      value: 
-      objectReference: {fileID: 6447699622252907715}
-    - target: {fileID: 4028551082517191637, guid: 13d39768b5b588640a8c748e5bb488e5,
-        type: 3}
-      propertyPath: faerPoint
-      value: 
-      objectReference: {fileID: 1092093853909625110}
-    - target: {fileID: 4028551082517191630, guid: 13d39768b5b588640a8c748e5bb488e5,
-        type: 3}
-      propertyPath: moveSpeed
-      value: 10
-      objectReference: {fileID: 0}
-    - target: {fileID: 4028551082517191630, guid: 13d39768b5b588640a8c748e5bb488e5,
-        type: 3}
-      propertyPath: normalSpeed
-      value: 4
-      objectReference: {fileID: 0}
-    - target: {fileID: 4028551082517191630, guid: 13d39768b5b588640a8c748e5bb488e5,
-        type: 3}
-      propertyPath: ranSpeed
-      value: 8
-      objectReference: {fileID: 0}
-    - target: {fileID: 414483591, guid: 13d39768b5b588640a8c748e5bb488e5, type: 3}
-      propertyPath: m_Enabled
       value: 0
       objectReference: {fileID: 0}
     m_RemovedComponents: []

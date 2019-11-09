@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
 using UnityEngine.EventSystems;
+using UnityEngine.SceneManagement;
 
 // Клас отвечающий за пользовательский интерфейс
 
@@ -23,6 +24,7 @@ public class UIManager : MonoBehaviour
     [SerializeField] GameObject inventoryUI; // Интерфейс отображаемый при открытии инвентаря
     [SerializeField] GameObject skillPrograsUI; // Интерфейс отображаемый при открытии меню прокачки
     [SerializeField] GameObject GameUI; // Игровой интерфейс
+    [SerializeField] GameObject DieUI;
 
     private bool weaponActive = true;
     private int myAmmunition = 0;
@@ -54,6 +56,7 @@ public class UIManager : MonoBehaviour
 
     private void Start()
     {
+        DieUI.SetActive(false);
         activUImode = UImode.Game;
         SetUIMode(UImode.Game);
         healthSlider.value = 100;
@@ -179,6 +182,17 @@ public class UIManager : MonoBehaviour
         inventoryUI.SetActive(false);
         skillPrograsUI.SetActive(false);
         GameUI.SetActive(false);
+        DieUI.SetActive(true);
+        Cursor.lockState = CursorLockMode.None;
+        Cursor.visible = true;
+    }
+
+    /// <summary>
+    /// Перезапуск уровня
+    /// </summary>
+    public void Restart()
+    {
+        SceneManager.LoadScene(SceneManager.GetActiveScene().name);
     }
 }
 
