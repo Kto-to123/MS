@@ -17,6 +17,11 @@ public class WeaponScript : MonoBehaviour
         Debug.Log("Это базовый клас, так быть не должно");
     }
 
+    public virtual void AlternativeAttack()
+    {
+        
+    }
+
     public virtual void InstantiateThis()
     {
 

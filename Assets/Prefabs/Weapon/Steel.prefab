@@ -4707,8 +4707,8 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 7127806901781011526}
-  - component: {fileID: 5891205060758591259}
   - component: {fileID: 1904982697}
+  - component: {fileID: 5891205060758591259}
   - component: {fileID: 1904982695}
   m_Layer: 0
   m_Name: Steel
@@ -4732,6 +4732,19 @@ Transform:
   m_Father: {fileID: 0}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!65 &1904982697
+BoxCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 7127806901781011525}
+  m_Material: {fileID: 0}
+  m_IsTrigger: 1
+  m_Enabled: 1
+  serializedVersion: 2
+  m_Size: {x: 0.05, y: 1.6, z: 0.1}
+  m_Center: {x: 0.06, y: 0.95, z: -0.2}
 --- !u!114 &5891205060758591259
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -4747,19 +4760,6 @@ MonoBehaviour:
   ID: 2
   damage: 1
   speedAttack: 0
---- !u!65 &1904982697
-BoxCollider:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 7127806901781011525}
-  m_Material: {fileID: 0}
-  m_IsTrigger: 1
-  m_Enabled: 1
-  serializedVersion: 2
-  m_Size: {x: 0.05, y: 1.6, z: 0.1}
-  m_Center: {x: 0.06, y: 0.95, z: -0.2}
 --- !u!95 &1904982695
 Animator:
   serializedVersion: 3

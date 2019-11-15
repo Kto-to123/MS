@@ -113,12 +113,28 @@ public class Inventory : MonoBehaviour
     public void TakeItem(int id, int count) 
     {
         ElementInventory qitem = WeaponDataManagerScript.instance.GetElementInventory(id);
-        SearchForSameItem(qitem, count);
-        
+
+        //
+
+        if (mainWeaponSlot.id == 0 && qitem.mainWeapon != 0)
+        {
+            int usebl = WeaponDataManagerScript.instance.GetElementInventory(qitem.id).mainWeapon;
+
+            PlayerManager.instance.InstantMainWeapon(usebl);
+
+            mainWeaponSlot.id = qitem.id;
+            mainWeaponSlot.count = count;
+        }
+        else
+        {
+            SearchForSameItem(qitem, count);
+        }
+
         if (UIManager.instance.backGroundActive)
         {
             UpdateInventory();
         }
+
     }
 
     /// <summary>
@@ -269,7 +285,7 @@ public class Inventory : MonoBehaviour
     /// Обновление графики слота экипировки
     /// </summary>
     /// <param name="slot"></param>
-    void UpdateEquipmentSlots(ItemInventory slot)
+    public void UpdateEquipmentSlots(ItemInventory slot)
     {
         if (slot.id != 0 && slot.count > 1)
         {

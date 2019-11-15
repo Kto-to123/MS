@@ -30,6 +30,11 @@ public class PlayerManager : MonoBehaviour, IDamagable
         weaponManager.ThrowingAttack();
     }
 
+    public void MainAlternativeAttack()
+    {
+        weaponManager.MainAlternativeAttack();
+    }
+
     public void TrapSetting()
     {
         weaponManager.TrapSetting();

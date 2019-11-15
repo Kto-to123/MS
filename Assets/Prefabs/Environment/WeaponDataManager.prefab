@@ -83,6 +83,16 @@ MonoBehaviour:
       type: 3}
     arrow: {fileID: 8778723401030900448, guid: c445da7a81bfa454aa7bf2edc36711cc, type: 3}
     fierPoint: {fileID: 0}
+  - ID: 4
+    inventoryID: 24
+    activ: 0
+    bowPoint: {fileID: 0}
+    mainPrefab: {fileID: 5911310756507339583, guid: c1b71da71d16b724d912f28cb252bd6e,
+      type: 3}
+    DropPrefab: {fileID: 5326792996692767537, guid: 25bd46e5cc7db354a9fc62b49c8d1bc1,
+      type: 3}
+    arrow: {fileID: 8914108692541487850, guid: 8db1e86fdf25cce418b0f21b4ff326e0, type: 3}
+    fierPoint: {fileID: 0}
   ThrowingElements:
   - ID: 0
     inventoryID: 0
@@ -290,4 +300,11 @@ MonoBehaviour:
     mainWeapon: 0
     throwingWeapon: 0
     ammoType: 2
+    equipment: {fileID: 0}
+  - id: 24
+    name: Spear
+    img: {fileID: 21300000, guid: 8324845a13b807d4fb736eff0521ce8e, type: 3}
+    mainWeapon: 4
+    throwingWeapon: 0
+    ammoType: 0
     equipment: {fileID: 0}

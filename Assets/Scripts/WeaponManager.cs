@@ -41,6 +41,17 @@ public class WeaponManager : MonoBehaviour
     }
 
     /// <summary>
+    /// Альтернативная атака основного оружия
+    /// </summary>
+    public void MainAlternativeAttack()
+    {
+        if (mainWeapon != null && mainElements.activ)
+        {
+            mainWeapon.AlternativeAttack();
+        }
+    }
+
+    /// <summary>
     /// Бросок метательного оружия
     /// </summary>
     public void ThrowingAttack()

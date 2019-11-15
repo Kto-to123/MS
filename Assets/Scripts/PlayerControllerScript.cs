@@ -104,6 +104,11 @@ public class PlayerControllerScript : MonoBehaviour
             }
         }
 
+        if (Input.GetKey(KeyCode.G))
+        {
+            PlayerManager.instance.MainAlternativeAttack();
+        }
+
         if (Input.GetKey(KeyCode.LeftShift))
         {
             moveSpeed = ranSpeed;
